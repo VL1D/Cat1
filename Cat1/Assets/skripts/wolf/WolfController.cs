@@ -6,7 +6,6 @@ public class WolfController : MonoBehaviour
 {
     public float speed;
     public float JumpForse;
-    public float agrodistans;
     public float checkRadius;
 
     public Rigidbody2D rb;
@@ -33,12 +32,7 @@ public class WolfController : MonoBehaviour
 
     private void Move()
     {
-        float distToPlayer = Vector2.Distance(transform.position, player.position);
-
-        if (distToPlayer < agrodistans)
-        {
-            StartHunting();
-        }
+        StartHunting();
         if(speed == 0)
         {
             anim.SetBool("RunWolf", false);
@@ -71,13 +65,13 @@ public class WolfController : MonoBehaviour
         {
             rb.velocity = Vector2.up * JumpForse;
             StartCoroutine(JumpWolf());
-            transform.position += transform.right * 0.7f;
+            transform.position += transform.right * 0.85f;
         }
         else if (isGroundCheck)
         {
             rb.velocity = Vector2.up * JumpForse;
             StartCoroutine(JumpWolf());
-            transform.position += transform.right * 0.7f;
+            transform.position += transform.right * 0.85f;
         }
         else
         {
@@ -90,13 +84,13 @@ public class WolfController : MonoBehaviour
         else
         {
             anim.SetBool("jump", false);
-            JumpForse = 100;
+            JumpForse = 85;
         }
     }
 
     private IEnumerator JumpWolf()
     {
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.5f);
         JumpForse = 0;
 
     }
