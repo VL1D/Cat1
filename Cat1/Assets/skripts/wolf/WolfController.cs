@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WolfController : MonoBehaviour
@@ -7,16 +8,20 @@ public class WolfController : MonoBehaviour
     public float speed;
     public float JumpForse;
     public float checkRadius;
+    public float CheckPlayer;
 
     public Rigidbody2D rb;
     public Animator anim;
 
     public Transform player;
-    public Transform ground, groundCheck, groundDop;
+    public Transform ground, groundCheck, groundDop , playerCheck ;
 
-    private bool isGroundCheck , isGround , isGroundDop;
+    public bool  isGround  ;
+    private bool isGroundCheck, isGroundDop;
+    public bool PlayerCheck;
 
     public LayerMask GrondLayer;
+    public LayerMask PlayerCheckLayer;
 
     private void Start()
     {
@@ -28,10 +33,12 @@ public class WolfController : MonoBehaviour
     {
         Move();
         Jump();
+        Check();
     }
 
     private void Move()
     {
+
         StartHunting();
         if(speed == 0)
         {
@@ -45,33 +52,44 @@ public class WolfController : MonoBehaviour
 
     private void StartHunting()
     {
-        if(player.position.x < transform.position.x)
+        if (isGround )
         {
-            rb.velocity = new Vector2(-speed, 0);
+            if(player.position.x < transform.position.x)
+            {
+               rb.velocity = new Vector2(-speed, 0);
+                transform.eulerAngles = new Vector3(0, 180, 0);
+            }
+            else if(player.position.x > transform.position.x)
+            {
+                rb.velocity = new Vector2(speed, 0);
+                transform.eulerAngles = new Vector3(0, 0, 0);
+            }
         }
-        else if(player.position.x > transform.position.x)
+        else
         {
-            rb.velocity = new Vector2(speed, 0);
+            transform.position += transform.right * 0.85f;
         }
     }
 
 
     private void Jump()
     {
-        isGround = Physics2D.OverlapCircle(ground.position, checkRadius, GrondLayer);
-        isGroundCheck = Physics2D.OverlapCircle(groundCheck.position, checkRadius, GrondLayer);
-        isGroundDop = Physics2D.OverlapCircle(groundDop.position, checkRadius, GrondLayer);
         if (!isGroundDop )
         {
             rb.velocity = Vector2.up * JumpForse;
             StartCoroutine(JumpWolf());
-            transform.position += transform.right * 0.85f;
         }
         else if (isGroundCheck)
         {
-            rb.velocity = Vector2.up * JumpForse;
-            StartCoroutine(JumpWolf());
-            transform.position += transform.right * 0.85f;
+            if (!PlayerCheck)
+            {
+                rb.velocity = Vector2.up * JumpForse;
+                StartCoroutine(JumpWolf());
+            }
+            else
+            {
+                Move();
+            }
         }
         else
         {
@@ -86,6 +104,15 @@ public class WolfController : MonoBehaviour
             anim.SetBool("jump", false);
             JumpForse = 85;
         }
+         
+    }
+
+    private void Check()
+    {
+        isGround = Physics2D.OverlapCircle(ground.position, checkRadius, GrondLayer);
+        isGroundCheck = Physics2D.OverlapCircle(groundCheck.position, checkRadius, GrondLayer);
+        isGroundDop = Physics2D.OverlapCircle(groundDop.position, checkRadius, GrondLayer);
+        PlayerCheck = Physics2D.OverlapCircle(playerCheck.position, CheckPlayer, PlayerCheckLayer);
     }
 
     private IEnumerator JumpWolf()
@@ -94,5 +121,20 @@ public class WolfController : MonoBehaviour
         JumpForse = 0;
 
     }
+    
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(playerCheck.position, CheckPlayer);
+    }
+
+    public void StopHunding()
+    {
+        rb.velocity = Vector2.zero;
+        speed = 0;
+        anim.SetBool("RunWolf", false);
+    }
+
 
 }
