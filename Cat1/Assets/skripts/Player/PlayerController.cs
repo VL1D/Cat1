@@ -252,7 +252,7 @@ public class PlayerController : MonoBehaviour
             if (!deathScreen.activeSelf)
             {
                 deathScreen.SetActive(true);
-                anim.SetBool("Deatch",true);
+                anim.SetTrigger("Deatch");
                 speed = 0;
                 ButtonPaus.SetActive(false);
                 peredw.SetActive(false);
