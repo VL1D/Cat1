@@ -7,23 +7,21 @@ public class Arrows : MonoBehaviour
     public GameObject Respawn;
     public GameObject Menu;
 
-    public void ArowsR()
+    public void ArowsRL()
     {
-        if (Respawn.activeSelf )
+        if (Respawn.activeSelf)
         {
             Menu.SetActive(true);
             Respawn.SetActive(false);
         }
-
-    }
-
-    public void ArowsL()
-    {
-        if ( !Respawn.activeSelf)
+        else
         {
             Menu.SetActive(false);
             Respawn.SetActive(true);
         }
+
     }
+
+    
 
 }
