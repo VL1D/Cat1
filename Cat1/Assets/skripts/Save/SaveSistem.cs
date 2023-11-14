@@ -25,6 +25,7 @@ public static class SaveSistem
         string path = Application.persistentDataPath + "/player.save";
         if (File.Exists(path))
         {
+            Debug.Log("Гра запущена");
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path,FileMode.Open);
 

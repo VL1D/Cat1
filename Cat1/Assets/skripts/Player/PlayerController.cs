@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Scripting.APIUpdating;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour , IDatPersistence
 {
     public float speed;
     public float normalSpeed;
@@ -259,10 +259,6 @@ public class PlayerController : MonoBehaviour
 
             }
         }
-        if(other.tag == "CheckPoint")
-        {
-            SaveSistem.SavePlayer(this);
-        }
     }
 
     public void StartAnimLedge()
@@ -288,15 +284,14 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-    public void LodPlayer()
+ 
+    public void LoadData(GameData data)
     {
-        DataPlayer data = SaveSistem.LoadPlayer();
-
-        Vector3 position;
-        position.x = data.position[0];
-        position.y = data.position[1];
-        position.z = data.position[2];
-        transform.position = position;
+        this.transform.position = data.playerPosition;
     }
 
+    public void SaveData(ref  GameData data)
+    {
+        data.playerPosition = this.transform.position;
+    }
 }
