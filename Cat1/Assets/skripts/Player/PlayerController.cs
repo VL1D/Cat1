@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -259,6 +260,11 @@ public class PlayerController : MonoBehaviour , IDatPersistence
 
             }
         }
+        if(other.tag == "CheckPoint")
+        {
+            DataPerfistusManager.instance.SaveGame();
+            Debug.Log("Save");
+        }
     }
 
     public void StartAnimLedge()
@@ -294,4 +300,12 @@ public class PlayerController : MonoBehaviour , IDatPersistence
     {
         data.playerPosition = this.transform.position;
     }
+
+    public void Loading()
+    {
+        DataPerfistusManager.instance.LoadGame();
+        Debug.Log("Loading");
+    }
+
+    
 }

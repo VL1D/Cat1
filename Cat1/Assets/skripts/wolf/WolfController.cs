@@ -14,7 +14,7 @@ public class WolfController : MonoBehaviour
     public Animator anim;
 
     public Transform player;
-    public Transform ground, groundCheck, groundDop , playerCheck ;
+    public Transform ground, groundCheck, groundDop, playerCheck;
 
     public bool  isGround  ;
     private bool isGroundCheck, isGroundDop;
@@ -136,5 +136,6 @@ public class WolfController : MonoBehaviour
         anim.SetBool("RunWolf", false);
     }
 
-
+   
+  
 }
