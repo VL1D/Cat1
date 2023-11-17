@@ -97,11 +97,6 @@ public class DataPerfistusManager : MonoBehaviour
         dataHandler.Save(gameData );
     }
 
-    private void OnApplicationQuit()
-    {
-        SaveGame();
-    }
-
     private List<IDatPersistence> FindAllDataPersistenceObjects()
     {
         IEnumerable<IDatPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDatPersistence>();

@@ -33,6 +33,10 @@ public class PlayerController : MonoBehaviour , IDatPersistence
     public GameObject peredw;
     public GameObject ButtonPaus;
 
+    [Header("Save")]
+    public GameObject Wolf;
+    public GameObject FallingStone;
+
     private void Start()
     {
         speed = 0f;
@@ -294,11 +298,29 @@ public class PlayerController : MonoBehaviour , IDatPersistence
     public void LoadData(GameData data)
     {
         this.transform.position = data.playerPosition;
+        this.Wolf.transform.position = data.WolfPosition;
+        if (DataCheck.checkPointIndex == 5)
+        {
+            Wolf.SetActive(true);
+        }
+        if (DataCheck.checkPointIndex == 4)
+        {
+            Destroy(FallingStone);
+        }
     }
 
     public void SaveData(  GameData data)
     {
         data.playerPosition = this.transform.position;
+        data.WolfPosition = this.Wolf.transform.position;
+        if (DataCheck.checkPointIndex == 5)
+        {
+            Wolf.SetActive(true);
+        }
+        if (DataCheck.checkPointIndex == 4)
+        {
+            Destroy(FallingStone);
+        }
     }
 
     public void Loading()
@@ -306,6 +328,4 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         DataPerfistusManager.instance.LoadGame();
         Debug.Log("Loading");
     }
-
-    
 }
