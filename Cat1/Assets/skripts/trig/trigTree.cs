@@ -6,10 +6,9 @@ public class trigTree : MonoBehaviour
 {
 
     public Animator animTree;
-    public GameObject tree;
     public GameObject grond;
 
-    public void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
@@ -18,11 +17,10 @@ public class trigTree : MonoBehaviour
 
         }
     }
-    public void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
-            Destroy(tree);
             Destroy(gameObject);
         }
     }

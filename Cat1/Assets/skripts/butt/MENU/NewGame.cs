@@ -12,7 +12,9 @@ public class NewGame : MonoBehaviour
 
     [SerializeField] private Button contieneGameButton;
 
-    public int scene;
+    public Animator Panel;
+    public GameObject panel;
+
 
     private void Start()
     {
@@ -24,16 +26,16 @@ public class NewGame : MonoBehaviour
 
     public void StartNewGame()
     {
-        DiableMenuButtons();
         DataPerfistusManager.instance.NewGame();
-        SceneManager.LoadSceneAsync(scene);
+        Panel.SetTrigger("Trig");
+        panel.SetActive(true);
         DataCheck.checkPointIndex = 0;
     }
 
     public void ContineGame()
     {
-        DiableMenuButtons();
-        SceneManager.LoadSceneAsync(scene);
+        Panel.SetTrigger("Trig");
+        panel.SetActive(true);
     }
 
     public void ExitGame()
@@ -42,9 +44,5 @@ public class NewGame : MonoBehaviour
         Application.Quit();
     }
 
-    private void DiableMenuButtons()
-    {
-        newGameButton.interactable = false;
-        contieneGameButton.interactable = false;
-    }
+    
 }

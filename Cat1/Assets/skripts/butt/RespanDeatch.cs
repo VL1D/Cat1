@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class RespanDeatch : MonoBehaviour
 {
+    public Animator panelanim;
    public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        panelanim.SetTrigger("triger");
     }
+
 }

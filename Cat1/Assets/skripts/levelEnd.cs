@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class levelEnd : MonoBehaviour
+public class  levelEnd : MonoBehaviour
 {
-    public int scene;
-    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Player")
         {
-            SceneManager.LoadScene(scene);
+            LevelManager.instance.RespawnLevel2();
         }
     }
 }

@@ -323,9 +323,9 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         }
     }
 
-    public void Loading()
-    {
-        DataPerfistusManager.instance.LoadGame();
-        Debug.Log("Loading");
-    }
+    //public void Loading()
+   // {
+    //    DataPerfistusManager.instance.LoadGame();
+     //   Debug.Log("Loading");
+   // }
 }
