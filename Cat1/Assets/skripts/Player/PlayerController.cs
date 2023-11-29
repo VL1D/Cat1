@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
     private bool isGrounded, isStopRot, isGroundedChek , isDopGround;
     public bool blockMoveX;
     public bool Climb ;
+    public bool isWater = false;
 
     public Transform feetPos, stopRot, GraundChek, DopGroud;
     public Transform DopPosition;
@@ -51,6 +52,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         StopMove();
         MoveUp();
         posNext();
+        WaterRun();
     }
 
     private void Move()
@@ -73,7 +75,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
             else
             {
                 anim.SetBool("Run", false);
-                if (!isGrounded)
+                if (!isGrounded )
                 {
                     anim.SetBool("dawn", true);
                 }
@@ -90,6 +92,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         {
             anim.SetBool("Jump", false);
             anim.SetBool("Dawn3", false);
+            isWater = false;
         }
         else
         {
@@ -98,7 +101,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
             if (transform.eulerAngles.y == 0)
             {
                 transform.Rotate(0, 0, -40 * Time.deltaTime);
-                if (isStopRot )
+                if (isStopRot || isWater == true)
                 {
                     transform.eulerAngles = new Vector3(0, 0, 0);
                 }
@@ -107,15 +110,18 @@ public class PlayerController : MonoBehaviour , IDatPersistence
             else if (transform.eulerAngles.y == 180)
             {
                 transform.Rotate(0, 0, -40 * Time.deltaTime);
-                if (isStopRot)
+                if (isStopRot || isWater == true)
                 {
                     transform.eulerAngles = new Vector3(0, 180, 0);
                 }
             }
             //стрибк на місці
-            if (speed == 0)
+            if (speed == 0 )
             {
-                transform.position += transform.right * 0.4f;
+                if (!isWater)
+                {
+                    transform.position += transform.right * 0.4f;
+                }
             }
             //врізався в перешкоду
             if (isGroundedChek && isDopGround)
@@ -137,10 +143,11 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         }
         else
         {
-            if (isGrounded)
+            if (isGrounded || isWater)
             {
                 anim.SetTrigger("RunUp");
                 rb.velocity = Vector2.up * speedUp;
+                isWater = false;
             }
         }
     }
@@ -149,7 +156,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         if (speed >= 0f)
         {
 
-            if (!isGrounded)
+            if (!isGrounded )
             {
                 if (transform.eulerAngles.y == 0)
                 {
@@ -161,6 +168,11 @@ public class PlayerController : MonoBehaviour , IDatPersistence
                 speed = -normalSpeed;
                 transform.eulerAngles = new Vector3(0, 180, 0);
             }
+            if (isWater)
+            {
+                speed = -normalSpeed;
+                transform.eulerAngles = new Vector3(0, 180, 0);
+            }
         }
     }
     public void OnRightButtonDown()
@@ -168,7 +180,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         if (speed <= 0f)
         {
 
-            if (!isGrounded)
+            if (!isGrounded )
             {
                 if (transform.eulerAngles.y == 180)
                 {
@@ -176,6 +188,11 @@ public class PlayerController : MonoBehaviour , IDatPersistence
                 }
             }
             else
+            {
+                speed = normalSpeed;
+                transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+            if (isWater)
             {
                 speed = normalSpeed;
                 transform.eulerAngles = new Vector3(0, 0, 0);
@@ -269,7 +286,15 @@ public class PlayerController : MonoBehaviour , IDatPersistence
             DataPerfistusManager.instance.SaveGame();
             Debug.Log("Save");
         }
+        if(other.tag == "Water")
+        {
+            isWater = true;
+            speed = 0;
+        }
     }
+
+    
+
 
     public void StartAnimLedge()
     {
@@ -323,9 +348,25 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         }
     }
 
-    //public void Loading()
-   // {
-    //    DataPerfistusManager.instance.LoadGame();
-     //   Debug.Log("Loading");
-   // }
+    private void WaterRun()
+    {
+        if (isWater)
+        {
+            normalSpeed = 20;
+            anim.SetBool("go", true);
+            if (isGroundedChek && isDopGround)
+            {
+                anim.SetBool("Dawn3", false);
+            }
+        }
+        else
+        {
+            normalSpeed = 40;
+            anim.SetBool("go", false);
+            if (isGroundedChek && isDopGround)
+            {
+                anim.SetBool("Dawn3", true);
+            }
+        }
+    }
 }
