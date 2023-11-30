@@ -8,8 +8,6 @@ public class LevelManager : MonoBehaviour
 
     public Transform[] respawnPointLevel;
     public GameObject[] LevelPrefab;
-   // public Transform respawnPointLevel2;
-    //public GameObject Level2Prefab;
 
     public void Awake()
     {

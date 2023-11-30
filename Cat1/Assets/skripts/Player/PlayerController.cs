@@ -357,6 +357,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
             if (isGroundedChek && isDopGround)
             {
                 anim.SetBool("Dawn3", false);
+                anim.SetBool("go", true);
             }
         }
         else
@@ -369,4 +370,5 @@ public class PlayerController : MonoBehaviour , IDatPersistence
             }
         }
     }
+
 }
