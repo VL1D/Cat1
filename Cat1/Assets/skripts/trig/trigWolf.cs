@@ -15,6 +15,7 @@ public class trigWolf : MonoBehaviour
         if(collision.tag == "Player")
         {
             controller.speed = 0;
+            controller.jumpForce = 0;
             wolf.SetActive(true);
             StartCoroutine(AnimSpeedWolf());
             Cam.Play("CamWolf");
