@@ -15,6 +15,15 @@ public class TrigEnemy : MonoBehaviour
             playerController.jumpForce = 0;
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.tag == "Player")
+        {
+            
+            playerController.jumpForce = 35f;
+        }
+    }
     private IEnumerator Delete()
     {
         yield return new WaitForSeconds(2f);

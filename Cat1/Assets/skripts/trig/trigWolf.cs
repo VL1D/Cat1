@@ -28,6 +28,13 @@ public class trigWolf : MonoBehaviour
             controller.speed = 0;
         }
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            controller.jumpForce = 35f;
+        }
+    }
 
     private IEnumerator AnimSpeedWolf()
     {
