@@ -9,6 +9,9 @@ public class EnemyWaterRespawn : MonoBehaviour
     public GameObject EnemyWater;
     public Transform RespawnEnemy;
 
+    public Transform EnemWat;
+    public GameObject SprayEnemy;
+
     public void Awake()
     {
         instance = this;
@@ -17,7 +20,8 @@ public class EnemyWaterRespawn : MonoBehaviour
     public void EnemyWatResp()
     {
         Instantiate(EnemyWater, RespawnEnemy.position, Quaternion.identity);
-        CutsceneManager.Instance.StartCutscene("CatScene1");
+        Instantiate(SprayEnemy, EnemWat.position , Quaternion.identity);
+        CutsceneManager.Instance.StartCutscene("CatSceneEnemyWater");
     }
 
 }

@@ -8,7 +8,6 @@ public class trigWolf : MonoBehaviour
     public WolfController wolfcontroller;
     public GameObject wolf;
     public Animator animWolf;
-    public Animator Cam;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,7 +17,7 @@ public class trigWolf : MonoBehaviour
             controller.jumpForce = 0;
             wolf.SetActive(true);
             StartCoroutine(AnimSpeedWolf());
-            Cam.Play("CamWolf");
+            CutsceneManager.Instance.StartCutscene("CatSceneWolf");
             StartCoroutine(SpeedWolf());
         }
     }
