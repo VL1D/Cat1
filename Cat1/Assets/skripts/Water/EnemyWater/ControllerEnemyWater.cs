@@ -34,6 +34,7 @@ public class ControllerEnemyWater : MonoBehaviour
         {
             StoptHunting();
         }
+        
     }
 
     private void StartHunting()
@@ -41,14 +42,26 @@ public class ControllerEnemyWater : MonoBehaviour
         if(CatPos.position.x < transform.position.x)
         {
             rb.velocity = new Vector2 (-speed, 0);
+            transform.eulerAngles = new Vector3(0, 180, 0);
         }
         else if (CatPos.position.x > transform.position.x)
         {
             rb.velocity = new Vector2(speed, 0);
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        if (speed == 0)
+        {
+            anim.SetBool("Run", false);
+        }
+        else
+        {
+
+            anim.SetBool("Run", true);
         }
     }
     private void StoptHunting()
     {
         rb.velocity = Vector2.zero;
+        anim.SetBool("Run", false);
     }
 }
