@@ -21,8 +21,7 @@ public class TrigAtack : MonoBehaviour
 
     private IEnumerator ActiveRest()
     {
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.2f);
         TrigDeatch.SetActive(true);
-
     }
 }
