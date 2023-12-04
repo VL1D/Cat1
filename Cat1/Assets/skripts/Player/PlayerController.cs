@@ -239,7 +239,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
                 anim.SetBool("Dawn3", true);
             }
         }
-        else
+        else 
         {
             if (isGroundedChek && isDopGround)
             {
@@ -354,20 +354,13 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         {
             normalSpeed = 20;
             anim.SetBool("go", true);
-            if (isGroundedChek && isDopGround)
-            {
-                anim.SetBool("Dawn3", false);
-                anim.SetBool("go", true);
-            }
+           
         }
         else
         {
             normalSpeed = 40;
             anim.SetBool("go", false);
-            if (isGroundedChek && isDopGround)
-            {
-                anim.SetBool("Dawn3", true);
-            }
+           
         }
     }
 
