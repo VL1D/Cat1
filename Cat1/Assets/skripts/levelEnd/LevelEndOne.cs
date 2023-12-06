@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class  levelEnd : MonoBehaviour
+public class LevelEndOne : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D colision)
     {
-        if(other.tag == "Player")
+        if (colision.tag == "Player")
         {
             LevelManager.instance.RespawnLevel2();
         }

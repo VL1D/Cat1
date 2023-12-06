@@ -342,6 +342,10 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         {
             Wolf.SetActive(true);
         }
+        else
+        {
+            Wolf.SetActive(false);
+        }
         if (DataCheck.checkPointIndex == 4)
         {
             Destroy(FallingStone);
