@@ -23,6 +23,8 @@ public class CheckPoints : MonoBehaviour
             if (index > DataCheck.checkPointIndex)
             {
                 DataCheck.checkPointIndex = index;
+                DataPerfistusManager.instance.SaveGame();
+                Debug.Log("Save");
             }
         }
     }

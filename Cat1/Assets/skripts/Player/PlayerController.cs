@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,8 @@ public class PlayerController : MonoBehaviour , IDatPersistence
     public float CheckDistans;
     public float DopRadius;
     public float DopSpeed;
+
+    public int CheckPointIND;
 
     public Animator anim;
     public Rigidbody2D rb;
@@ -37,6 +40,8 @@ public class PlayerController : MonoBehaviour , IDatPersistence
     [Header("Save")]
     public GameObject Wolf;
     public GameObject FallingStone;
+
+    public GameObject[] Level;
 
     private void Start()
     {
@@ -281,11 +286,6 @@ public class PlayerController : MonoBehaviour , IDatPersistence
 
             }
         }
-        if(other.tag == "CheckPoint")
-        {
-            DataPerfistusManager.instance.SaveGame();
-            Debug.Log("Save");
-        }
         if(other.tag == "Water")
         {
             isWater = true;
@@ -332,9 +332,17 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         {
             Destroy(FallingStone);
         }
+        if (DataCheck.checkPointIndex >= 6 )
+        {
+            Destroy(Level[0]);
+        }
+        else if (DataCheck.checkPointIndex <=6 )
+        {
+            Destroy(Level[1]);
+        }
     }
 
-    public void SaveData(  GameData data)
+    public void SaveData( GameData data)
     {
         data.playerPosition = this.transform.position;
         data.WolfPosition = this.Wolf.transform.position;
@@ -342,13 +350,18 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         {
             Wolf.SetActive(true);
         }
-        else
-        {
-            Wolf.SetActive(false);
-        }
         if (DataCheck.checkPointIndex == 4)
         {
             Destroy(FallingStone);
+        }
+        if(DataCheck.checkPointIndex >= 6 )
+        {
+            Destroy(Level[0]);
+            LevelManager.instance.RespawnLevel2();
+        }
+        else if (DataCheck.checkPointIndex <= 6)
+        {
+            Destroy(Level[1]);
         }
     }
 

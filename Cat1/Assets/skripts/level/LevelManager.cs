@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,6 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
    public static LevelManager instance;
-
 
     public Transform[] respawnPointLevel;
     public GameObject[] LevelPrefab;
@@ -24,4 +24,5 @@ public class LevelManager : MonoBehaviour
     {
         Instantiate(LevelPrefab[0], respawnPointLevel[0].position, Quaternion.identity);
     }
+
 }

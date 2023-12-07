@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 public class RespanDeatch : MonoBehaviour
 {
     public Animator panelanim;
+
    public void Restart()
     {
         panelanim.SetTrigger("triger");
+       
     }
 
 }
