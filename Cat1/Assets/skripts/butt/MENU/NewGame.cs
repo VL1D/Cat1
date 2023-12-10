@@ -8,12 +8,12 @@ public class NewGame : MonoBehaviour
 {
     [Header("Menu Buttons")]
 
-    [SerializeField] private Button newGameButton;
+     public Button newGameButton;
 
-    [SerializeField] private Button contieneGameButton;
+     public Button contieneGameButton;
 
-    public Animator Panel;
-    public GameObject panel;
+
+    public int Scene;
 
 
     private void Start()
@@ -27,15 +27,14 @@ public class NewGame : MonoBehaviour
     public void StartNewGame()
     {
         DataPerfistusManager.instance.NewGame();
-        Panel.SetTrigger("Trig");
-        panel.SetActive(true);
+        SceneManager.LoadSceneAsync(Scene);
         DataCheck.checkPointIndex = 0;
     }
 
     public void ContineGame()
     {
-        Panel.SetTrigger("Trig");
-        panel.SetActive(true);
+        SceneManager.LoadSceneAsync(Scene);
+        
     }
 
     public void ExitGame()

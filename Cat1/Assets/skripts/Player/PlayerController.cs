@@ -48,7 +48,9 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         speed = 0f;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+       
     }
+    
     private void FixedUpdate()
     {
         Move();
@@ -332,13 +334,9 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         {
             Destroy(FallingStone);
         }
-        if (DataCheck.checkPointIndex >= 6 )
+        if (DataCheck.checkPointIndex >= 6  )
         {
             Destroy(Level[0]);
-        }
-        else if (DataCheck.checkPointIndex <=6 )
-        {
-            Destroy(Level[1]);
         }
     }
 
@@ -356,12 +354,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         }
         if(DataCheck.checkPointIndex >= 6 )
         {
-            Destroy(Level[0]);
-            LevelManager.instance.RespawnLevel2();
-        }
-        else if (DataCheck.checkPointIndex <= 6)
-        {
-            Destroy(Level[1]);
+           Destroy(Level[0]);
         }
     }
 

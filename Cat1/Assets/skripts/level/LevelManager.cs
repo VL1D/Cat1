@@ -14,6 +14,7 @@ public class LevelManager : MonoBehaviour
     {
         instance = this; 
     }
+   
 
     public void RespawnLevel2()
     {
