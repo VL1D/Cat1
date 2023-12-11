@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         speed = 0f;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-       
+        
     }
     
     private void FixedUpdate()
@@ -295,9 +295,6 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         }
     }
 
-    
-
-
     public void StartAnimLedge()
     {
         rb.velocity = Vector2.zero;
@@ -334,7 +331,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         {
             Destroy(FallingStone);
         }
-        if (DataCheck.checkPointIndex >= 6  )
+        if (DataCheck.checkPointIndex >= 6)
         {
             Destroy(Level[0]);
         }
@@ -352,9 +349,9 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         {
             Destroy(FallingStone);
         }
-        if(DataCheck.checkPointIndex >= 6 )
+        if (DataCheck.checkPointIndex >= 6)
         {
-           Destroy(Level[0]);
+            Destroy(Level[0]);
         }
     }
 

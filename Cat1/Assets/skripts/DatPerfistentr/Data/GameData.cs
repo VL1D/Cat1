@@ -12,5 +12,6 @@ public class GameData
     {
         playerPosition = Vector3.zero;
         WolfPosition = new Vector3(1014,52,0);
+        
     }
 }

@@ -6,7 +6,7 @@ public class LevelEndOne : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D colision)
     {
-        if (colision.tag == "Player")
+        if (colision.tag == "Player" )
         {
             LevelManager.instance.RespawnLevel2();
         }

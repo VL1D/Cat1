@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
     public Transform[] respawnPointLevel;
     public GameObject[] LevelPrefab;
 
-    public void Awake()
+    public void Start()
     {
         instance = this; 
     }

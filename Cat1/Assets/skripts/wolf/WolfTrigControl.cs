@@ -16,6 +16,9 @@ public class WolfTrigControl : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        Wolfone.Play("hofl");
+        if (other.tag == "Player")
+        {
+            Wolfone.Play("hofl");
+        }
     }
 }
