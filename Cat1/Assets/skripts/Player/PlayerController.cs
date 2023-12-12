@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
     public Animator anim;
     public Rigidbody2D rb;
 
-    private bool isGrounded, isStopRot, isGroundedChek , isDopGround;
+    private bool isGrounded, isStopRot, isGroundedChek , isDopGround, isBox;
     public bool blockMoveX;
     public bool Climb ;
     public bool isWater = false;
@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
     private Vector3 _newPosition; 
 
     public LayerMask whatIsGround;
+    public LayerMask whatIsBox;
 
     public GameObject deathScreen;
     public GameObject peredw;
@@ -70,11 +71,15 @@ public class PlayerController : MonoBehaviour , IDatPersistence
             if (speed != 0f)
             {
                anim.SetBool("Run", true);
-                if (!isGrounded )
+                if (!isGrounded)
                 {
                     anim.SetBool("dawn",true); 
                 }
                 else
+                {
+                    anim.SetBool("dawn", false);
+                }
+                if (isBox)
                 {
                     anim.SetBool("dawn", false);
                 }
@@ -90,12 +95,16 @@ public class PlayerController : MonoBehaviour , IDatPersistence
                 {
                     anim.SetBool("dawn", false);
                 }
+                if (isBox)
+                {
+                    anim.SetBool("dawn", false);
+                }
             }
         }
     }
     private void Jumping()
     {
-        if(isGrounded)
+        if(isGrounded )
         {
             anim.SetBool("Jump", false);
             anim.SetBool("Dawn3", false);
@@ -103,37 +112,45 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         }
         else
         {
-            anim.SetBool("Jump", true);
-            //стрибок дугою
-            if (transform.eulerAngles.y == 0)
+            if (isBox)
             {
-                transform.Rotate(0, 0, -40 * Time.deltaTime);
-                if (isStopRot || isWater == true)
-                {
-                    transform.eulerAngles = new Vector3(0, 0, 0);
-                }
+                anim.SetBool("Jump", false);
+                anim.SetBool("Dawn3", false);
             }
-            //стрибк дугою
-            else if (transform.eulerAngles.y == 180)
+            else
             {
-                transform.Rotate(0, 0, -40 * Time.deltaTime);
-                if (isStopRot || isWater == true)
+                anim.SetBool("Jump", true);
+                //стрибок дугою
+                if (transform.eulerAngles.y == 0)
                 {
-                    transform.eulerAngles = new Vector3(0, 180, 0);
+                    transform.Rotate(0, 0, -40 * Time.deltaTime);
+                    if (isStopRot || isWater == true)
+                    {
+                        transform.eulerAngles = new Vector3(0, 0, 0);
+                    }
                 }
-            }
-            //стрибк на місці
-            if (speed == 0 )
-            {
-                if (!isWater)
+                //стрибк дугою
+                else if (transform.eulerAngles.y == 180)
                 {
-                    transform.position += transform.right * 0.4f;
+                    transform.Rotate(0, 0, -40 * Time.deltaTime);
+                    if (isStopRot || isWater == true)
+                    {
+                        transform.eulerAngles = new Vector3(0, 180, 0);
+                    }
                 }
-            }
-            //врізався в перешкоду
-            if (isGroundedChek && isDopGround)
-            {
-                anim.SetBool("Dawn3", true);
+                //стрибк на місці
+                if (speed == 0)
+                {
+                    if (!isWater)
+                    {
+                        transform.position += transform.right * 0.4f;
+                    }
+                }
+                //врізався в перешкоду
+                if (isGroundedChek && isDopGround)
+                {
+                    anim.SetBool("Dawn3", true);
+                }
             }
         }
     }
@@ -141,7 +158,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
     {
         if(!isGroundedChek)
         {
-            if (isGrounded)
+            if (isGrounded || isBox)
             {
                  anim.SetTrigger("Trig");
                  rb.velocity = Vector2.up * jumpForce;
@@ -163,11 +180,19 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         if (speed >= 0f)
         {
 
-            if (!isGrounded )
+            if (!isGrounded)
             {
-                if (transform.eulerAngles.y == 0)
+                if (isBox)
                 {
-                    transform.eulerAngles = new Vector3(0, 0, 0);
+                    speed = -normalSpeed;
+                    transform.eulerAngles = new Vector3(0, 180, 0);
+                }
+                else
+                {
+                    if (transform.eulerAngles.y == 0)
+                    {
+                        transform.eulerAngles = new Vector3(0, 0, 0);
+                    }
                 }
             }
             else
@@ -187,11 +212,20 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         if (speed <= 0f)
         {
 
-            if (!isGrounded )
+            if (!isGrounded)
             {
-                if (transform.eulerAngles.y == 180)
+                
+                if (isBox)
                 {
-                    transform.eulerAngles = new Vector3(0, 180, 0);
+                    speed = normalSpeed;
+                    transform.eulerAngles = new Vector3(0, 0, 0);
+                }
+                else
+                {
+                    if (transform.eulerAngles.y == 180)
+                    {
+                        transform.eulerAngles = new Vector3(0, 180, 0);
+                    }
                 }
             }
             else
@@ -261,6 +295,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         isStopRot = Physics2D.OverlapCircle(stopRot.position, checkRadius, whatIsGround);
         isGroundedChek = Physics2D.OverlapCircle(GraundChek.position, checkRadius, whatIsGround);
         isDopGround = Physics2D.OverlapCircle(DopGroud.position, CheckDistans, whatIsGround);
+        isBox = Physics2D.OverlapCircle(feetPos.position, CheckDistans, whatIsBox);
     }
 
     private void OnDrawGizmos()

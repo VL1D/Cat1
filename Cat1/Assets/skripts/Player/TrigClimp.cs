@@ -16,7 +16,7 @@ public class TrigClimp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 7 || collision.gameObject.layer == 9)
+        if(collision.gameObject.layer == 7 || collision.gameObject.layer == 9 || collision.gameObject.layer == 13)
         {
             box.enabled = false;
         }
@@ -24,7 +24,7 @@ public class TrigClimp : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 7 || collision.gameObject.layer == 9)
+        if (collision.gameObject.layer == 7 || collision.gameObject.layer == 9 || collision.gameObject.layer == 13)
         {
             box.enabled = true;
         }
@@ -32,7 +32,7 @@ public class TrigClimp : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 7)
+        if (collision.gameObject.layer == 7 || collision.gameObject.layer == 13)
         {
             controller.StartAnimLedge();
         }
