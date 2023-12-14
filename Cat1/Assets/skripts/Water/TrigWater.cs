@@ -11,5 +11,10 @@ public class TrigWater : MonoBehaviour
         {
             Water.instance.RespawnStay();
         }
+        if (collider.tag == "Box") 
+        {
+            WaterBox.instance.RespawnStay();
+        }
+
     }
 }
