@@ -41,8 +41,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
     [Header("Save")]
     public GameObject Wolf;
     public GameObject FallingStone;
-
-    public GameObject[] Level;
+    public GameObject WaterEnemy;
 
     private void Start()
     {
@@ -362,13 +361,13 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         {
             Wolf.SetActive(true);
         }
-        if (DataCheck.checkPointIndex == 4)
+        if (DataCheck.checkPointIndex >= 4)
         {
             Destroy(FallingStone);
         }
-        if (DataCheck.checkPointIndex >= 6)
+        if (DataCheck.checkPointIndex >= 13)
         {
-            Destroy(Level[0]);
+            Destroy(WaterEnemy);
         }
     }
 
@@ -380,13 +379,13 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         {
             Wolf.SetActive(true);
         }
-        if (DataCheck.checkPointIndex == 4)
+        if (DataCheck.checkPointIndex >= 4)
         {
             Destroy(FallingStone);
         }
-        if (DataCheck.checkPointIndex >= 6)
+        if (DataCheck.checkPointIndex >= 13)
         {
-            Destroy(Level[0]);
+            Destroy(WaterEnemy);
         }
     }
 
