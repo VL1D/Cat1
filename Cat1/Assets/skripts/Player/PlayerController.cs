@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
     public GameObject Wolf;
     public GameObject FallingStone;
     public GameObject WaterEnemy;
+    public GameObject Earth;
 
     private void Start()
     {
@@ -357,6 +358,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
     {
         this.transform.position = data.playerPosition;
         this.Wolf.transform.position = data.WolfPosition;
+        this.Earth.transform.position = data.EarthPosition;
         if (DataCheck.checkPointIndex == 5)
         {
             Wolf.SetActive(true);
@@ -375,6 +377,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
     {
         data.playerPosition = this.transform.position;
         data.WolfPosition = this.Wolf.transform.position;
+        data.EarthPosition = this.Earth.transform.position;
         if (DataCheck.checkPointIndex == 5)
         {
             Wolf.SetActive(true);
