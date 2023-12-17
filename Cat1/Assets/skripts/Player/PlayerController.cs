@@ -357,11 +357,10 @@ public class PlayerController : MonoBehaviour , IDatPersistence
     public void LoadData(GameData data)
     {
         this.transform.position = data.playerPosition;
-        this.Wolf.transform.position = data.WolfPosition;
-        this.Earth.transform.position = data.EarthPosition;
         if (DataCheck.checkPointIndex == 5)
         {
             Wolf.SetActive(true);
+            Wolf.transform.position = new Vector3(2555, 52, transform.position.z);
         }
         if (DataCheck.checkPointIndex >= 4)
         {
@@ -370,17 +369,18 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         if (DataCheck.checkPointIndex >= 13)
         {
             Destroy(WaterEnemy);
+            Destroy(Wolf);
+            Earth.transform.position = new Vector3(6882, -25, transform.position.z);
         }
     }
 
     public void SaveData( GameData data)
     {
         data.playerPosition = this.transform.position;
-        data.WolfPosition = this.Wolf.transform.position;
-        data.EarthPosition = this.Earth.transform.position;
         if (DataCheck.checkPointIndex == 5)
         {
             Wolf.SetActive(true);
+            Wolf.transform.position = new Vector3(2555, 52, transform.position.z);
         }
         if (DataCheck.checkPointIndex >= 4)
         {
@@ -389,6 +389,8 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         if (DataCheck.checkPointIndex >= 13)
         {
             Destroy(WaterEnemy);
+            Destroy(Wolf);
+            Earth.transform.position = new Vector3(6882,-26,transform.position.z);
         }
     }
 
