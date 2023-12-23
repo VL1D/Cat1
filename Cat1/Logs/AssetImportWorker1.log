@@ -15,7 +15,7 @@ C:/Users/userMB/unity/Cat1
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-63603
+52860
 Successfully changed project path to: C:/Users/userMB/unity/Cat1
 C:/Users/userMB/unity/Cat1
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,12 +47,12 @@ C:/Users/userMB/unity/Cat1
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [15520] Host "[IP] 192.168.192.203 [Port] 0 [Flags] 2 [Guid] 904515704 [EditorId] 904515704 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-OAJU4R7) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [14988] Host "[IP] 192.168.192.203 [Port] 0 [Flags] 2 [Guid] 139344581 [EditorId] 139344581 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-OAJU4R7) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [15520] Host "[IP] 192.168.192.203 [Port] 0 [Flags] 2 [Guid] 904515704 [EditorId] 904515704 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-OAJU4R7) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [14988] Host "[IP] 192.168.192.203 [Port] 0 [Flags] 2 [Guid] 139344581 [EditorId] 139344581 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-OAJU4R7) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
 [Physics::Module] Initialized MultithreadedJobDispatcher with {0} workers.
-Refreshing native plugins compatible for Editor in 122.55 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 138.37 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.30f1 (b4360d7cdac4)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.30f1/Editor/Data/Resources/UnitySubsystems
@@ -68,587 +68,93 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.30f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.30f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.30f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56552
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56412
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.30f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.30f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.30f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.30f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.009429 seconds.
+Registered in 0.008776 seconds.
 Native extension for WindowsStandalone target not found
 [usbmuxd] Start listen thread
 [usbmuxd] Listen thread started
 Native extension for iOS target not found
 Native extension for Android target not found
-Android Extension - Scanning For ADB Devices 347 ms
+Android Extension - Scanning For ADB Devices 355 ms
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 122.46 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 127.57 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.292 seconds
+- Completed reload, in  1.501 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1293ms)
-		BeginReloadAssembly (128ms)
+	ReloadAssembly (1502ms)
+		BeginReloadAssembly (155ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (1048ms)
-			LoadAssemblies (127ms)
+		EndReloadAssembly (1196ms)
+			LoadAssemblies (153ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (144ms)
+			SetupTypeCache (186ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (37ms)
-			SetupLoadedEditorAssemblies (802ms)
+			RebuildScriptCaches (56ms)
+			SetupLoadedEditorAssemblies (883ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (506ms)
+				InitializePlatformSupportModulesInManaged (545ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (123ms)
+				RefreshPlugins (128ms)
 				BeforeProcessingInitializeOnLoad (2ms)
-				ProcessInitializeOnLoadAttributes (106ms)
-				ProcessInitializeOnLoadMethodAttributes (65ms)
+				ProcessInitializeOnLoadAttributes (133ms)
+				ProcessInitializeOnLoadMethodAttributes (74ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.006217 seconds.
+Registered in 0.005698 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for iOS target not found
 Native extension for Android target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 105.04 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 137.80 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Package Manager log level set to [2]
 [Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Completed reload, in  1.968 seconds
+- Completed reload, in  2.206 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1969ms)
-		BeginReloadAssembly (187ms)
+	ReloadAssembly (2207ms)
+		BeginReloadAssembly (180ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (6ms)
+			DisableScriptedObjects (9ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (36ms)
-		EndReloadAssembly (1644ms)
-			LoadAssemblies (155ms)
+		EndReloadAssembly (1898ms)
+			LoadAssemblies (136ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (310ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (96ms)
-			SetupLoadedEditorAssemblies (1053ms)
+			SetupTypeCache (425ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (105ms)
+			SetupLoadedEditorAssemblies (1159ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (34ms)
+				InitializePlatformSupportModulesInManaged (40ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (105ms)
-				BeforeProcessingInitializeOnLoad (101ms)
-				ProcessInitializeOnLoadAttributes (737ms)
-				ProcessInitializeOnLoadMethodAttributes (68ms)
-				AfterProcessingInitializeOnLoad (7ms)
+				RefreshPlugins (138ms)
+				BeforeProcessingInitializeOnLoad (156ms)
+				ProcessInitializeOnLoadAttributes (746ms)
+				ProcessInitializeOnLoadMethodAttributes (70ms)
+				AfterProcessingInitializeOnLoad (8ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (6ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.00 seconds
-Refreshing native plugins compatible for Editor in 1.93 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4290 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 62 unused Assets / (1.4 MB). Loaded Objects now: 4740.
-Memory consumption went from 176.0 MB to 174.5 MB.
-Total: 6.878700 ms (FindLiveObjects: 0.807600 ms CreateObjectMapping: 0.329400 ms MarkObjects: 4.318200 ms  DeleteObjects: 1.421000 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:CustomObjectIndexerAttribute: bc11b3a6c3213fcdd17b65e7da85e133 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 15737.627434 seconds.
-  path: Assets/Enviroment/monster
-  artifactKey: Guid(b310adbd88fa4bc4dbf6343946e91783) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Enviroment/monster using Guid(b310adbd88fa4bc4dbf6343946e91783) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '05261e165fb9bd525e83fe03344a8764') in 0.017348 seconds 
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 11.420390 seconds.
-  path: Assets/Enviroment/monster/cHyvirla_SkeletonData.asset
-  artifactKey: Guid(c6cda68b2bffe604d9b671ca1b92bab5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Enviroment/monster/cHyvirla_SkeletonData.asset using Guid(c6cda68b2bffe604d9b671ca1b92bab5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e6435d5a4b21bc986a3ea822c5d6fe74') in 0.291154 seconds 
-Number of asset objects unloaded after import = 38
-========================================================================
-Received Import Request.
-  Time since last request: 0.000058 seconds.
-  path: Assets/Enviroment/monster/xedbhkf fysv.txt
-  artifactKey: Guid(7578321f38afbe3409adc6da30aca84a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Enviroment/monster/xedbhkf fysv.txt using Guid(7578321f38afbe3409adc6da30aca84a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c1a557bb247d9a5823eb68f619dd5c3e') in 0.006128 seconds 
-Number of asset objects unloaded after import = 1
-========================================================================
-Received Import Request.
-  Time since last request: 0.000046 seconds.
-  path: Assets/Enviroment/monster/xedbhkf fysv.png
-  artifactKey: Guid(7ab26a6f05c9b9549ae75af2f3ff7448) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Enviroment/monster/xedbhkf fysv.png using Guid(7ab26a6f05c9b9549ae75af2f3ff7448) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2a354a0faae5717c0cd49dbae3c3c01') in 0.075567 seconds 
-Number of asset objects unloaded after import = 3
-========================================================================
-Received Import Request.
-  Time since last request: 26.199954 seconds.
-  path: Assets/Enviroment/monster/NewBehaviourScript.cs
-  artifactKey: Guid(a41746a0bdf252f44b954d6822e4c518) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Enviroment/monster/NewBehaviourScript.cs using Guid(a41746a0bdf252f44b954d6822e4c518) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9572a78375fb5e259d3471edc223b3fd') in 0.012109 seconds 
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 2.754065 seconds.
-  path: Assets/Enviroment/monster/New Spine Atlas Asset.asset
-  artifactKey: Guid(5a93c8e1b81393646947257dde21b106) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Enviroment/monster/New Spine Atlas Asset.asset using Guid(5a93c8e1b81393646947257dde21b106) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6477e111a6021333861215fa4e3475ef') in 0.003308 seconds 
-Number of asset objects unloaded after import = 1
-========================================================================
-Received Import Request.
-  Time since last request: 6.428468 seconds.
-  path: Assets/Enviroment/monster/New Material.mat
-  artifactKey: Guid(f4231c27f114a30429b4b6954a0fc5d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Enviroment/monster/New Material.mat using Guid(f4231c27f114a30429b4b6954a0fc5d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'afa9e8db16f9cc28b4ebee4db96d2e43') in 0.053695 seconds 
-Number of asset objects unloaded after import = 1
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.006292 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for iOS target not found
-Native extension for Android target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 2.41 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Cannot connect to Unity Package Manager local server
-Mono: successfully reloaded assembly
-- Completed reload, in  1.813 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1814ms)
-		BeginReloadAssembly (200ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (6ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (58ms)
-		EndReloadAssembly (1462ms)
-			LoadAssemblies (146ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (319ms)
-			ReleaseScriptCaches (2ms)
-			RebuildScriptCaches (73ms)
-			SetupLoadedEditorAssemblies (872ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (43ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (3ms)
-				BeforeProcessingInitializeOnLoad (104ms)
-				ProcessInitializeOnLoadAttributes (653ms)
-				ProcessInitializeOnLoadMethodAttributes (61ms)
-				AfterProcessingInitializeOnLoad (7ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (9ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 1.24 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4238 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 41 unused Assets / (1.4 MB). Loaded Objects now: 4802.
-Memory consumption went from 170.9 MB to 169.5 MB.
-Total: 5.255300 ms (FindLiveObjects: 0.606400 ms CreateObjectMapping: 0.170500 ms MarkObjects: 3.358600 ms  DeleteObjects: 1.118100 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:CustomObjectIndexerAttribute: bc11b3a6c3213fcdd17b65e7da85e133 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 7.257818 seconds.
-  path: Assets/Enviroment/monster/New SkeletonDataAsset.asset
-  artifactKey: Guid(73f242bc49b76334c8a6da5ec321a842) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Enviroment/monster/New SkeletonDataAsset.asset using Guid(73f242bc49b76334c8a6da5ec321a842) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bda284c97862ce78e4fee02f78de88d1') in 0.009121 seconds 
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 4.682537 seconds.
-  path: Assets/Enviroment/monster/New SkeletonDataAsset.asset
-  artifactKey: Guid(73f242bc49b76334c8a6da5ec321a842) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Enviroment/monster/New SkeletonDataAsset.asset using Guid(73f242bc49b76334c8a6da5ec321a842) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a5e0af149f0ea85a86dec8aaaf93492') in 0.110238 seconds 
-Number of asset objects unloaded after import = 34
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.005132 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for iOS target not found
-Native extension for Android target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.34 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Cannot connect to Unity Package Manager local server
-Mono: successfully reloaded assembly
-- Completed reload, in  1.884 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1885ms)
-		BeginReloadAssembly (236ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (8ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (70ms)
-		EndReloadAssembly (1510ms)
-			LoadAssemblies (165ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (323ms)
-			ReleaseScriptCaches (3ms)
-			RebuildScriptCaches (79ms)
-			SetupLoadedEditorAssemblies (900ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (37ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (91ms)
-				ProcessInitializeOnLoadAttributes (708ms)
-				ProcessInitializeOnLoadMethodAttributes (55ms)
-				AfterProcessingInitializeOnLoad (7ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (8ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 2.26 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4237 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 41 unused Assets / (1.4 MB). Loaded Objects now: 4816.
-Memory consumption went from 170.9 MB to 169.5 MB.
-Total: 6.229300 ms (FindLiveObjects: 0.759200 ms CreateObjectMapping: 0.205200 ms MarkObjects: 3.872000 ms  DeleteObjects: 1.391000 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:CustomObjectIndexerAttribute: bc11b3a6c3213fcdd17b65e7da85e133 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 24.820552 seconds.
-  path: Assets/Enviroment/monster/cHyvirla.json
-  artifactKey: Guid(c984a29f7bb358e4588a1ad5ef47b955) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Enviroment/monster/cHyvirla.json using Guid(c984a29f7bb358e4588a1ad5ef47b955) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9783c51ebccac5e9e4e6fdd55339dc13') in 0.024449 seconds 
-Number of asset objects unloaded after import = 1
-========================================================================
-Received Import Request.
-  Time since last request: 25.969841 seconds.
-  path: Assets/Enviroment/monster/ReferenceAssets
-  artifactKey: Guid(f69a949fc9fe3284fa12e9c87aa1ce0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Enviroment/monster/ReferenceAssets using Guid(f69a949fc9fe3284fa12e9c87aa1ce0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8aa155da8956819082ed0e8a66b41ca8') in 0.002019 seconds 
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 7.806997 seconds.
-  path: Assets/Enviroment/monster/New SkeletonDataAsset.asset
-  artifactKey: Guid(73f242bc49b76334c8a6da5ec321a842) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Enviroment/monster/New SkeletonDataAsset.asset using Guid(73f242bc49b76334c8a6da5ec321a842) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Problematic material setup at Spine GameObject (New SkeletonDataAsset): 
-Warning: Premultiply-alpha atlas textures not supported in Linear color space!You can use a straight alpha texture with 'PMA Vertex Color' by choosing blend mode 'PMA Vertex, Straight Texture'.
-
-If you have a PMA Texture, please
-a) re-export atlas as straight alpha texture with 'premultiply alpha' unchecked
-   (if you have already done this, please set the 'Straight Alpha Texture' Material parameter to 'true') or
-b) switch to Gamma color space via
-Project Settings - Player - Other Settings - Color Space.
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Debug:LogWarningFormat (UnityEngine.Object,string,object[])
-Spine.Unity.SkeletonRenderer:Initialize (bool,bool) (at Assets/Spine/Runtime/spine-unity/Components/SkeletonRenderer.cs:436)
-Spine.Unity.SkeletonAnimation:Initialize (bool,bool) (at Assets/Spine/Runtime/spine-unity/Components/SkeletonAnimation.cs:187)
-Spine.Unity.Editor.EditorInstantiation:InstantiateSkeletonAnimation (Spine.Unity.SkeletonDataAsset,Spine.Skin,bool,bool) (at Assets/Spine/Editor/spine-unity/Editor/Utility/AssetUtility.cs:1348)
-Spine.Unity.Editor.EditorInstantiation:InstantiateSkeletonAnimation (Spine.Unity.SkeletonDataAsset,string,bool,bool) (at Assets/Spine/Editor/spine-unity/Editor/Utility/AssetUtility.cs:1318)
-Spine.Unity.Editor.SkeletonInspectorPreview:Initialize (System.Action,Spine.Unity.SkeletonDataAsset,string) (at Assets/Spine/Editor/spine-unity/Editor/Asset Types/SkeletonDataAssetInspector.cs:869)
-Spine.Unity.Editor.SkeletonDataAssetInspector:InitializeEditor () (at Assets/Spine/Editor/spine-unity/Editor/Asset Types/SkeletonDataAssetInspector.cs:150)
-Spine.Unity.Editor.SkeletonDataAssetInspector:OnEnable () (at Assets/Spine/Editor/spine-unity/Editor/Asset Types/SkeletonDataAssetInspector.cs:84)
-UnityEditor.Editor:CreateEditorWithContext (UnityEngine.Object[],UnityEngine.Object,System.Type)
-UnityEditor.Editor:CreateEditor (UnityEngine.Object,System.Type)
-UnityEditor.Editor:CreateEditor (UnityEngine.Object)
-UnityEditor.AssetPreviewUpdater:CreatePreview (UnityEngine.Object,UnityEngine.Object[],string,int,int)
-UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
-
-(Filename: Assets/Spine/Runtime/spine-unity/Components/SkeletonRenderer.cs Line: 436)
-
- -> (artifact id: 'e555ae17bd9bead4c6df4cfab94326ea') in 0.260183 seconds 
-Number of asset objects unloaded after import = 45
-========================================================================
-Received Import Request.
-  Time since last request: 0.000050 seconds.
-  path: Assets/Enviroment/monster/New Spine Atlas Asset.asset
-  artifactKey: Guid(5a93c8e1b81393646947257dde21b106) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Enviroment/monster/New Spine Atlas Asset.asset using Guid(5a93c8e1b81393646947257dde21b106) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd420ebc21c95fdda0e896e91ed4c8f46') in 0.002868 seconds 
-Number of asset objects unloaded after import = 3
-========================================================================
-Received Import Request.
-  Time since last request: 0.000050 seconds.
-  path: Assets/Enviroment/monster/New Material.mat
-  artifactKey: Guid(f4231c27f114a30429b4b6954a0fc5d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Enviroment/monster/New Material.mat using Guid(f4231c27f114a30429b4b6954a0fc5d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca2056197f96641864dd3626953541f0') in 0.028775 seconds 
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 2.918693 seconds.
-  path: Assets/Enviroment/monster/ReferenceAssets/animation.asset
-  artifactKey: Guid(ffde57c8c808ca547a4e10955edcd471) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Enviroment/monster/ReferenceAssets/animation.asset using Guid(ffde57c8c808ca547a4e10955edcd471) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Problematic material setup at Spine GameObject (New SkeletonDataAsset): 
-Warning: Premultiply-alpha atlas textures not supported in Linear color space!You can use a straight alpha texture with 'PMA Vertex Color' by choosing blend mode 'PMA Vertex, Straight Texture'.
-
-If you have a PMA Texture, please
-a) re-export atlas as straight alpha texture with 'premultiply alpha' unchecked
-   (if you have already done this, please set the 'Straight Alpha Texture' Material parameter to 'true') or
-b) switch to Gamma color space via
-Project Settings - Player - Other Settings - Color Space.
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Debug:LogWarningFormat (UnityEngine.Object,string,object[])
-Spine.Unity.SkeletonRenderer:Initialize (bool,bool) (at Assets/Spine/Runtime/spine-unity/Components/SkeletonRenderer.cs:436)
-Spine.Unity.SkeletonAnimation:Initialize (bool,bool) (at Assets/Spine/Runtime/spine-unity/Components/SkeletonAnimation.cs:187)
-Spine.Unity.Editor.EditorInstantiation:InstantiateSkeletonAnimation (Spine.Unity.SkeletonDataAsset,Spine.Skin,bool,bool) (at Assets/Spine/Editor/spine-unity/Editor/Utility/AssetUtility.cs:1348)
-Spine.Unity.Editor.EditorInstantiation:InstantiateSkeletonAnimation (Spine.Unity.SkeletonDataAsset,string,bool,bool) (at Assets/Spine/Editor/spine-unity/Editor/Utility/AssetUtility.cs:1318)
-Spine.Unity.Editor.SkeletonInspectorPreview:Initialize (System.Action,Spine.Unity.SkeletonDataAsset,string) (at Assets/Spine/Editor/spine-unity/Editor/Asset Types/SkeletonDataAssetInspector.cs:869)
-Spine.Unity.Editor.AnimationReferenceAssetEditor:HandleOnEnablePreview () (at Assets/Spine/Editor/spine-unity/Editor/Asset Types/AnimationReferenceAssetEditor.cs:144)
-Spine.Unity.Editor.AnimationReferenceAssetEditor:OnEnable () (at Assets/Spine/Editor/spine-unity/Editor/Asset Types/AnimationReferenceAssetEditor.cs:58)
-UnityEditor.Editor:CreateEditorWithContext (UnityEngine.Object[],UnityEngine.Object,System.Type)
-UnityEditor.Editor:CreateEditor (UnityEngine.Object,System.Type)
-UnityEditor.Editor:CreateEditor (UnityEngine.Object)
-UnityEditor.AssetPreviewUpdater:CreatePreview (UnityEngine.Object,UnityEngine.Object[],string,int,int)
-UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
-
-(Filename: Assets/Spine/Runtime/spine-unity/Components/SkeletonRenderer.cs Line: 436)
-
- -> (artifact id: '7cca4bff508f2a08e8d9fd5f1ff0b8e0') in 0.045776 seconds 
-Number of asset objects unloaded after import = 16
-========================================================================
-Received Import Request.
-  Time since last request: 0.079085 seconds.
-  path: Assets/Enviroment/monster/ReferenceAssets/atack.asset
-  artifactKey: Guid(1357b51b553817f498ed1a746811807c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Enviroment/monster/ReferenceAssets/atack.asset using Guid(1357b51b553817f498ed1a746811807c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Problematic material setup at Spine GameObject (New SkeletonDataAsset): 
-Warning: Premultiply-alpha atlas textures not supported in Linear color space!You can use a straight alpha texture with 'PMA Vertex Color' by choosing blend mode 'PMA Vertex, Straight Texture'.
-
-If you have a PMA Texture, please
-a) re-export atlas as straight alpha texture with 'premultiply alpha' unchecked
-   (if you have already done this, please set the 'Straight Alpha Texture' Material parameter to 'true') or
-b) switch to Gamma color space via
-Project Settings - Player - Other Settings - Color Space.
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Debug:LogWarningFormat (UnityEngine.Object,string,object[])
-Spine.Unity.SkeletonRenderer:Initialize (bool,bool) (at Assets/Spine/Runtime/spine-unity/Components/SkeletonRenderer.cs:436)
-Spine.Unity.SkeletonAnimation:Initialize (bool,bool) (at Assets/Spine/Runtime/spine-unity/Components/SkeletonAnimation.cs:187)
-Spine.Unity.Editor.EditorInstantiation:InstantiateSkeletonAnimation (Spine.Unity.SkeletonDataAsset,Spine.Skin,bool,bool) (at Assets/Spine/Editor/spine-unity/Editor/Utility/AssetUtility.cs:1348)
-Spine.Unity.Editor.EditorInstantiation:InstantiateSkeletonAnimation (Spine.Unity.SkeletonDataAsset,string,bool,bool) (at Assets/Spine/Editor/spine-unity/Editor/Utility/AssetUtility.cs:1318)
-Spine.Unity.Editor.SkeletonInspectorPreview:Initialize (System.Action,Spine.Unity.SkeletonDataAsset,string) (at Assets/Spine/Editor/spine-unity/Editor/Asset Types/SkeletonDataAssetInspector.cs:869)
-Spine.Unity.Editor.AnimationReferenceAssetEditor:HandleOnEnablePreview () (at Assets/Spine/Editor/spine-unity/Editor/Asset Types/AnimationReferenceAssetEditor.cs:144)
-Spine.Unity.Editor.AnimationReferenceAssetEditor:OnEnable () (at Assets/Spine/Editor/spine-unity/Editor/Asset Types/AnimationReferenceAssetEditor.cs:58)
-UnityEditor.Editor:CreateEditorWithContext (UnityEngine.Object[],UnityEngine.Object,System.Type)
-UnityEditor.Editor:CreateEditor (UnityEngine.Object,System.Type)
-UnityEditor.Editor:CreateEditor (UnityEngine.Object)
-UnityEditor.AssetPreviewUpdater:CreatePreview (UnityEngine.Object,UnityEngine.Object[],string,int,int)
-UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
-
-(Filename: Assets/Spine/Runtime/spine-unity/Components/SkeletonRenderer.cs Line: 436)
-
- -> (artifact id: 'aa52a6c2d6a62051a5da51a382fd59b0') in 0.048304 seconds 
-Number of asset objects unloaded after import = 16
-========================================================================
-Received Import Request.
-  Time since last request: 0.000048 seconds.
-  path: Assets/Enviroment/monster/ReferenceAssets/dawn.asset
-  artifactKey: Guid(c87ffb4259fb36d47bd532ffc969f1bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Enviroment/monster/ReferenceAssets/dawn.asset using Guid(c87ffb4259fb36d47bd532ffc969f1bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Problematic material setup at Spine GameObject (New SkeletonDataAsset): 
-Warning: Premultiply-alpha atlas textures not supported in Linear color space!You can use a straight alpha texture with 'PMA Vertex Color' by choosing blend mode 'PMA Vertex, Straight Texture'.
-
-If you have a PMA Texture, please
-a) re-export atlas as straight alpha texture with 'premultiply alpha' unchecked
-   (if you have already done this, please set the 'Straight Alpha Texture' Material parameter to 'true') or
-b) switch to Gamma color space via
-Project Settings - Player - Other Settings - Color Space.
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Debug:LogWarningFormat (UnityEngine.Object,string,object[])
-Spine.Unity.SkeletonRenderer:Initialize (bool,bool) (at Assets/Spine/Runtime/spine-unity/Components/SkeletonRenderer.cs:436)
-Spine.Unity.SkeletonAnimation:Initialize (bool,bool) (at Assets/Spine/Runtime/spine-unity/Components/SkeletonAnimation.cs:187)
-Spine.Unity.Editor.EditorInstantiation:InstantiateSkeletonAnimation (Spine.Unity.SkeletonDataAsset,Spine.Skin,bool,bool) (at Assets/Spine/Editor/spine-unity/Editor/Utility/AssetUtility.cs:1348)
-Spine.Unity.Editor.EditorInstantiation:InstantiateSkeletonAnimation (Spine.Unity.SkeletonDataAsset,string,bool,bool) (at Assets/Spine/Editor/spine-unity/Editor/Utility/AssetUtility.cs:1318)
-Spine.Unity.Editor.SkeletonInspectorPreview:Initialize (System.Action,Spine.Unity.SkeletonDataAsset,string) (at Assets/Spine/Editor/spine-unity/Editor/Asset Types/SkeletonDataAssetInspector.cs:869)
-Spine.Unity.Editor.AnimationReferenceAssetEditor:HandleOnEnablePreview () (at Assets/Spine/Editor/spine-unity/Editor/Asset Types/AnimationReferenceAssetEditor.cs:144)
-Spine.Unity.Editor.AnimationReferenceAssetEditor:OnEnable () (at Assets/Spine/Editor/spine-unity/Editor/Asset Types/AnimationReferenceAssetEditor.cs:58)
-UnityEditor.Editor:CreateEditorWithContext (UnityEngine.Object[],UnityEngine.Object,System.Type)
-UnityEditor.Editor:CreateEditor (UnityEngine.Object,System.Type)
-UnityEditor.Editor:CreateEditor (UnityEngine.Object)
-UnityEditor.AssetPreviewUpdater:CreatePreview (UnityEngine.Object,UnityEngine.Object[],string,int,int)
-UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
-
-(Filename: Assets/Spine/Runtime/spine-unity/Components/SkeletonRenderer.cs Line: 436)
-
- -> (artifact id: '05222a35eaa240370319169912e92f11') in 0.036623 seconds 
-Number of asset objects unloaded after import = 16
-========================================================================
-Received Import Request.
-  Time since last request: 0.000067 seconds.
-  path: Assets/Enviroment/monster/ReferenceAssets/stan up.asset
-  artifactKey: Guid(3dac432594b5c814da649804861b6809) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Enviroment/monster/ReferenceAssets/stan up.asset using Guid(3dac432594b5c814da649804861b6809) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Problematic material setup at Spine GameObject (New SkeletonDataAsset): 
-Warning: Premultiply-alpha atlas textures not supported in Linear color space!You can use a straight alpha texture with 'PMA Vertex Color' by choosing blend mode 'PMA Vertex, Straight Texture'.
-
-If you have a PMA Texture, please
-a) re-export atlas as straight alpha texture with 'premultiply alpha' unchecked
-   (if you have already done this, please set the 'Straight Alpha Texture' Material parameter to 'true') or
-b) switch to Gamma color space via
-Project Settings - Player - Other Settings - Color Space.
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Debug:LogWarningFormat (UnityEngine.Object,string,object[])
-Spine.Unity.SkeletonRenderer:Initialize (bool,bool) (at Assets/Spine/Runtime/spine-unity/Components/SkeletonRenderer.cs:436)
-Spine.Unity.SkeletonAnimation:Initialize (bool,bool) (at Assets/Spine/Runtime/spine-unity/Components/SkeletonAnimation.cs:187)
-Spine.Unity.Editor.EditorInstantiation:InstantiateSkeletonAnimation (Spine.Unity.SkeletonDataAsset,Spine.Skin,bool,bool) (at Assets/Spine/Editor/spine-unity/Editor/Utility/AssetUtility.cs:1348)
-Spine.Unity.Editor.EditorInstantiation:InstantiateSkeletonAnimation (Spine.Unity.SkeletonDataAsset,string,bool,bool) (at Assets/Spine/Editor/spine-unity/Editor/Utility/AssetUtility.cs:1318)
-Spine.Unity.Editor.SkeletonInspectorPreview:Initialize (System.Action,Spine.Unity.SkeletonDataAsset,string) (at Assets/Spine/Editor/spine-unity/Editor/Asset Types/SkeletonDataAssetInspector.cs:869)
-Spine.Unity.Editor.AnimationReferenceAssetEditor:HandleOnEnablePreview () (at Assets/Spine/Editor/spine-unity/Editor/Asset Types/AnimationReferenceAssetEditor.cs:144)
-Spine.Unity.Editor.AnimationReferenceAssetEditor:OnEnable () (at Assets/Spine/Editor/spine-unity/Editor/Asset Types/AnimationReferenceAssetEditor.cs:58)
-UnityEditor.Editor:CreateEditorWithContext (UnityEngine.Object[],UnityEngine.Object,System.Type)
-UnityEditor.Editor:CreateEditor (UnityEngine.Object,System.Type)
-UnityEditor.Editor:CreateEditor (UnityEngine.Object)
-UnityEditor.AssetPreviewUpdater:CreatePreview (UnityEngine.Object,UnityEngine.Object[],string,int,int)
-UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
-
-(Filename: Assets/Spine/Runtime/spine-unity/Components/SkeletonRenderer.cs Line: 436)
-
- -> (artifact id: 'f0a6a7cd66dc37ae0a635936d0afb40a') in 0.045062 seconds 
-Number of asset objects unloaded after import = 16
-========================================================================
-Received Import Request.
-  Time since last request: 0.000049 seconds.
-  path: Assets/Enviroment/monster/ReferenceAssets/up.asset
-  artifactKey: Guid(8fd5d60a2fa1cae4b9d243f361e456f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Enviroment/monster/ReferenceAssets/up.asset using Guid(8fd5d60a2fa1cae4b9d243f361e456f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Problematic material setup at Spine GameObject (New SkeletonDataAsset): 
-Warning: Premultiply-alpha atlas textures not supported in Linear color space!You can use a straight alpha texture with 'PMA Vertex Color' by choosing blend mode 'PMA Vertex, Straight Texture'.
-
-If you have a PMA Texture, please
-a) re-export atlas as straight alpha texture with 'premultiply alpha' unchecked
-   (if you have already done this, please set the 'Straight Alpha Texture' Material parameter to 'true') or
-b) switch to Gamma color space via
-Project Settings - Player - Other Settings - Color Space.
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Debug:LogWarningFormat (UnityEngine.Object,string,object[])
-Spine.Unity.SkeletonRenderer:Initialize (bool,bool) (at Assets/Spine/Runtime/spine-unity/Components/SkeletonRenderer.cs:436)
-Spine.Unity.SkeletonAnimation:Initialize (bool,bool) (at Assets/Spine/Runtime/spine-unity/Components/SkeletonAnimation.cs:187)
-Spine.Unity.Editor.EditorInstantiation:InstantiateSkeletonAnimation (Spine.Unity.SkeletonDataAsset,Spine.Skin,bool,bool) (at Assets/Spine/Editor/spine-unity/Editor/Utility/AssetUtility.cs:1348)
-Spine.Unity.Editor.EditorInstantiation:InstantiateSkeletonAnimation (Spine.Unity.SkeletonDataAsset,string,bool,bool) (at Assets/Spine/Editor/spine-unity/Editor/Utility/AssetUtility.cs:1318)
-Spine.Unity.Editor.SkeletonInspectorPreview:Initialize (System.Action,Spine.Unity.SkeletonDataAsset,string) (at Assets/Spine/Editor/spine-unity/Editor/Asset Types/SkeletonDataAssetInspector.cs:869)
-Spine.Unity.Editor.AnimationReferenceAssetEditor:HandleOnEnablePreview () (at Assets/Spine/Editor/spine-unity/Editor/Asset Types/AnimationReferenceAssetEditor.cs:144)
-Spine.Unity.Editor.AnimationReferenceAssetEditor:OnEnable () (at Assets/Spine/Editor/spine-unity/Editor/Asset Types/AnimationReferenceAssetEditor.cs:58)
-UnityEditor.Editor:CreateEditorWithContext (UnityEngine.Object[],UnityEngine.Object,System.Type)
-UnityEditor.Editor:CreateEditor (UnityEngine.Object,System.Type)
-UnityEditor.Editor:CreateEditor (UnityEngine.Object)
-UnityEditor.AssetPreviewUpdater:CreatePreview (UnityEngine.Object,UnityEngine.Object[],string,int,int)
-UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
-
-(Filename: Assets/Spine/Runtime/spine-unity/Components/SkeletonRenderer.cs Line: 436)
-
- -> (artifact id: 'b0fca70698e51c4737282daae3d1ad10') in 0.039676 seconds 
-Number of asset objects unloaded after import = 16
-========================================================================
-Received Import Request.
-  Time since last request: 0.000033 seconds.
-  path: Assets/Enviroment/monster/ReferenceAssets/animation1.asset
-  artifactKey: Guid(c45ad5d4a5f5bb44cbfa1e3e2d997f73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Enviroment/monster/ReferenceAssets/animation1.asset using Guid(c45ad5d4a5f5bb44cbfa1e3e2d997f73) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Problematic material setup at Spine GameObject (New SkeletonDataAsset): 
-Warning: Premultiply-alpha atlas textures not supported in Linear color space!You can use a straight alpha texture with 'PMA Vertex Color' by choosing blend mode 'PMA Vertex, Straight Texture'.
-
-If you have a PMA Texture, please
-a) re-export atlas as straight alpha texture with 'premultiply alpha' unchecked
-   (if you have already done this, please set the 'Straight Alpha Texture' Material parameter to 'true') or
-b) switch to Gamma color space via
-Project Settings - Player - Other Settings - Color Space.
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Debug:LogWarningFormat (UnityEngine.Object,string,object[])
-Spine.Unity.SkeletonRenderer:Initialize (bool,bool) (at Assets/Spine/Runtime/spine-unity/Components/SkeletonRenderer.cs:436)
-Spine.Unity.SkeletonAnimation:Initialize (bool,bool) (at Assets/Spine/Runtime/spine-unity/Components/SkeletonAnimation.cs:187)
-Spine.Unity.Editor.EditorInstantiation:InstantiateSkeletonAnimation (Spine.Unity.SkeletonDataAsset,Spine.Skin,bool,bool) (at Assets/Spine/Editor/spine-unity/Editor/Utility/AssetUtility.cs:1348)
-Spine.Unity.Editor.EditorInstantiation:InstantiateSkeletonAnimation (Spine.Unity.SkeletonDataAsset,string,bool,bool) (at Assets/Spine/Editor/spine-unity/Editor/Utility/AssetUtility.cs:1318)
-Spine.Unity.Editor.SkeletonInspectorPreview:Initialize (System.Action,Spine.Unity.SkeletonDataAsset,string) (at Assets/Spine/Editor/spine-unity/Editor/Asset Types/SkeletonDataAssetInspector.cs:869)
-Spine.Unity.Editor.AnimationReferenceAssetEditor:HandleOnEnablePreview () (at Assets/Spine/Editor/spine-unity/Editor/Asset Types/AnimationReferenceAssetEditor.cs:144)
-Spine.Unity.Editor.AnimationReferenceAssetEditor:OnEnable () (at Assets/Spine/Editor/spine-unity/Editor/Asset Types/AnimationReferenceAssetEditor.cs:58)
-UnityEditor.Editor:CreateEditorWithContext (UnityEngine.Object[],UnityEngine.Object,System.Type)
-UnityEditor.Editor:CreateEditor (UnityEngine.Object,System.Type)
-UnityEditor.Editor:CreateEditor (UnityEngine.Object)
-UnityEditor.AssetPreviewUpdater:CreatePreview (UnityEngine.Object,UnityEngine.Object[],string,int,int)
-UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
-
-(Filename: Assets/Spine/Runtime/spine-unity/Components/SkeletonRenderer.cs Line: 436)
-
- -> (artifact id: '01b135d17bad2c1cb48c4bc4ed65b118') in 0.031266 seconds 
-Number of asset objects unloaded after import = 16
-Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
-AssetImportWorker is now disconnected from the server
-Process exiting
-Exiting without the bug reporter. Application will terminate with return code 0
+Failed to get ipc connection from UnityShaderCompiler.exe shader compiler! C:/Program Files/Unity/Hub/Editor/2021.3.30f1/Editor/Data/Tools/UnityShaderCompiler.exe
