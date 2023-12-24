@@ -10,9 +10,6 @@ public class Ptach : MonoBehaviour
     public float StartWaitTime;
 
     public Transform[] moveSports;
-    
-
-
     private int randomspot;
 
     private Animator _Ptach;
