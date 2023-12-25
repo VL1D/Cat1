@@ -12,11 +12,14 @@ public class CaveEnemyController : MonoBehaviour
     public float StartWaitTime;
     private int randomspot;
 
+    public bool activeMove ;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
         waitTime = StartWaitTime;
         randomspot = Random.Range(0, points.Length);
+        activeMove = true;
     }
 
     private void FixedUpdate()
@@ -26,39 +29,44 @@ public class CaveEnemyController : MonoBehaviour
 
     private void Move()
     {
-        transform.position = Vector2.MoveTowards(transform.position, points[randomspot].position, speed * Time.deltaTime);
-        if (Vector2.Distance(transform.position, points[randomspot].position) < 0.2f)
+        if (activeMove )
         {
-
-            if (waitTime <= 0)
+            transform.position = Vector2.MoveTowards(transform.position, points[randomspot].position, speed * Time.deltaTime);
+            if (Vector2.Distance(transform.position, points[randomspot].position) < 0.2f)
             {
-                randomspot = Random.Range(0, points.Length);
-                waitTime = StartWaitTime;
-                speed = 30f;
-                if (transform.position.x <= points[randomspot].position.x)
-                {
-                    transform.eulerAngles = new Vector3(0, 180, 0);
-                }
-                else if (transform.position.x >= points[randomspot].position.x)
-                {
-                    transform.eulerAngles = new Vector3(0, 0, 0);
-                }
 
+                if (waitTime <= 0)
+                {
+                    randomspot = Random.Range(0, points.Length);
+                    waitTime = StartWaitTime;
+                    speed = 30f;
+
+                }
+                else
+                {
+                    waitTime -= Time.deltaTime;
+
+
+                }
             }
-            else
+            if (transform.position.x <= points[randomspot].position.x)
             {
-                waitTime -= Time.deltaTime;
-                speed = 0f;
-
+                transform.eulerAngles = new Vector3(0, 180, 0);
+            }
+            else if (transform.position.x >= points[randomspot].position.x)
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
             }
         }
-        if(speed == 0f)
+        if (speed != 0f)
         {
-            anim.SetBool("Walking", false);
+             anim.SetBool("Walking", true);
         }
         else
         {
-            anim.SetBool("Walking", true);
+             anim.SetBool("Walking", false);
         }
+
     }
+    
 }
