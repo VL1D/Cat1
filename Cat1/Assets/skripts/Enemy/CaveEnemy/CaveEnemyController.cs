@@ -5,7 +5,7 @@ using UnityEngine;
 public class CaveEnemyController : MonoBehaviour
 {
     public float speed;
-    private Animator anim;
+    public Animator anim;
     public Transform[] points;
 
     private float waitTime;
@@ -58,15 +58,27 @@ public class CaveEnemyController : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, 0, 0);
             }
         }
-        if (speed != 0f)
+        if (speed == 30f)
         {
              anim.SetBool("Walking", true);
         }
-        else
+        else if(speed > 30f)
         {
-             anim.SetBool("Walking", false);
+            anim.SetBool("Run", true);
+            anim.SetBool("Walking", false);
+        }
+        else if(speed == 0)
+        {
+            anim.SetBool("Run", false);
         }
 
+    }
+
+    public void DawnAnim()
+    {
+        activeMove = true;
+        speed = 30f;
+        anim.SetBool("Walking", true);
     }
     
 }
