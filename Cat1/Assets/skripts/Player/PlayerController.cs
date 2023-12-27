@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
     public bool blockMoveX;
     public bool Climb ;
     public bool isWater = false;
+    private bool Deatch = false;
 
     public Transform feetPos, stopRot, GraundChek, DopGroud;
     public Transform DopPosition;
@@ -65,91 +66,102 @@ public class PlayerController : MonoBehaviour , IDatPersistence
 
     private void Move()
     {
-        if (!blockMoveX)
+        if (!Deatch)
         {
-            rb.velocity = new Vector2(speed, rb.velocity.y);
-            if (speed != 0f)
+            if (!blockMoveX)
             {
-               anim.SetBool("Run", true);
-                if (!isGrounded)
+                rb.velocity = new Vector2(speed, rb.velocity.y);
+                if (speed != 0f)
                 {
-                    anim.SetBool("dawn",true); 
+                    anim.SetBool("Run", true);
+                    if (!isGrounded)
+                    {
+                        anim.SetBool("dawn", true);
+                    }
+                    else
+                    {
+                        anim.SetBool("dawn", false);
+                    }
+                    if (isBox)
+                    {
+                        anim.SetBool("dawn", false);
+                    }
                 }
                 else
                 {
-                    anim.SetBool("dawn", false);
-                }
-                if (isBox)
-                {
-                    anim.SetBool("dawn", false);
-                }
-            }
-            else
-            {
-                anim.SetBool("Run", false);
-                if (!isGrounded )
-                {
-                    anim.SetBool("dawn", true);
-                }
-                else
-                {
-                    anim.SetBool("dawn", false);
-                }
-                if (isBox)
-                {
-                    anim.SetBool("dawn", false);
+                    anim.SetBool("Run", false);
+                    if (!isGrounded)
+                    {
+                        anim.SetBool("dawn", true);
+                    }
+                    else
+                    {
+                        anim.SetBool("dawn", false);
+                    }
+                    if (isBox)
+                    {
+                        anim.SetBool("dawn", false);
+                    }
                 }
             }
+        }
+        if (Deatch)
+        {
+            speed = 0f;
+            normalSpeed = 0f;
         }
     }
     private void Jumping()
     {
-        if(isGrounded )
+        if (!Deatch)
         {
-            anim.SetBool("Jump", false);
-            anim.SetBool("Dawn3", false);
-            isWater = false;
-        }
-        else
-        {
-            if (isBox)
+            if (isGrounded)
             {
                 anim.SetBool("Jump", false);
                 anim.SetBool("Dawn3", false);
+                isWater = false;
             }
             else
             {
-                anim.SetBool("Jump", true);
-                //стрибок дугою
-                if (transform.eulerAngles.y == 0)
+                if (isBox)
                 {
-                    transform.Rotate(0, 0, -40 * Time.deltaTime);
-                    if (isStopRot || isWater == true)
-                    {
-                        transform.eulerAngles = new Vector3(0, 0, 0);
-                    }
+                    anim.SetBool("Jump", false);
+                    anim.SetBool("Dawn3", false);
                 }
-                //стрибк дугою
-                else if (transform.eulerAngles.y == 180)
+                else
                 {
-                    transform.Rotate(0, 0, -40 * Time.deltaTime);
-                    if (isStopRot || isWater == true)
+                    anim.SetBool("Jump", true);
+                    //стрибок дугою
+                    if (transform.eulerAngles.y == 0)
                     {
-                        transform.eulerAngles = new Vector3(0, 180, 0);
+                        transform.Rotate(0, 0, -40 * Time.deltaTime);
+                        if (isStopRot || isWater == true)
+                        {
+                            transform.eulerAngles = new Vector3(0, 0, 0);
+                        }
                     }
-                }
-                //стрибк на місці
-                if (speed == 0)
-                {
-                    if (!isWater)
+                    //стрибк дугою
+                    else if (transform.eulerAngles.y == 180)
                     {
-                        transform.position += transform.right * 0.4f;
+                        transform.Rotate(0, 0, -40 * Time.deltaTime);
+                        if (isStopRot || isWater == true)
+                        {
+                            transform.eulerAngles = new Vector3(0, 180, 0);
+                        }
                     }
-                }
-                //врізався в перешкоду
-                if (isGroundedChek && isDopGround)
-                {
-                    anim.SetBool("Dawn3", true);
+                    //стрибк на місці
+                    if (speed == 0)
+                    {
+                        if (!isWater)
+                        {
+                            transform.position += transform.right * 0.4f;
+                        }
+                    }
+                    //врізався в перешкоду
+                    if (isGroundedChek && isDopGround)
+                    {
+                        anim.SetBool("Dawn3", true);
+                    }
                 }
             }
         }
@@ -247,44 +259,50 @@ public class PlayerController : MonoBehaviour , IDatPersistence
 
     private void StopMove()
     {
-        if (isGroundedChek)
+        if (!Deatch)
         {
-            if(speed != 0f)
+            if (isGroundedChek)
             {
-                speed = 0;
-                anim.SetBool("Run", false);
-                anim.SetBool("Siting", true);
-            }
-        }
-        else
-        {
-            if(speed != 0f)
-            {
-                anim.SetBool("Run", true);
-                anim.SetBool("Siting", false);
+                if (speed != 0f)
+                {
+                    speed = 0;
+                    anim.SetBool("Run", false);
+                    anim.SetBool("Siting", true);
+                }
             }
             else
             {
-                anim.SetBool("Run", false);
-                anim.SetBool("Siting", false);
+                if (speed != 0f)
+                {
+                    anim.SetBool("Run", true);
+                    anim.SetBool("Siting", false);
+                }
+                else
+                {
+                    anim.SetBool("Run", false);
+                    anim.SetBool("Siting", false);
+                }
             }
         }
     }
 
     private void MoveUp()
     {
-        if (!isGrounded)
+        if (!Deatch)
         {
-            if(isGroundedChek && isDopGround)
+            if (!isGrounded)
             {
-                anim.SetBool("Dawn3", true);
+                if (isGroundedChek && isDopGround)
+                {
+                    anim.SetBool("Dawn3", true);
+                }
             }
-        }
-        else 
-        {
-            if (isGroundedChek && isDopGround)
+            else
             {
-                anim.SetBool("Dawn3", false);
+                if (isGroundedChek && isDopGround)
+                {
+                    anim.SetBool("Dawn3", false);
+                }
             }
         }
     }
@@ -320,7 +338,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
                 speed = 0;
                 ButtonPaus.SetActive(false);
                 peredw.SetActive(false);
-
+                Deatch = true;
             }
         }
         if(other.tag == "Water")

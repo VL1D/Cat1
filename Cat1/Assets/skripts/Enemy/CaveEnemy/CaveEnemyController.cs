@@ -12,6 +12,12 @@ public class CaveEnemyController : MonoBehaviour
     public float StartWaitTime;
     private int randomspot;
 
+    public GameObject trigAtack;
+
+     public Transform Cat;
+    public Transform CatKill;
+    public Rigidbody2D rbCat;
+
     public bool activeMove ;
 
     private void Start()
@@ -80,5 +86,19 @@ public class CaveEnemyController : MonoBehaviour
         speed = 30f;
         anim.SetBool("Walking", true);
     }
-    
+
+    public void TrigActive() 
+    {
+        trigAtack.SetActive(true);
+    }
+    public void TrigNoActive()
+    {
+        trigAtack.SetActive(false);
+    }
+    public void KillAtack()
+    {
+        Cat.transform.position = CatKill.position;
+        rbCat.isKinematic = true;
+    }
+
 }
