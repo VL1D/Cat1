@@ -67,11 +67,13 @@ public class CaveEnemyController : MonoBehaviour
         if (speed == 30f)
         {
              anim.SetBool("Walking", true);
+            trigAtack.SetActive(false);
         }
         else if(speed > 30f)
         {
             anim.SetBool("Run", true);
             anim.SetBool("Walking", false);
+            trigAtack.SetActive(false);
         }
         else if(speed == 0)
         {

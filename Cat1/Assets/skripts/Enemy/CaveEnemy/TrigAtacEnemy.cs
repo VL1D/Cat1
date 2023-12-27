@@ -28,14 +28,14 @@ public class TrigAtacEnemy : MonoBehaviour
         {
             Enemycontroller.anim.SetTrigger("Atack");
             AtackEnemy = true;
+            PlayerController.speed = 0f;
+            PlayerController.normalSpeed = 0f;
         }
     }
     public void AnimAtack()
     {
         str[0].transform.position = strAtack[0].position;
         str[1].transform.position = strAtack[1].position;
-        PlayerController.speed = 0f;
-        PlayerController.normalSpeed = 0f;
         strg.SetActive(true);
     }
 
