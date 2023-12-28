@@ -13,6 +13,9 @@ public class TrigAtacEnemy : MonoBehaviour
 
     public GameObject strg;
 
+    public GameObject Cat;
+    public GameObject CaveEnemy;
+
     private bool AtackEnemy = false;
 
     private void FixedUpdate()
@@ -24,12 +27,20 @@ public class TrigAtacEnemy : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && PlayerController.hidden == false)
         {
             Enemycontroller.anim.SetTrigger("Atack");
             AtackEnemy = true;
             PlayerController.speed = 0f;
             PlayerController.normalSpeed = 0f;
+            if(Cat.transform.position.x > CaveEnemy.transform.position.x)
+            {
+                Enemycontroller.transform.eulerAngles = new Vector3(0, 180, 0);
+            }
+            else if (Cat.transform.position.x < CaveEnemy.transform.position.x)
+            {
+                Enemycontroller.transform.eulerAngles = new Vector3(0, 0, 0);
+            }
         }
     }
     public void AnimAtack()

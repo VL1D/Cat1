@@ -19,6 +19,7 @@ public class CaveEnemyController : MonoBehaviour
     public Rigidbody2D rbCat;
 
     public bool activeMove ;
+    public bool look = false;
 
     private void Start()
     {
@@ -66,18 +67,21 @@ public class CaveEnemyController : MonoBehaviour
         }
         if (speed == 30f)
         {
-             anim.SetBool("Walking", true);
+            anim.SetBool("Walking", true);
             trigAtack.SetActive(false);
+            look = false;
         }
         else if(speed > 30f)
         {
             anim.SetBool("Run", true);
             anim.SetBool("Walking", false);
             trigAtack.SetActive(false);
+            look = false;
         }
         else if(speed == 0)
         {
             anim.SetBool("Run", false);
+            look = true;
         }
 
     }

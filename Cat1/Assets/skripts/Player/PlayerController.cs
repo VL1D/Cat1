@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
     public bool Climb ;
     public bool isWater = false;
     private bool Deatch = false;
+    public bool hidden = false;
 
     public Transform feetPos, stopRot, GraundChek, DopGroud;
     public Transform DopPosition;

@@ -17,8 +17,12 @@ public class TrigFragThis : MonoBehaviour
         if(other.tag == "Player")
         {
             CaveEnemyController.activeMove = false;
-            CaveEnemyController.speed = 60f;
-            points.transform.position = pointsTr.position;
+            if (CaveEnemyController.look == false)
+            {
+               CaveEnemyController.speed = 60f;
+               points.transform.position = pointsTr.position;
+
+            }
         }
     }
 
