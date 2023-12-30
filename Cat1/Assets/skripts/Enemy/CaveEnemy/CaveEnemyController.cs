@@ -12,14 +12,17 @@ public class CaveEnemyController : MonoBehaviour
     public float StartWaitTime;
     private int randomspot;
 
-    public GameObject trigAtack;
-
-     public Transform Cat;
+    public Transform Cat;
     public Transform CatKill;
     public Rigidbody2D rbCat;
 
     public bool activeMove ;
     public bool look = false;
+    public bool AtackEnemy = false;
+
+    public GameObject strg;
+
+    public Transform RespawnPos;
 
     private void Start()
     {
@@ -68,20 +71,29 @@ public class CaveEnemyController : MonoBehaviour
         if (speed == 30f)
         {
             anim.SetBool("Walking", true);
-            trigAtack.SetActive(false);
             look = false;
         }
         else if(speed > 30f)
         {
             anim.SetBool("Run", true);
             anim.SetBool("Walking", false);
-            trigAtack.SetActive(false);
             look = false;
         }
         else if(speed == 0)
         {
             anim.SetBool("Run", false);
             look = true;
+        }
+        if (AtackEnemy)
+        {
+            if (Cat.transform.position.x > transform.position.x)
+            {
+                transform.eulerAngles = new Vector3(0, 180, 0);
+            }
+            else if (Cat.transform.position.x < transform.position.x)
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+            }
         }
 
     }
@@ -93,18 +105,15 @@ public class CaveEnemyController : MonoBehaviour
         anim.SetBool("Walking", true);
     }
 
-    public void TrigActive() 
-    {
-        trigAtack.SetActive(true);
-    }
-    public void TrigNoActive()
-    {
-        trigAtack.SetActive(false);
-    }
     public void KillAtack()
     {
         Cat.transform.position = CatKill.position;
         rbCat.isKinematic = true;
+    }
+    public void AnimAtack()
+    {
+        Instantiate(strg, RespawnPos.position, Quaternion.identity);
+
     }
 
 }
