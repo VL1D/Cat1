@@ -23,11 +23,11 @@ public class TrigAtacEnemy : MonoBehaviour
             PlayerController.normalSpeed = 0f;
             Enemycontroller.speed = 0f;
             Enemycontroller.activeMove = false;
-            if (Cat.transform.position.x > CaveEnemy.transform.position.x)
+            if (Cat.transform.position.x >= CaveEnemy.transform.position.x)
             {
                 CaveEnemy.transform.eulerAngles = new Vector3(0, 180, 0);
             }
-            else if (Cat.transform.position.x < CaveEnemy.transform.position.x)
+            else if (Cat.transform.position.x <= CaveEnemy.transform.position.x)
             {
                 CaveEnemy.transform.eulerAngles = new Vector3(0, 0, 0);
             }
