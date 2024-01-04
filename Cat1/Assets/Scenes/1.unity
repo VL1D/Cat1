@@ -242,7 +242,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 3.1088867, y: 0.31116998}
+  m_Offset: {x: 3.1088867, y: 1.1673588}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -253,7 +253,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 31.635742, y: 2.2548325}
+  m_Size: {x: 31.635742, y: 3.96721}
   m_EdgeRadius: 0
 --- !u!114 &7728492
 MonoBehaviour:
@@ -316,7 +316,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 3.4188843, y: 0.67873526}
+  m_Offset: {x: 3.4188843, y: 1.6237335}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -327,7 +327,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 14.054565, y: 2.2074704}
+  m_Size: {x: 14.054565, y: 4.097467}
   m_EdgeRadius: 0
 --- !u!114 &25440269
 MonoBehaviour:
@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 47598231}
   m_Layer: 0
   m_Name: CaveMonster
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2919,7 +2919,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 433947040}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10082.4, y: -7.6, z: 0}
+  m_LocalPosition: {x: 8355.4, y: -8.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3361,7 +3361,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10082.4, y: 1.4800057, z: -33}
+  m_LocalPosition: {x: 8355.4, y: 0.78000546, z: -33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4165,7 +4165,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661053011}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10082.4, y: 1.4800057, z: -33}
+  m_LocalPosition: {x: 8355.4, y: 0.78000546, z: -33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8390,7 +8390,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1611459312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8865.9, y: -20.5, z: 0}
+  m_LocalPosition: {x: 8898.1, y: -20.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8424,7 +8424,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.6464844, y: 0.03805065}
+  m_Offset: {x: 16.534668, y: 0.03805065}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -8435,7 +8435,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.794922, y: 15.07884}
+  m_Size: {x: 40.157227, y: 15.07884}
   m_EdgeRadius: 0
 --- !u!1 &1622940412
 GameObject:
@@ -9673,9 +9673,11 @@ GameObject:
   - component: {fileID: 1895666608}
   - component: {fileID: 1895666607}
   - component: {fileID: 1895666612}
+  - component: {fileID: 1895666613}
+  - component: {fileID: 1895666614}
   m_Layer: 0
   m_Name: CaveEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9837,6 +9839,53 @@ MonoBehaviour:
   AtackEnemy: 0
   strg: {fileID: 1305176955102876481, guid: 7ae41a0e1b69143448221c05b8415f27, type: 3}
   RespawnPos: {fileID: 1722276648}
+--- !u!61 &1895666613
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895666606}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.0450234, y: -1.2444692}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 8.46342, y: 4.639587}
+  m_EdgeRadius: 0
+--- !u!50 &1895666614
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895666606}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 6
 --- !u!1 &1917538363
 GameObject:
   m_ObjectHideFlags: 0
@@ -11398,6 +11447,10 @@ PrefabInstance:
       propertyPath: CaveEnemyController
       value: 
       objectReference: {fileID: 1895666612}
+    - target: {fileID: 695459763, guid: abe15c5c4e2a97b4f9438e009576f04a, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 433947041}
     - target: {fileID: 1749955146, guid: abe15c5c4e2a97b4f9438e009576f04a, type: 3}
       propertyPath: points
       value: 
@@ -11406,6 +11459,14 @@ PrefabInstance:
       propertyPath: CaveEnemyController
       value: 
       objectReference: {fileID: 1895666612}
+    - target: {fileID: 2116204554, guid: abe15c5c4e2a97b4f9438e009576f04a, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 433947041}
+    - target: {fileID: 2969844240644816484, guid: abe15c5c4e2a97b4f9438e009576f04a, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 433947041}
     - target: {fileID: 3518606820059790401, guid: abe15c5c4e2a97b4f9438e009576f04a, type: 3}
       propertyPath: controller
       value: 
@@ -11422,10 +11483,6 @@ PrefabInstance:
       propertyPath: level.Array.data[2]
       value: 
       objectReference: {fileID: 1198977775}
-    - target: {fileID: 7981348488969020275, guid: abe15c5c4e2a97b4f9438e009576f04a, type: 3}
-      propertyPath: controller
-      value: 
-      objectReference: {fileID: 433947041}
     - target: {fileID: 8715681486725484527, guid: abe15c5c4e2a97b4f9438e009576f04a, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -11470,6 +11527,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8974943343120585394, guid: abe15c5c4e2a97b4f9438e009576f04a, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 433947041}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abe15c5c4e2a97b4f9438e009576f04a, type: 3}
 --- !u!1001 &3126204895547816661
