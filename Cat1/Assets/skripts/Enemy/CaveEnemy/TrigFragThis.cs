@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class TrigFragThis : MonoBehaviour 
 {
-    public CaveEnemyController CaveEnemyController;
+    private CaveEnemyController caveEnemyController;
     public Transform pointsTr;
     public Transform points;
 
+    private void Start()
+    {
+        caveEnemyController = GameObject.FindGameObjectWithTag("Enemy").GetComponent<CaveEnemyController>();
+    }
     private void FixedUpdate()
     {
         MoveC();
@@ -16,10 +20,10 @@ public class TrigFragThis : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            CaveEnemyController.activeMove = false;
-            if (CaveEnemyController.look == false)
+            caveEnemyController.activeMove = false;
+            if (caveEnemyController.look == false)
             {
-               CaveEnemyController.speed = 60f;
+               caveEnemyController.speed = 60f;
                points.transform.position = pointsTr.position;
 
             }
@@ -28,20 +32,20 @@ public class TrigFragThis : MonoBehaviour
 
     private void MoveC()
     {
-        if (CaveEnemyController.activeMove == false)
+        if (caveEnemyController.activeMove == false)
         {
-            CaveEnemyController.transform.position = Vector2.MoveTowards(CaveEnemyController.transform.position, points.position, CaveEnemyController.speed * Time.deltaTime);
-            if (CaveEnemyController.transform.position.x < points.position.x)
+            caveEnemyController.transform.position = Vector2.MoveTowards(caveEnemyController.transform.position, points.position, caveEnemyController.speed * Time.deltaTime);
+            if (caveEnemyController.transform.position.x < points.position.x)
             {
-                CaveEnemyController.transform.eulerAngles = new Vector3(0, 180, 0);
+                caveEnemyController.transform.eulerAngles = new Vector3(0, 180, 0);
             }
-            else if (CaveEnemyController.transform.position.x > points.position.x)
+            else if (caveEnemyController.transform.position.x > points.position.x)
             {
-                CaveEnemyController.transform.eulerAngles = new Vector3(0, 0, 0);
+                caveEnemyController.transform.eulerAngles = new Vector3(0, 0, 0);
             }
-            if(CaveEnemyController.transform.position.x == points.position.x)
+            if(caveEnemyController.transform.position.x == points.position.x)
             {
-                CaveEnemyController.speed = 0;
+                caveEnemyController.speed = 0;
             }
         }
     }

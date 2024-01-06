@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Scripting.APIUpdating;
 
-public class PlayerController : MonoBehaviour , IDatPersistence
+public class PlayerController : AudioManager , IDatPersistence 
 {
     public float speed;
     public float normalSpeed;
@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
     public bool isWater = false;
     private bool Deatch = false;
     public bool hidden = false;
+    public bool danger = false;
 
     public Transform feetPos, stopRot, GraundChek, DopGroud;
     public Transform DopPosition;
@@ -337,6 +338,8 @@ public class PlayerController : MonoBehaviour , IDatPersistence
                 deathScreen.SetActive(true);
                 anim.SetTrigger("Deatch");
                 speed = 0;
+                normalSpeed = 0;
+                jumpForce = 0;
                 ButtonPaus.SetActive(false);
                 peredw.SetActive(false);
                 Deatch = true;
@@ -389,7 +392,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         {
             Destroy(WaterEnemy);
             Destroy(Wolf);
-            Earth.transform.position = new Vector3(6882, -25, transform.position.z);
+            Earth.transform.position = new Vector3(6886, -25, transform.position.z);
         }
     }
 
@@ -409,7 +412,7 @@ public class PlayerController : MonoBehaviour , IDatPersistence
         {
             Destroy(WaterEnemy);
             Destroy(Wolf);
-            Earth.transform.position = new Vector3(6882,-26,transform.position.z);
+            Earth.transform.position = new Vector3(6886,-26,transform.position.z);
         }
     }
 

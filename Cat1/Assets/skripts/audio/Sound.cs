@@ -2,13 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sound : MonoBehaviour
+public class Sound : AudioManager
 {
-    public  AudioClip Soundtreck;
-    void Start()
+    public static Sound instance = null;
+    private void Start()
     {
-        AudioManager.instance.PlaySound(Soundtreck);
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            DestroyAudio();
+        }
+        PlaySoynd(soundAudio[0]);
+        DontDestroyOnLoad(gameObject);
     }
 
-  
+    public void DestroyAudio()
+    {
+        Destroy(gameObject);
+    }
 }
