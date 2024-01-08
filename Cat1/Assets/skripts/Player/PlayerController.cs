@@ -45,6 +45,8 @@ public class PlayerController : AudioManager , IDatPersistence
     public GameObject Wolf;
     public GameObject FallingStone;
     public GameObject WaterEnemy;
+    public GameObject CoveEnemy;
+
     public GameObject Earth;
 
     private void Start()
@@ -384,6 +386,15 @@ public class PlayerController : AudioManager , IDatPersistence
             Wolf.SetActive(true);
             Wolf.transform.position = new Vector3(2555, 52, transform.position.z);
         }
+        if (DataCheck.checkPointIndex >= 7 && DataCheck.checkPointIndex <= 12)
+        {
+            Wolf.SetActive(false);
+            WaterEnemy.SetActive(true);
+        }
+        if (DataCheck.checkPointIndex >= 12)
+        {
+            CoveEnemy.SetActive(true);
+        }
         if (DataCheck.checkPointIndex >= 4)
         {
             Destroy(FallingStone);
@@ -394,6 +405,7 @@ public class PlayerController : AudioManager , IDatPersistence
             Destroy(Wolf);
             Earth.transform.position = new Vector3(6886, -25, transform.position.z);
         }
+        
     }
 
     public void SaveData( GameData data)
@@ -403,6 +415,15 @@ public class PlayerController : AudioManager , IDatPersistence
         {
             Wolf.SetActive(true);
             Wolf.transform.position = new Vector3(2555, 52, transform.position.z);
+        }
+        if (DataCheck.checkPointIndex >= 7 && DataCheck.checkPointIndex <= 12)
+        {
+            Wolf.SetActive(false);
+            WaterEnemy.SetActive(true);
+        }
+        if (DataCheck.checkPointIndex >= 12)
+        {
+            CoveEnemy.SetActive(true);
         }
         if (DataCheck.checkPointIndex >= 4)
         {

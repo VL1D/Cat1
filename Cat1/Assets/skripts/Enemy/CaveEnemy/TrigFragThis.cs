@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class TrigFragThis : MonoBehaviour 
 {
-    private CaveEnemyController caveEnemyController;
+    public CaveEnemyController caveEnemyController;
     public Transform pointsTr;
     public Transform points;
 
-    private void Start()
-    {
-        caveEnemyController = GameObject.FindGameObjectWithTag("Enemy").GetComponent<CaveEnemyController>();
-    }
+    //private void Start()
+    //{
+      //  caveEnemyController = GameObject.FindGameObjectWithTag("Enemy").GetComponent<CaveEnemyController>();
+   // }
     private void FixedUpdate()
     {
         MoveC();
