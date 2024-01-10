@@ -43,7 +43,7 @@ public class PlayerController : AudioManager , IDatPersistence
 
     [Header("Save")]
     public GameObject Wolf;
-    public GameObject FallingStone;
+    public GameObject[] Falling;
     public GameObject WaterEnemy;
     public GameObject CoveEnemy;
 
@@ -394,10 +394,11 @@ public class PlayerController : AudioManager , IDatPersistence
         if (DataCheck.checkPointIndex >= 12)
         {
             CoveEnemy.SetActive(true);
+            Falling[1].SetActive(true);
         }
         if (DataCheck.checkPointIndex >= 4)
         {
-            Destroy(FallingStone);
+            Destroy(Falling[0]);
         }
         if (DataCheck.checkPointIndex >= 13)
         {
@@ -424,10 +425,11 @@ public class PlayerController : AudioManager , IDatPersistence
         if (DataCheck.checkPointIndex >= 12)
         {
             CoveEnemy.SetActive(true);
+            Falling[1].SetActive(true);
         }
         if (DataCheck.checkPointIndex >= 4)
         {
-            Destroy(FallingStone);
+            Destroy(Falling[0]);
         }
         if (DataCheck.checkPointIndex >= 13)
         {
