@@ -19,6 +19,7 @@ public class TrigAtacEnemy : MonoBehaviour
         {
             Enemycontroller.anim.SetTrigger("Atack");
             Enemycontroller.AtackEnemy = true;
+            Enemycontroller.speed = 0;
             PlayerController.speed = 0f;
             PlayerController.normalSpeed = 0f;
             Enemycontroller.speed = 0f;

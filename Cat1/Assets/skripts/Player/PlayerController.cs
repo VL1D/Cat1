@@ -47,8 +47,6 @@ public class PlayerController : AudioManager , IDatPersistence
     public GameObject WaterEnemy;
     public GameObject CoveEnemy;
 
-    public GameObject Earth;
-
     private void Start()
     {
         speed = 0f;
@@ -345,6 +343,7 @@ public class PlayerController : AudioManager , IDatPersistence
                 ButtonPaus.SetActive(false);
                 peredw.SetActive(false);
                 Deatch = true;
+                hidden = false;
             }
         }
         if(other.tag == "Water")
@@ -404,7 +403,7 @@ public class PlayerController : AudioManager , IDatPersistence
         {
             Destroy(WaterEnemy);
             Destroy(Wolf);
-            Earth.transform.position = new Vector3(6886, -25, transform.position.z);
+            Falling[1].transform.position = new Vector3(6886, -25, transform.position.z);
         }
         
     }
@@ -435,7 +434,7 @@ public class PlayerController : AudioManager , IDatPersistence
         {
             Destroy(WaterEnemy);
             Destroy(Wolf);
-            Earth.transform.position = new Vector3(6886,-26,transform.position.z);
+            Falling[1].transform.position = new Vector3(6886,-26,transform.position.z);
         }
     }
 

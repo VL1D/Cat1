@@ -86,11 +86,11 @@ public class CaveEnemyController : MonoBehaviour
         }
         if (AtackEnemy)
         {
-            if (Cat.transform.position.x > transform.position.x)
+            if (Cat.transform.position.x >= transform.position.x)
             {
                 transform.eulerAngles = new Vector3(0, 180, 0);
             }
-            else if (Cat.transform.position.x < transform.position.x)
+            else if (Cat.transform.position.x <= transform.position.x)
             {
                 transform.eulerAngles = new Vector3(0, 0, 0);
             }
@@ -113,7 +113,6 @@ public class CaveEnemyController : MonoBehaviour
     public void AnimAtack()
     {
         Instantiate(strg, RespawnPos.position, Quaternion.identity);
-
     }
 
 }
