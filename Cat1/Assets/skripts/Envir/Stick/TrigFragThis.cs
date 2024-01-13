@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class TrigFragThis : MonoBehaviour 
 {
@@ -8,10 +9,6 @@ public class TrigFragThis : MonoBehaviour
     public Transform pointsTr;
     public Transform points;
 
-    //private void Start()
-    //{
-      //  caveEnemyController = GameObject.FindGameObjectWithTag("Enemy").GetComponent<CaveEnemyController>();
-   // }
     private void FixedUpdate()
     {
         MoveC();
@@ -23,7 +20,7 @@ public class TrigFragThis : MonoBehaviour
             caveEnemyController.activeMove = false;
             if (caveEnemyController.look == false)
             {
-               caveEnemyController.speed = 60f;
+                caveEnemyController.speed = 60f;
                points.transform.position = pointsTr.position;
 
             }

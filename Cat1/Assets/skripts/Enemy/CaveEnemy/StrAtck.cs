@@ -8,21 +8,19 @@ public class StrAtck : MonoBehaviour
     public float speed;
 
     private Transform Player;
-    private Transform EnemyKill;
 
 
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player").transform;
-        EnemyKill = GameObject.FindGameObjectWithTag("PointsCove").transform;
     }
 
     private void FixedUpdate()
     {
         transform.position = Vector2.MoveTowards(transform.position, Player.position, speed);
-        if(Player.transform.position == EnemyKill.position)
+        if(Player.transform.position == transform.position)
         {
-            Destroy(gameObject);
+            Destroy(gameObject,0.1f);
         }
         if(transform.position.x < Player.position.x)
         {
@@ -33,5 +31,4 @@ public class StrAtck : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
     }
-    
 }

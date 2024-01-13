@@ -394,6 +394,11 @@ public class PlayerController : AudioManager , IDatPersistence
         {
             CoveEnemy.SetActive(true);
             Falling[1].SetActive(true);
+            if(DataCheck.checkPointIndex >= 19)
+            {
+                Destroy(Falling[1]);
+                Destroy(CoveEnemy);
+            }
         }
         if (DataCheck.checkPointIndex >= 4)
         {
@@ -425,6 +430,11 @@ public class PlayerController : AudioManager , IDatPersistence
         {
             CoveEnemy.SetActive(true);
             Falling[1].SetActive(true);
+            if (DataCheck.checkPointIndex >= 19)
+            {
+                Destroy(Falling[1]);
+                Destroy(CoveEnemy);
+            }
         }
         if (DataCheck.checkPointIndex >= 4)
         {
