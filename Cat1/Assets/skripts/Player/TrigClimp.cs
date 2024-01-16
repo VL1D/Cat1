@@ -36,5 +36,9 @@ public class TrigClimp : MonoBehaviour
         {
             controller.StartAnimLedge();
         }
+        if(collision.gameObject.layer == 14)
+        {
+            box.enabled = false;
+        }
     }
 }

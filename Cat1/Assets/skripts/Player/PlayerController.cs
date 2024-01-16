@@ -21,7 +21,7 @@ public class PlayerController : AudioManager , IDatPersistence
     public Animator anim;
     public Rigidbody2D rb;
 
-    private bool isGrounded, isStopRot, isGroundedChek , isDopGround, isBox;
+    private bool isGrounded, isStopRot, isGroundedChek , isDopGround, isBox ;
     public bool blockMoveX;
     public bool Climb ;
     public bool isWater = false;
@@ -36,6 +36,7 @@ public class PlayerController : AudioManager , IDatPersistence
 
     public LayerMask whatIsGround;
     public LayerMask whatIsBox;
+    public LayerMask whatIsButtGat;
 
     public GameObject deathScreen;
     public GameObject peredw;
@@ -84,7 +85,7 @@ public class PlayerController : AudioManager , IDatPersistence
                     {
                         anim.SetBool("dawn", false);
                     }
-                    if (isBox)
+                    if (isBox )
                     {
                         anim.SetBool("dawn", false);
                     }
@@ -100,7 +101,7 @@ public class PlayerController : AudioManager , IDatPersistence
                     {
                         anim.SetBool("dawn", false);
                     }
-                    if (isBox)
+                    if (isBox )
                     {
                         anim.SetBool("dawn", false);
                     }
@@ -125,7 +126,7 @@ public class PlayerController : AudioManager , IDatPersistence
             }
             else
             {
-                if (isBox)
+                if (isBox )
                 {
                     anim.SetBool("Jump", false);
                     anim.SetBool("Dawn3", false);
@@ -172,7 +173,7 @@ public class PlayerController : AudioManager , IDatPersistence
     {
         if(!isGroundedChek)
         {
-            if (isGrounded || isBox)
+            if (isGrounded || isBox )
             {
                  anim.SetTrigger("Trig");
                  rb.velocity = Vector2.up * jumpForce;
@@ -181,7 +182,7 @@ public class PlayerController : AudioManager , IDatPersistence
         }
         else
         {
-            if (isGrounded || isWater)
+            if (isGrounded || isWater )
             {
                 anim.SetTrigger("RunUp");
                 rb.velocity = Vector2.up * speedUp;
@@ -196,7 +197,7 @@ public class PlayerController : AudioManager , IDatPersistence
 
             if (!isGrounded)
             {
-                if (isBox)
+                if (isBox )
                 {
                     speed = -normalSpeed;
                     transform.eulerAngles = new Vector3(0, 180, 0);
@@ -229,7 +230,7 @@ public class PlayerController : AudioManager , IDatPersistence
             if (!isGrounded)
             {
                 
-                if (isBox)
+                if (isBox )
                 {
                     speed = normalSpeed;
                     transform.eulerAngles = new Vector3(0, 0, 0);
@@ -263,7 +264,7 @@ public class PlayerController : AudioManager , IDatPersistence
     {
         if (!Deatch)
         {
-            if (isGroundedChek)
+            if (isGroundedChek )
             {
                 if (speed != 0f)
                 {
