@@ -17,25 +17,25 @@ public class Gates : MonoBehaviour
         if (Open)
         {
             OpenGat();
+            animGat.SetBool("isOpen", true);
+            animGat.SetBool("isClose", false);
         }
         else
         {
             CloseGat();
+            animGat.SetBool("isClose", true);
+            animGat.SetBool("isOpen", false);
+        }
+        if (speed == 0)
+        {
+            animGat.SetBool("isClose", false);
+            animGat.SetBool("isOpen", false);
         }
     }
 
     private void OpenGat()
     {
         transform.position = Vector2.MoveTowards(transform.position, poinsClose.transform.position, speed * Time.deltaTime);
-        if (speed == 8)
-        {
-            animGat.SetBool("isOpen", true);
-            animGat.SetBool("isClose", false);
-        }
-        else if (speed == 0)
-        {
-            animGat.SetBool("isOpen", false);
-        }
         if (transform.position == poinsClose.transform.position)
         {
             speed = 0;
@@ -45,15 +45,6 @@ public class Gates : MonoBehaviour
     private void CloseGat()
     {
         transform.position = Vector2.MoveTowards(transform.position, Gat.transform.position, speed * Time.deltaTime);
-        if (speed == 3)
-        {
-            animGat.SetBool("isClose", true);
-            animGat.SetBool("isOpen", false);
-        }
-        else if(speed == 0)
-        {
-            animGat.SetBool("isClose", false);
-        }
         if(transform.position == Gat.transform.position)
         {
             speed = 0;

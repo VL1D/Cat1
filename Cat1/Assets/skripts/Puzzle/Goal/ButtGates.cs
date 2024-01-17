@@ -8,6 +8,8 @@ public class ButtGates : MonoBehaviour
     private bool OpenBut = false;
     public float speed;
     public Transform[] ButPoints;
+
+    public bool Stop;
     private void FixedUpdate()
     {
         if (OpenBut)
@@ -28,7 +30,7 @@ public class ButtGates : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if(collision.tag == "Player" || collision.tag == "Box")
         {
             gates[0].speed = 8f;
             gates[1].speed = 8f;
@@ -41,7 +43,7 @@ public class ButtGates : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" || collision.tag == "Box")
         {
             gates[0].speed = 4f;
             gates[1].speed = 4f;
