@@ -21,7 +21,7 @@ public class PlayerController : AudioManager , IDatPersistence
     public Animator anim;
     public Rigidbody2D rb;
 
-    private bool isGrounded, isStopRot, isGroundedChek , isDopGround, isBox ;
+    private bool isGrounded, isStopRot, isGroundedChek , isDopGround, isBox , isStopRotBox;
     public bool blockMoveX;
     public bool Climb ;
     public bool isWater = false;
@@ -138,7 +138,7 @@ public class PlayerController : AudioManager , IDatPersistence
                     if (transform.eulerAngles.y == 0)
                     {
                         transform.Rotate(0, 0, -40 * Time.deltaTime);
-                        if (isStopRot || isWater == true)
+                        if (isStopRot || isWater == true || isStopRotBox)
                         {
                             transform.eulerAngles = new Vector3(0, 0, 0);
                         }
@@ -147,7 +147,7 @@ public class PlayerController : AudioManager , IDatPersistence
                     else if (transform.eulerAngles.y == 180)
                     {
                         transform.Rotate(0, 0, -40 * Time.deltaTime);
-                        if (isStopRot || isWater == true)
+                        if (isStopRot || isWater == true || isStopRotBox)
                         {
                             transform.eulerAngles = new Vector3(0, 180, 0);
                         }
@@ -317,6 +317,7 @@ public class PlayerController : AudioManager , IDatPersistence
         isGroundedChek = Physics2D.OverlapCircle(GraundChek.position, checkRadius, whatIsGround);
         isDopGround = Physics2D.OverlapCircle(DopGroud.position, CheckDistans, whatIsGround);
         isBox = Physics2D.OverlapCircle(feetPos.position, CheckDistans, whatIsBox);
+        isStopRotBox = Physics2D.OverlapCircle(stopRot.position, checkRadius, whatIsBox);
     }
 
     private void OnDrawGizmos()
