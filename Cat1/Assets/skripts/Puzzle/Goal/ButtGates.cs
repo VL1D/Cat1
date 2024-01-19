@@ -8,6 +8,7 @@ public class ButtGates : MonoBehaviour
     private bool OpenBut = false;
     public float speed;
     public Transform[] ButPoints;
+    public LeverArm arm;
 
     public bool Stop;
     private void FixedUpdate()
@@ -21,14 +22,21 @@ public class ButtGates : MonoBehaviour
         }
         else
         {
-            if (transform.position.y < ButPoints[1].transform.position.y)
+            if ((arm.Blocking == true))
             {
-                transform.Translate(Vector2.up * speed * Time.deltaTime);
+               if (transform.position.y < ButPoints[1].transform.position.y)
+               {
+                    transform.Translate(Vector2.up * speed * Time.deltaTime);
+                    gates[0].speed = 16f;
+                    gates[1].speed = 16f;
+                    gates[0].Open = false;
+                    gates[1].Open = false;
+                }
             }
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.tag == "Player" || collision.tag == "Box")
         {
@@ -36,21 +44,28 @@ public class ButtGates : MonoBehaviour
             gates[1].speed = 8f;
             gates[0].Open = true;
             gates[1].Open = true;
-            speed = 4f;
+            speed = 10f;
             OpenBut = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Player" || collision.tag == "Box")
+        if (collision.tag == "Player" && arm.Blocking == true || collision.tag == "Box" )
         {
-            gates[0].speed = 4f;
-            gates[1].speed = 4f;
+            gates[0].speed = 16f;
+            gates[1].speed = 16f;
             gates[0].Open = false;
             gates[1].Open = false;
             speed = 20;
             OpenBut = false;
+        }
+        if(collision.tag == "Player" && arm.Blocking == false)
+        {
+            gates[0].Open = true;
+            gates[1].Open = true;
+            OpenBut = false;
+            speed = 20;
         }
     }
 }
