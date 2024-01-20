@@ -182,7 +182,7 @@ public class PlayerController : AudioManager , IDatPersistence
         }
         else
         {
-            if (isGrounded || isWater )
+            if (isGrounded || isWater || isBox)
             {
                 anim.SetTrigger("RunUp");
                 rb.velocity = Vector2.up * speedUp;
@@ -293,7 +293,7 @@ public class PlayerController : AudioManager , IDatPersistence
     {
         if (!Deatch)
         {
-            if (!isGrounded)
+            if (!isGrounded && !isBox || !isGrounded)
             {
                 if (isGroundedChek && isDopGround)
                 {
