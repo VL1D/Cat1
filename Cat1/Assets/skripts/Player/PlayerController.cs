@@ -394,9 +394,12 @@ public class PlayerController : AudioManager , IDatPersistence
         }
         if (DataCheck.checkPointIndex >= 12)
         {
-            CoveEnemy.SetActive(true);
-            Falling[1].SetActive(true);
-            if(DataCheck.checkPointIndex >= 19)
+            if (DataCheck.checkPointIndex <= 19)
+            {
+                CoveEnemy.SetActive(true);
+                Falling[1].SetActive(true);
+            }
+            else 
             {
                 Destroy(Falling[1]);
                 Destroy(CoveEnemy);
@@ -428,11 +431,14 @@ public class PlayerController : AudioManager , IDatPersistence
             Wolf.SetActive(false);
             WaterEnemy.SetActive(true);
         }
-        if (DataCheck.checkPointIndex >= 12)
+        if (DataCheck.checkPointIndex >= 12 )
         {
-            CoveEnemy.SetActive(true);
-            Falling[1].SetActive(true);
-            if (DataCheck.checkPointIndex >= 19)
+            if (DataCheck.checkPointIndex <= 19)
+            {
+                CoveEnemy.SetActive(true);
+                Falling[1].SetActive(true);
+            }
+            else
             {
                 Destroy(Falling[1]);
                 Destroy(CoveEnemy);
@@ -446,7 +452,15 @@ public class PlayerController : AudioManager , IDatPersistence
         {
             Destroy(WaterEnemy);
             Destroy(Wolf);
-            Falling[1].transform.position = new Vector3(6886,-26,transform.position.z);
+            if (DataCheck.checkPointIndex <= 19)
+            {
+                Falling[1].transform.position = new Vector3(6886, -26, transform.position.z);
+            }
+            else
+            {
+                Destroy(Falling[1]);
+            }
+            
         }
     }
 
