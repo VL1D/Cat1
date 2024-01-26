@@ -5,7 +5,7 @@ using UnityEngine;
 public class ButtGates : MonoBehaviour
 {
     public Gates[] gates;
-    private bool OpenBut = false;
+    public bool OpenBut = false;
     public float speed;
     public Transform[] ButPoints;
     public LeverArm arm;
@@ -24,7 +24,7 @@ public class ButtGates : MonoBehaviour
         {
             if ((arm.Blocking == true))
             {
-               if (transform.position.y < ButPoints[1].transform.position.y)
+                if (transform.position.y < ButPoints[1].transform.position.y)
                {
                     transform.Translate(Vector2.up * speed * Time.deltaTime);
                     gates[0].speed = 16f;
@@ -36,7 +36,7 @@ public class ButtGates : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.tag == "Player" || collision.tag == "Box")
         {
@@ -60,7 +60,7 @@ public class ButtGates : MonoBehaviour
             speed = 20;
             OpenBut = false;
         }
-        if(collision.tag == "Player" && arm.Blocking == false)
+        if (collision.tag == "Player" && arm.Blocking == false)
         {
             gates[0].Open = true;
             gates[1].Open = true;

@@ -22,6 +22,7 @@ public class LeverArm : MonoBehaviour
         }
         else
         {
+
             anim.SetBool("Lever", true);
             Gat.SetBool("isOpen", false);
             Gat.SetBool("isClose", true);
@@ -29,7 +30,7 @@ public class LeverArm : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 6)
+        if (collision.tag == "Player")
         {
             if (!Blocking)
             {
