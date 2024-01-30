@@ -15,7 +15,7 @@ public class DrivingPlatform : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(Butt.OpenBut == true & lever.Blocking == false)
+        if(Butt.OpenBut == true )
         {
             rises = true;
         }

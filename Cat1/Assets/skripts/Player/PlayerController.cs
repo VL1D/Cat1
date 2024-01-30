@@ -36,17 +36,23 @@ public class PlayerController : AudioManager , IDatPersistence
 
     public LayerMask whatIsGround;
     public LayerMask whatIsBox;
-    public LayerMask whatIsButtGat;
 
     public GameObject deathScreen;
     public GameObject peredw;
     public GameObject ButtonPaus;
 
-    [Header("Save")]
+    [Header("SaveEnemy")]
     public GameObject Wolf;
+    public GameObject[] Enemy;
+
+    [Header("SaveEnvir")]
     public GameObject[] Falling;
-    public GameObject WaterEnemy;
-    public GameObject CoveEnemy;
+
+    [Header("SavePuzzle")]
+    public GameObject[] Puzzle;
+
+
+
 
     private void Start()
     {
@@ -390,19 +396,19 @@ public class PlayerController : AudioManager , IDatPersistence
         if (DataCheck.checkPointIndex >= 7 && DataCheck.checkPointIndex <= 12)
         {
             Wolf.SetActive(false);
-            WaterEnemy.SetActive(true);
+            Enemy[0].SetActive(true);
         }
         if (DataCheck.checkPointIndex >= 12)
         {
             if (DataCheck.checkPointIndex <= 19)
             {
-                CoveEnemy.SetActive(true);
+                Enemy[1].SetActive(true);
                 Falling[1].SetActive(true);
             }
             else 
             {
                 Destroy(Falling[1]);
-                Destroy(CoveEnemy);
+                Destroy(Enemy[1]);
             }
         }
         if (DataCheck.checkPointIndex >= 4)
@@ -411,9 +417,13 @@ public class PlayerController : AudioManager , IDatPersistence
         }
         if (DataCheck.checkPointIndex >= 13)
         {
-            Destroy(WaterEnemy);
+            Destroy(Enemy[0]);
             Destroy(Wolf);
             Falling[1].transform.position = new Vector3(6886, -25, transform.position.z);
+        }
+        if(DataCheck.checkPointIndex >= 18)
+        {
+            Puzzle[0].SetActive(true);
         }
         
     }
@@ -429,19 +439,19 @@ public class PlayerController : AudioManager , IDatPersistence
         if (DataCheck.checkPointIndex >= 7 && DataCheck.checkPointIndex <= 12)
         {
             Wolf.SetActive(false);
-            WaterEnemy.SetActive(true);
+            Enemy[0].SetActive(true);
         }
         if (DataCheck.checkPointIndex >= 12 )
         {
             if (DataCheck.checkPointIndex <= 19)
             {
-                CoveEnemy.SetActive(true);
+                Enemy[1].SetActive(true);
                 Falling[1].SetActive(true);
             }
             else
             {
                 Destroy(Falling[1]);
-                Destroy(CoveEnemy);
+                Destroy(Enemy[1]);
             }
         }
         if (DataCheck.checkPointIndex >= 4)
@@ -450,7 +460,7 @@ public class PlayerController : AudioManager , IDatPersistence
         }
         if (DataCheck.checkPointIndex >= 13)
         {
-            Destroy(WaterEnemy);
+            Destroy(Enemy[0]);
             Destroy(Wolf);
             if (DataCheck.checkPointIndex <= 19)
             {
@@ -460,7 +470,11 @@ public class PlayerController : AudioManager , IDatPersistence
             {
                 Destroy(Falling[1]);
             }
-            
+
+        }
+        if (DataCheck.checkPointIndex >= 18)
+        {
+            Puzzle[0].SetActive(true);
         }
     }
 

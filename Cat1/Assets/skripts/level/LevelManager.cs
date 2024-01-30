@@ -30,5 +30,9 @@ public class LevelManager : MonoBehaviour
     {
         Instantiate(LevelPrefab[2], respawnPointLevel[2].position, Quaternion.identity);
     }
+    public void RespawnLevel4()
+    {
+        Instantiate(LevelPrefab[3], respawnPointLevel[3].position, Quaternion.identity);
+    }
 
 }
