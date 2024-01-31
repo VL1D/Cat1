@@ -10,6 +10,11 @@ public class TrigSpeedCatTree : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            if (playercontroller.transform.eulerAngles.y == 180)
+            {
+                playercontroller.transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+            playercontroller.normalSpeed = 0;
             playercontroller.speed = 0;
         }
     }
@@ -17,15 +22,16 @@ public class TrigSpeedCatTree : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            playercontroller.speed = 0;
-            StartCoroutine(DeleteTrig());
+            //playercontroller.speed = 0;
+            Destroy(gameObject,1.7f);
         }
     }
 
-    private IEnumerator DeleteTrig()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        yield return new WaitForSeconds(1.5f);
-        Destroy(gameObject);
-
+        if (collision.tag == "Player")
+        {
+            playercontroller.normalSpeed = 40;
+        }
     }
 }

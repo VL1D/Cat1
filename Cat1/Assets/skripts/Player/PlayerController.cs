@@ -28,6 +28,8 @@ public class PlayerController : AudioManager , IDatPersistence
     private bool Deatch = false;
     public bool hidden = false;
     public bool danger = false;
+    public bool BlokRotY = false;
+
 
     public Transform feetPos, stopRot, GraundChek, DopGroud;
     public Transform DopPosition;
@@ -64,6 +66,7 @@ public class PlayerController : AudioManager , IDatPersistence
     
     private void FixedUpdate()
     {
+        
         Move();
         Jumping();
         CheckColision();
