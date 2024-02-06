@@ -381,7 +381,7 @@ public class PlayerController : AudioManager , IDatPersistence
             }
             else if (transform.eulerAngles.y == 180)
             {
-                _newPosition = new Vector3(transform.position.x + -DopSpeed, transform.position.y, transform.position.z);
+                _newPosition = new Vector3(transform.position.x + -DopSpeed, transform.position.y , transform.position.z);
                 transform.position = _newPosition;
             }
 

@@ -12340,7 +12340,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8873025294772941460}
   m_LocalRotation: {x: -0, y: -0, z: 0.9999971, w: 0.0024183146}
-  m_LocalPosition: {x: 218, y: -1.9, z: 0}
+  m_LocalPosition: {x: 218, y: -1.2, z: 0}
   m_LocalScale: {x: 7.3249, y: 4.9067144, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -32832,7 +32832,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8873025295207363851}
-  - component: {fileID: 8873025295207363850}
+  - component: {fileID: 7612964283344470250}
   m_Layer: 7
   m_Name: coll
   m_TagString: Untagged
@@ -32848,15 +32848,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8873025295207363848}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -3.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8873025294772941462}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &8873025295207363850
-PolygonCollider2D:
+--- !u!61 &7612964283344470250
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -32868,7 +32868,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.10149121, y: 0.2620185}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -32878,16 +32878,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 1.1599387, y: -2.890448}
-      - {x: -1.272608, y: -2.903712}
-      - {x: -1.2964793, y: -4.625789}
-      - {x: 0.61216575, y: -4.5115027}
-      - {x: 1.3189145, y: -4.5153236}
-      - {x: 1.7245898, y: -4.5218425}
-      - {x: 1.737248, y: -3.903498}
-      - {x: 1.718784, y: -2.85444}
+  serializedVersion: 2
+  m_Size: {x: 3.2352748, y: 2.1095772}
+  m_EdgeRadius: 0
 --- !u!1 &8873025295209675310
 GameObject:
   m_ObjectHideFlags: 0

@@ -1322,6 +1322,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Run
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: dawn
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1095377080706486951}
   m_Solo: 0
@@ -3807,9 +3810,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 8461605799550269461}
     m_Position: {x: 510, y: -270, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 8488516390285704110}
-    m_Position: {x: 635, y: -195, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 172088287586100617}
@@ -4516,32 +4516,6 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 6889481612797693605}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &8488516390285704110
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: spray
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: b7a6477e0915c994e9d9217b7cd499dc, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
