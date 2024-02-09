@@ -8,6 +8,7 @@ public class trigWolf : MonoBehaviour
     public WolfController wolfcontroller;
     public GameObject wolf;
     public Animator animWolf;
+    public Animator Musick;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -19,6 +20,7 @@ public class trigWolf : MonoBehaviour
             StartCoroutine(AnimSpeedWolf());
             CutsceneManager.Instance.StartCutscene("CatSceneWolf");
             StartCoroutine(SpeedWolf());
+            Musick.SetBool("Active", true);
         }
     }
     private void OnTriggerStay2D(Collider2D collision)

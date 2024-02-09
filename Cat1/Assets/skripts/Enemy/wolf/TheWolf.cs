@@ -5,14 +5,14 @@ using UnityEngine;
 public class TheWolf : MonoBehaviour
 {
     public WolfController controller;
-    public GameObject WolfAudio;
+    public Animator Musik;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Wolf")
         {
             controller.StopHunding();
-            WolfAudio.SetActive(false);
+            Musik.SetBool("Active", false);
         }
     }
     private void OnTriggerStay2D(Collider2D other)
@@ -20,7 +20,7 @@ public class TheWolf : MonoBehaviour
         if (other.tag == "Wolf")
         {
             controller.StopHunding();
-            WolfAudio.SetActive(false);
+            Musik.SetBool("Active", false);
         }
     }
 }

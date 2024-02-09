@@ -408,7 +408,7 @@ public class PlayerController : AudioManager , IDatPersistence
                 Enemy[1].SetActive(true);
                 Falling[1].SetActive(true);
             }
-            else 
+            if (DataCheck.checkPointIndex >= 19)
             {
                 Destroy(Falling[1]);
                 Destroy(Enemy[1]);
@@ -422,7 +422,14 @@ public class PlayerController : AudioManager , IDatPersistence
         {
             Destroy(Enemy[0]);
             Destroy(Wolf);
-            Falling[1].transform.position = new Vector3(6886, -25, transform.position.z);
+            if (DataCheck.checkPointIndex <= 19)
+            {
+                Falling[1].transform.position = new Vector3(6886, -26, transform.position.z);
+            }
+            else
+            {
+                Destroy(Falling[1]);
+            }
         }
         if(DataCheck.checkPointIndex >= 18)
         {
@@ -451,7 +458,7 @@ public class PlayerController : AudioManager , IDatPersistence
                 Enemy[1].SetActive(true);
                 Falling[1].SetActive(true);
             }
-            else
+            if (DataCheck.checkPointIndex >= 19)
             {
                 Destroy(Falling[1]);
                 Destroy(Enemy[1]);
