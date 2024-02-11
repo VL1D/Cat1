@@ -29,6 +29,9 @@ public class PlayerController : AudioManager , IDatPersistence
     public bool hidden = false;
     public bool danger = false;
     public bool BlokRotY = false;
+    private bool Run;
+    public bool MovingUp;
+    private bool jump;
 
 
     public Transform feetPos, stopRot, GraundChek, DopGroud;
@@ -80,41 +83,54 @@ public class PlayerController : AudioManager , IDatPersistence
     {
         if (!Deatch)
         {
-            if (!blockMoveX)
+            rb.velocity = new Vector2(speed, rb.velocity.y);
+            if (speed != 0f)
             {
-                rb.velocity = new Vector2(speed, rb.velocity.y);
-                if (speed != 0f)
+                anim.SetBool("Run", true);
+                if (!isGrounded)
                 {
-                    anim.SetBool("Run", true);
-                    if (!isGrounded)
-                    {
-                        anim.SetBool("dawn", true);
-                    }
-                    else
-                    {
-                        anim.SetBool("dawn", false);
-                    }
-                    if (isBox )
-                    {
-                        anim.SetBool("dawn", false);
-                    }
+                   anim.SetBool("dawn", true);
                 }
                 else
                 {
-                    anim.SetBool("Run", false);
-                    if (!isGrounded)
-                    {
-                        anim.SetBool("dawn", true);
-                    }
-                    else
-                    {
-                        anim.SetBool("dawn", false);
-                    }
-                    if (isBox )
-                    {
-                        anim.SetBool("dawn", false);
-                    }
+                    anim.SetBool("dawn", false);
                 }
+                if (isBox )
+                {
+                   anim.SetBool("dawn", false);
+                }
+            }
+            else
+            {
+                anim.SetBool("Run", false);
+                if (!isGrounded)
+                {
+                    anim.SetBool("dawn", true);
+                }
+                else
+                {
+                     anim.SetBool("dawn", false);
+                }
+                if (isBox )
+                {
+                     anim.SetBool("dawn", false);
+                }
+            }
+        
+            if (Run && !MovingUp && !Climb && !jump)
+            {
+                if(transform.eulerAngles.y == 0)
+                {
+                    speed = 40f;
+                }
+                else if (transform.eulerAngles.y == 180)
+                {
+                    speed = -40f;
+                }
+            }
+            else if(!Run)
+            {
+                speed = 0;
             }
         }
         if (Deatch)
@@ -132,9 +148,11 @@ public class PlayerController : AudioManager , IDatPersistence
                 anim.SetBool("Jump", false);
                 anim.SetBool("Dawn3", false);
                 isWater = false;
+                jump = false;
             }
             else
             {
+                jump = true;
                 if (isBox )
                 {
                     anim.SetBool("Jump", false);
@@ -201,6 +219,7 @@ public class PlayerController : AudioManager , IDatPersistence
     }
     public void OnLeftButtonDown()
     {
+        Run = true;
         if (speed >= 0f)
         {
 
@@ -233,6 +252,7 @@ public class PlayerController : AudioManager , IDatPersistence
     }
     public void OnRightButtonDown()
     {
+        Run = true;
         if (speed <= 0f)
         {
 
@@ -267,6 +287,7 @@ public class PlayerController : AudioManager , IDatPersistence
     public void OnButtonUp()
     {
         speed = 0f;
+        Run = false;
     }
 
     private void StopMove()
@@ -374,6 +395,7 @@ public class PlayerController : AudioManager , IDatPersistence
     {
         if (Climb)
         {
+            speed = 0f;
             if(transform.eulerAngles.y == 0)
             {
                 _newPosition = new Vector3(transform.position.x + DopSpeed , transform.position.y, transform.position.z);
@@ -503,5 +525,7 @@ public class PlayerController : AudioManager , IDatPersistence
            
         }
     }
+
+    
 
 }
