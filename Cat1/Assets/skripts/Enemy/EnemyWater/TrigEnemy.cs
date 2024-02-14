@@ -12,6 +12,7 @@ public class TrigEnemy : MonoBehaviour
             EnemyWaterRespawn.instance.EnemyWatResp();
             StartCoroutine(Delete());
             playerController.speed = 0;
+            playerController.Run = false;
             playerController.jumpForce = 0;
         }
     }

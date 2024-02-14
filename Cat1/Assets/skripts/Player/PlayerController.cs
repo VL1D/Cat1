@@ -29,7 +29,7 @@ public class PlayerController : AudioManager , IDatPersistence
     public bool hidden = false;
     public bool danger = false;
     public bool BlokRotY = false;
-    private bool Run;
+    public bool Run;
     public bool MovingUp;
     private bool jump;
 
@@ -128,7 +128,7 @@ public class PlayerController : AudioManager , IDatPersistence
                     speed = -40f;
                 }
             }
-            else if(!Run)
+            if(!Run)
             {
                 speed = 0;
             }
