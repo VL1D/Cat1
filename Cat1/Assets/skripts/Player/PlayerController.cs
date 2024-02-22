@@ -56,7 +56,8 @@ public class PlayerController : AudioManager , IDatPersistence
     [Header("SavePuzzle")]
     public GameObject[] Puzzle;
 
-
+    [Header("SaveBackground")]
+    public GameObject[] Background;
 
 
     private void Start()
@@ -286,8 +287,8 @@ public class PlayerController : AudioManager , IDatPersistence
     }
     public void OnButtonUp()
     {
-        speed = 0f;
-        Run = false;
+       speed = 0f;
+       Run = false;
     }
 
     private void StopMove()
@@ -413,6 +414,11 @@ public class PlayerController : AudioManager , IDatPersistence
     public void LoadData(GameData data)
     {
         this.transform.position = data.playerPosition;
+        if(DataCheck.checkPointIndex >= 1)
+        {
+            Background[0].SetActive(false);
+            Background[1].SetActive(true);
+        }
         if (DataCheck.checkPointIndex == 5)
         {
             Wolf.SetActive(true);
@@ -463,6 +469,11 @@ public class PlayerController : AudioManager , IDatPersistence
     public void SaveData( GameData data)
     {
         data.playerPosition = this.transform.position;
+        if (DataCheck.checkPointIndex >= 1)
+        {
+            Background[0].SetActive(false);
+            Background[1].SetActive(true);
+        }
         if (DataCheck.checkPointIndex == 5)
         {
             Wolf.SetActive(true);
