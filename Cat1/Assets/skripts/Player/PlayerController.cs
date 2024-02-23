@@ -32,6 +32,9 @@ public class PlayerController : AudioManager , IDatPersistence
     public bool Run;
     public bool MovingUp;
     private bool jump;
+    public bool RunRight;
+    public bool RunLeft;
+    public bool rev;
 
 
     public Transform feetPos, stopRot, GraundChek, DopGroud;
@@ -85,7 +88,7 @@ public class PlayerController : AudioManager , IDatPersistence
         if (!Deatch)
         {
             rb.velocity = new Vector2(speed, rb.velocity.y);
-            if (speed != 0f)
+            if (speed != 0f )
             {
                 anim.SetBool("Run", true);
                 if (!isGrounded)
@@ -118,15 +121,17 @@ public class PlayerController : AudioManager , IDatPersistence
                 }
             }
         
-            if (Run && !MovingUp && !Climb && !jump)
+            if (Run && !MovingUp && !Climb && !jump && !rev)
             {
-                if(transform.eulerAngles.y == 0)
+                if(RunRight)
                 {
                     speed = 40f;
+                    transform.eulerAngles = new Vector3(0, 0, 0);
                 }
-                else if (transform.eulerAngles.y == 180)
+                else if (RunLeft)
                 {
                     speed = -40f;
+                    transform.eulerAngles = new Vector3(0, 180, 0);
                 }
             }
             if(!Run)
@@ -221,67 +226,93 @@ public class PlayerController : AudioManager , IDatPersistence
     public void OnLeftButtonDown()
     {
         Run = true;
-        if (speed >= 0f)
+        RunLeft = true;
+        if (transform.eulerAngles.y == 180)
         {
-
-            if (!isGrounded)
+            //RunLeft = true;
+            if (speed >= 0f)
             {
-                if (isBox )
+
+                if (!isGrounded)
+                {
+                    if (isBox)
+                    {
+                        speed = -normalSpeed;
+                        transform.eulerAngles = new Vector3(0, 180, 0);
+                    }
+                    else
+                    {
+                        if (transform.eulerAngles.y == 0)
+                        {
+                            transform.eulerAngles = new Vector3(0, 0, 0);
+                        }
+                    }
+                }
+                else
                 {
                     speed = -normalSpeed;
                     transform.eulerAngles = new Vector3(0, 180, 0);
                 }
-                else
+                if (isWater)
                 {
-                    if (transform.eulerAngles.y == 0)
-                    {
-                        transform.eulerAngles = new Vector3(0, 0, 0);
-                    }
+                    speed = -normalSpeed;
+                    transform.eulerAngles = new Vector3(0, 180, 0);
                 }
             }
-            else
+        }
+        else if(transform.eulerAngles.y == 0)
+        {
+            if (isGrounded)
             {
-                speed = -normalSpeed;
-                transform.eulerAngles = new Vector3(0, 180, 0);
-            }
-            if (isWater)
-            {
-                speed = -normalSpeed;
-                transform.eulerAngles = new Vector3(0, 180, 0);
+                anim.SetTrigger("mem");
+                rev = true;
             }
         }
     }
     public void OnRightButtonDown()
     {
         Run = true;
-        if (speed <= 0f)
+        RunRight = true;
+        if (transform.eulerAngles.y == 0)
         {
-
-            if (!isGrounded)
+           // RunRight = true;
+            if (speed <= 0f)
             {
-                
-                if (isBox )
+
+                if (!isGrounded)
+                {
+
+                    if (isBox)
+                    {
+                        speed = normalSpeed;
+                        transform.eulerAngles = new Vector3(0, 0, 0);
+                    }
+                    else
+                    {
+                        if (transform.eulerAngles.y == 180)
+                        {
+                            transform.eulerAngles = new Vector3(0, 180, 0);
+                        }
+                    }
+                }
+                else
                 {
                     speed = normalSpeed;
                     transform.eulerAngles = new Vector3(0, 0, 0);
                 }
-                else
+                if (isWater)
                 {
-                    if (transform.eulerAngles.y == 180)
-                    {
-                        transform.eulerAngles = new Vector3(0, 180, 0);
-                    }
+                    speed = normalSpeed;
+                    transform.eulerAngles = new Vector3(0, 0, 0);
                 }
             }
-            else
+        }
+        else if (transform.eulerAngles.y == 180)
+        {
+            if (isGrounded)
             {
-                speed = normalSpeed;
-                transform.eulerAngles = new Vector3(0, 0, 0);
-            }
-            if (isWater)
-            {
-                speed = normalSpeed;
-                transform.eulerAngles = new Vector3(0, 0, 0);
+                anim.SetTrigger("mem");
+                rev = true;
             }
         }
     }
@@ -289,6 +320,8 @@ public class PlayerController : AudioManager , IDatPersistence
     {
        speed = 0f;
        Run = false;
+        RunRight = false;
+        RunLeft = false;
     }
 
     private void StopMove()
@@ -537,6 +570,17 @@ public class PlayerController : AudioManager , IDatPersistence
         }
     }
 
-    
-
+    public void MemRigcht()
+    {
+        rev = false;
+        if (transform.eulerAngles.y == 180)
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        else if(transform.eulerAngles.y == 0)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+            
+    }
 }
