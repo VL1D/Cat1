@@ -32,9 +32,9 @@ public class PlayerController : AudioManager , IDatPersistence
     public bool Run;
     public bool MovingUp;
     private bool jump;
-    public bool RunRight;
-    public bool RunLeft;
-    public bool rev;
+    private bool RunRight;
+    private bool RunLeft;
+    private bool rev;
 
 
     public Transform feetPos, stopRot, GraundChek, DopGroud;
@@ -229,7 +229,6 @@ public class PlayerController : AudioManager , IDatPersistence
         RunLeft = true;
         if (transform.eulerAngles.y == 180)
         {
-            //RunLeft = true;
             if (speed >= 0f)
             {
 
@@ -266,6 +265,10 @@ public class PlayerController : AudioManager , IDatPersistence
             {
                 anim.SetTrigger("mem");
                 rev = true;
+                if (isGroundedChek)
+                {
+                    anim.SetBool("Siting", false);
+                }
             }
         }
     }
@@ -275,7 +278,6 @@ public class PlayerController : AudioManager , IDatPersistence
         RunRight = true;
         if (transform.eulerAngles.y == 0)
         {
-           // RunRight = true;
             if (speed <= 0f)
             {
 
@@ -309,10 +311,14 @@ public class PlayerController : AudioManager , IDatPersistence
         }
         else if (transform.eulerAngles.y == 180)
         {
-            if (isGrounded)
+            if (isGrounded )
             {
                 anim.SetTrigger("mem");
                 rev = true;
+                if (isGroundedChek)
+                {
+                    anim.SetBool("Siting", false);
+                }
             }
         }
     }
@@ -330,7 +336,7 @@ public class PlayerController : AudioManager , IDatPersistence
         {
             if (isGroundedChek )
             {
-                if (speed != 0f)
+                if (speed != 0f || speed == 0)
                 {
                     speed = 0;
                     anim.SetBool("Run", false);
