@@ -21,7 +21,7 @@ public class PlayerController : AudioManager , IDatPersistence
     public Animator anim;
     public Rigidbody2D rb;
 
-    private bool isGrounded, isStopRot, isGroundedChek , isDopGround, isBox , isStopRotBox;
+    private bool isGrounded, isStopRot, isGroundedChek , isDopGround, isBox , isStopRotBox, isBoxChech;
     public bool blockMoveX;
     public bool Climb ;
     public bool isWater = false;
@@ -81,6 +81,7 @@ public class PlayerController : AudioManager , IDatPersistence
         MoveUp();
         posNext();
         WaterRun();
+        MoveBox();
     }
 
     private void Move()
@@ -200,6 +201,36 @@ public class PlayerController : AudioManager , IDatPersistence
                     }
                 }
             }
+        }
+    }
+
+    private void MoveBox()
+    {
+        if (isBoxChech)
+        {
+            if (Run)
+            {
+                speed = 20;
+                anim.SetBool("Run", false);
+                anim.SetBool("tash", true);
+                if (RunRight)
+                {
+                    speed = 20f;
+                }
+                if (RunLeft)
+                {
+                    speed = -20f;
+                }
+            }
+            else
+            {
+                anim.SetBool("tash", false);
+                anim.SetBool("Siting", true);
+            }
+        }
+        else
+        {
+            anim.SetBool("tash", false);
         }
     }
     public void OnJumpButtonDown()
@@ -388,6 +419,7 @@ public class PlayerController : AudioManager , IDatPersistence
         isDopGround = Physics2D.OverlapCircle(DopGroud.position, CheckDistans, whatIsGround);
         isBox = Physics2D.OverlapCircle(feetPos.position, CheckDistans, whatIsBox);
         isStopRotBox = Physics2D.OverlapCircle(stopRot.position, checkRadius, whatIsBox);
+        isBoxChech = Physics2D.OverlapCircle(GraundChek.position, checkRadius, whatIsBox);
     }
 
     private void OnDrawGizmos()
