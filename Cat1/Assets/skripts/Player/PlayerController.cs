@@ -3,9 +3,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Scripting.APIUpdating;
 
-public class PlayerController : AudioManager , IDatPersistence 
+public class PlayerController : AudioManager , IDatPersistence, IPointerDownHandler , IPointerUpHandler
 {
     public float speed;
     public float normalSpeed;
@@ -36,6 +37,7 @@ public class PlayerController : AudioManager , IDatPersistence
     private bool RunLeft;
     private bool rev;
     public bool WolfAt;
+    public bool Dawn;
 
 
     public Transform feetPos, stopRot, GraundChek, DopGroud;
@@ -62,6 +64,9 @@ public class PlayerController : AudioManager , IDatPersistence
 
     [Header("SaveBackground")]
     public GameObject[] Background;
+
+    [Header("Audio")]
+    public GameObject[] AudioCat;
 
 
     private void Start()
@@ -93,6 +98,7 @@ public class PlayerController : AudioManager , IDatPersistence
             if (speed != 0f && !WolfAt)
             {
                 anim.SetBool("Run", true);
+                Dawn = false;
                 if (!isGrounded)
                 {
                    anim.SetBool("dawn", true);
@@ -109,6 +115,7 @@ public class PlayerController : AudioManager , IDatPersistence
             else
             {
                 anim.SetBool("Run", false);
+                Dawn = true;
                 if (!isGrounded)
                 {
                     anim.SetBool("dawn", true);
@@ -163,17 +170,18 @@ public class PlayerController : AudioManager , IDatPersistence
             }
             else
             {
-                jump = true;
+                
                 if (isBox )
                 {
                     anim.SetBool("Jump", false);
                     anim.SetBool("Dawn3", false);
+                    jump = false;
                 }
                 else
                 {
                     anim.SetBool("Jump", true);
                     //??????? ?????
-                    if (transform.eulerAngles.y == 0)
+                    if (transform.eulerAngles.y == 0 && Dawn)
                     {
                         transform.Rotate(0, 0, -40 * Time.deltaTime);
                         if (isStopRot || isWater == true || isStopRotBox)
@@ -182,7 +190,7 @@ public class PlayerController : AudioManager , IDatPersistence
                         }
                     }
                     //?????? ?????
-                    else if (transform.eulerAngles.y == 180)
+                    else if (transform.eulerAngles.y == 180 && Dawn)
                     {
                         transform.Rotate(0, 0, -40 * Time.deltaTime);
                         if (isStopRot || isWater == true || isStopRotBox)
@@ -204,6 +212,10 @@ public class PlayerController : AudioManager , IDatPersistence
                         anim.SetBool("Dawn3", true);
                     }
                 }
+            }
+            if(!isGrounded && !isBox)
+            {
+                jump = true;
             }
         }
     }
@@ -296,7 +308,7 @@ public class PlayerController : AudioManager , IDatPersistence
         }
         else if(transform.eulerAngles.y == 0)
         {
-            if (isGrounded || isWater)
+            if (isGrounded || isWater || isBox)
             {
                 anim.SetTrigger("mem");
                 rev = true;
@@ -346,7 +358,7 @@ public class PlayerController : AudioManager , IDatPersistence
         }
         else if (transform.eulerAngles.y == 180)
         {
-            if (isGrounded || isWater)
+            if (isGrounded || isWater || isBox)
             {
                 anim.SetTrigger("mem");
                 rev = true;
@@ -651,13 +663,19 @@ public class PlayerController : AudioManager , IDatPersistence
         anim.SetBool("wolfAtack", false);
     }
 
-    public void DownButtMur()
+    public void OnPointerUp(PointerEventData eventData)
     {
-        anim.SetBool("roll", true);
+         anim.SetBool("roll", false);
+         AudioCat[0].SetActive(false);
     }
 
-    public void OnButtMur()
+    public void OnPointerDown(PointerEventData eventData)
     {
-        anim.SetBool("roll", false);
-    }
+        
+         if(!Run && !jump && !Climb && !MovingUp && !rev && !isBoxChech && !isWater && !isGroundedChek && !Deatch )
+         {
+             anim.SetBool("roll", true);
+             AudioCat[0].SetActive(true);
+         }
+    } 
 }
