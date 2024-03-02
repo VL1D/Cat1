@@ -14,8 +14,10 @@ public class trigWolf : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
+            controller.anim.SetBool("wolfAtack", true);
             controller.speed = 0;
             controller.jumpForce = 0;
+            controller.WolfAt = true;
             wolf.SetActive(true);
             StartCoroutine(AnimSpeedWolf());
             CutsceneManager.Instance.StartCutscene("CatSceneWolf");
@@ -28,6 +30,7 @@ public class trigWolf : MonoBehaviour
         if (collision.tag == "Player")
         {
             controller.speed = 0;
+            controller.Run = false;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -49,5 +52,7 @@ public class trigWolf : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         wolfcontroller.speed = 80;
         Destroy(gameObject);
+        controller.WolfAt = true;
+
     }
 }

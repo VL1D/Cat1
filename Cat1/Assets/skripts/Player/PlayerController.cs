@@ -35,6 +35,7 @@ public class PlayerController : AudioManager , IDatPersistence
     private bool RunRight;
     private bool RunLeft;
     private bool rev;
+    public bool WolfAt;
 
 
     public Transform feetPos, stopRot, GraundChek, DopGroud;
@@ -89,7 +90,7 @@ public class PlayerController : AudioManager , IDatPersistence
         if (!Deatch)
         {
             rb.velocity = new Vector2(speed, rb.velocity.y);
-            if (speed != 0f )
+            if (speed != 0f && !WolfAt)
             {
                 anim.SetBool("Run", true);
                 if (!isGrounded)
@@ -128,11 +129,14 @@ public class PlayerController : AudioManager , IDatPersistence
                 {
                     speed = 40f;
                     transform.eulerAngles = new Vector3(0, 0, 0);
+                   
+                    
                 }
                 else if (RunLeft)
                 {
                     speed = -40f;
                     transform.eulerAngles = new Vector3(0, 180, 0);
+                    
                 }
             }
             if(!Run)
@@ -292,7 +296,7 @@ public class PlayerController : AudioManager , IDatPersistence
         }
         else if(transform.eulerAngles.y == 0)
         {
-            if (isGrounded)
+            if (isGrounded || isWater)
             {
                 anim.SetTrigger("mem");
                 rev = true;
@@ -342,7 +346,7 @@ public class PlayerController : AudioManager , IDatPersistence
         }
         else if (transform.eulerAngles.y == 180)
         {
-            if (isGrounded )
+            if (isGrounded || isWater)
             {
                 anim.SetTrigger("mem");
                 rev = true;
@@ -598,7 +602,27 @@ public class PlayerController : AudioManager , IDatPersistence
         {
             normalSpeed = 20;
             anim.SetBool("go", true);
-           
+            if (Run && !rev)
+            {
+                if (RunRight)
+                {
+                    speed = 20f;
+                    transform.eulerAngles = new Vector3(0, 0, 0);
+
+
+                }
+                else if (RunLeft)
+                {
+                    speed = -20f;
+                    transform.eulerAngles = new Vector3(0, 180, 0);
+
+                }
+            }
+            if (!Run)
+            {
+                speed = 0;
+            }
+
         }
         else
         {
@@ -620,5 +644,10 @@ public class PlayerController : AudioManager , IDatPersistence
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
             
+    }
+
+    public void noAtackWolf()
+    {
+        anim.SetBool("wolfAtack", false);
     }
 }

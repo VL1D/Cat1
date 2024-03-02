@@ -8,7 +8,7 @@ public class CheckPoints : MonoBehaviour
     public int index;
     void Awake()
     {
-        player = GameObject.Find("Cat").transform;
+        player = GameObject.Find("CatPlayer").transform;
         if (DataCheck.checkPointIndex == index)
         {
 
