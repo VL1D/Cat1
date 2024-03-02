@@ -172,7 +172,7 @@ public class PlayerController : AudioManager , IDatPersistence
                 else
                 {
                     anim.SetBool("Jump", true);
-                    //стрибок дугою
+                    //??????? ?????
                     if (transform.eulerAngles.y == 0)
                     {
                         transform.Rotate(0, 0, -40 * Time.deltaTime);
@@ -181,7 +181,7 @@ public class PlayerController : AudioManager , IDatPersistence
                             transform.eulerAngles = new Vector3(0, 0, 0);
                         }
                     }
-                    //стрибк дугою
+                    //?????? ?????
                     else if (transform.eulerAngles.y == 180)
                     {
                         transform.Rotate(0, 0, -40 * Time.deltaTime);
@@ -190,7 +190,7 @@ public class PlayerController : AudioManager , IDatPersistence
                             transform.eulerAngles = new Vector3(0, 180, 0);
                         }
                     }
-                    //стрибк на місці
+                    //?????? ?? ?????
                     if (speed == 0)
                     {
                         if (!isWater)
@@ -198,7 +198,7 @@ public class PlayerController : AudioManager , IDatPersistence
                             transform.position += transform.right * 0.4f;
                         }
                     }
-                    //врізався в перешкоду
+                    //???????? ? ?????????
                     if (isGroundedChek && isDopGround)
                     {
                         anim.SetBool("Dawn3", true);
@@ -649,5 +649,15 @@ public class PlayerController : AudioManager , IDatPersistence
     public void noAtackWolf()
     {
         anim.SetBool("wolfAtack", false);
+    }
+
+    public void DownButtMur()
+    {
+        anim.SetBool("roll", true);
+    }
+
+    public void OnButtMur()
+    {
+        anim.SetBool("roll", false);
     }
 }
