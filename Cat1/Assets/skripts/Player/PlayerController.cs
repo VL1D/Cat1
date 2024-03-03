@@ -79,7 +79,6 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
     
     private void FixedUpdate()
     {
-        
         Move();
         Jumping();
         CheckColision();
@@ -88,6 +87,10 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         posNext();
         WaterRun();
         MoveBox();
+        if(Deatch && isWater)
+        {
+            rb.mass = 50f;
+        }
     }
 
     private void Move()
@@ -251,7 +254,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
     }
     public void OnJumpButtonDown()
     {
-        if(!isGroundedChek)
+        if (!isGroundedChek) 
         {
             if (isGrounded || isBox )
             {
