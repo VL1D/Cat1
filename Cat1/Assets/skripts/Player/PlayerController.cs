@@ -38,6 +38,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
     private bool rev;
     public bool WolfAt;
     public bool Dawn;
+    private bool StopCat;
 
 
     public Transform feetPos, stopRot, GraundChek, DopGroud;
@@ -47,6 +48,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
 
     public LayerMask whatIsGround;
     public LayerMask whatIsBox;
+    public LayerMask whatIsStopCat;
 
     public GameObject deathScreen;
     public GameObject peredw;
@@ -254,22 +256,25 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
     }
     public void OnJumpButtonDown()
     {
-        if (!isGroundedChek) 
+        if (!StopCat)
         {
-            if (isGrounded || isBox )
+            if (!isGroundedChek)
             {
-                 anim.SetTrigger("Trig");
-                 rb.velocity = Vector2.up * jumpForce;
-                 transform.Rotate(0, 0, 20);
+                if (isGrounded || isBox)
+                {
+                    anim.SetTrigger("Trig");
+                    rb.velocity = Vector2.up * jumpForce;
+                    transform.Rotate(0, 0, 20);
+                }
             }
-        }
-        else
-        {
-            if (isGrounded || isWater || isBox)
+            else
             {
-                anim.SetTrigger("RunUp");
-                rb.velocity = Vector2.up * speedUp;
-                isWater = false;
+                if (isGrounded || isWater || isBox)
+                {
+                    anim.SetTrigger("RunUp");
+                    rb.velocity = Vector2.up * speedUp;
+                    isWater = false;
+                }
             }
         }
     }
@@ -315,7 +320,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
             {
                 anim.SetTrigger("mem");
                 rev = true;
-                if (isGroundedChek)
+                if (isGroundedChek || StopCat)
                 {
                     anim.SetBool("Siting", false);
                 }
@@ -365,7 +370,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
             {
                 anim.SetTrigger("mem");
                 rev = true;
-                if (isGroundedChek)
+                if (isGroundedChek || StopCat)
                 {
                     anim.SetBool("Siting", false);
                 }
@@ -384,7 +389,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
     {
         if (!Deatch)
         {
-            if (isGroundedChek )
+            if (isGroundedChek || StopCat )
             {
                 if (speed != 0f || speed == 0)
                 {
@@ -439,6 +444,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         isBox = Physics2D.OverlapCircle(feetPos.position, CheckDistans, whatIsBox);
         isStopRotBox = Physics2D.OverlapCircle(stopRot.position, checkRadius, whatIsBox);
         isBoxChech = Physics2D.OverlapCircle(GraundChek.position, checkRadius, whatIsBox);
+        StopCat = Physics2D.OverlapCircle(GraundChek.position, checkRadius, whatIsStopCat);
     }
 
     private void OnDrawGizmos()
@@ -542,7 +548,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
             Destroy(Wolf);
             if (DataCheck.checkPointIndex <= 19)
             {
-                Falling[1].transform.position = new Vector3(6886, -26, transform.position.z);
+                Falling[1].transform.position = new Vector3(6886, -23, transform.position.z);
             }
             else
             {
@@ -597,7 +603,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
             Destroy(Wolf);
             if (DataCheck.checkPointIndex <= 19)
             {
-                Falling[1].transform.position = new Vector3(6886, -26, transform.position.z);
+                Falling[1].transform.position = new Vector3(6886, -23, transform.position.z);
             }
             else
             {

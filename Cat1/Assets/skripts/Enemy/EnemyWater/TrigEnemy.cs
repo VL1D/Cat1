@@ -11,6 +11,7 @@ public class TrigEnemy : MonoBehaviour
         {
             EnemyWaterRespawn.instance.EnemyWatResp();
             StartCoroutine(Delete());
+            playerController.normalSpeed = 0;
             playerController.speed = 0;
             playerController.Run = false;
             playerController.jumpForce = 0;
@@ -31,7 +32,7 @@ public class TrigEnemy : MonoBehaviour
     {
         if (collider.tag == "Player")
         {
-            
+            playerController.normalSpeed = 40f;
             playerController.jumpForce = 35f;
         }
     }

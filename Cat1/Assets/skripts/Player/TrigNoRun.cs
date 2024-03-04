@@ -12,7 +12,8 @@ public class TrigNoRun : MonoBehaviour
         if(other.tag == "Player")
         {
             controller.speed = 0f;
-            Destroy(gameObject);
+            controller.Run = false;
+            Destroy(gameObject,0.3f);
         }
     }
 }
