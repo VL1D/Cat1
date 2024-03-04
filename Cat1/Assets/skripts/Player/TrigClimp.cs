@@ -8,6 +8,9 @@ public class TrigClimp : MonoBehaviour
     public PlayerController controller;
     BoxCollider2D box;
 
+
+    
+
     private void Start()
     {
         controller = GetComponentInParent<PlayerController>();

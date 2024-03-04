@@ -17,6 +17,16 @@ public class TrigEnemy : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.tag == "Player")
+        {
+            playerController.speed = 0;
+            playerController.Run = false;
+            playerController.jumpForce = 0;
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D collider)
     {
         if (collider.tag == "Player")
@@ -27,7 +37,7 @@ public class TrigEnemy : MonoBehaviour
     }
     private IEnumerator Delete()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2.5f);
         Destroy(gameObject);
 
     }
