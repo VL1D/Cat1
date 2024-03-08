@@ -11,6 +11,7 @@ public class buterflyidle : MonoBehaviour
 
     public bool fielsCircle;
     public bool fiels;
+    public bool BoxFly;
     
     private bool Ground;
     public bool GrounCheck;
@@ -18,18 +19,41 @@ public class buterflyidle : MonoBehaviour
     public Transform posit;
     public Transform Groundch;
     public float checkRadius;
+    public Transform BoxPoint;
+    public bool Fly_run;
 
 
     private void FixedUpdate()
     {
         CeckContr();
-        if (fiels)
+        if (!BoxFly)
         {
-            FielesFly();
+            if (fiels)
+            {
+                FielesFly();
+            }
+            else
+            {
+                LadtFlay();
+            }
         }
         else
         {
-            LadtFlay();
+            transform.position = Vector2.MoveTowards(transform.position, BoxPoint.transform.position, 40f * Time.deltaTime);
+            if(transform.position == BoxPoint.position)
+            {
+                anim.SetBool("fieles", true);
+            }
+            else
+            {
+                anim.SetBool("fieles", false);
+            }
+        }
+        if (Fly_run)
+        {
+            transform.Translate(Vector2.right * 40f * Time.deltaTime);
+            transform.Translate(Vector2.up * 15f * Time.deltaTime);
+            anim.SetBool("fieles", false);
         }
     }
 

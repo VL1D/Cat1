@@ -10,18 +10,20 @@ public class FlyRun : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (fly.fiels)
+        if (!fly.BoxFly)
         {
-            transform.Translate(Vector2.right * speedFly * Time.deltaTime);
-            if (fly.GrounCheck)
+            if (fly.fiels)
             {
-                transform.Translate(Vector2.up * fly.speed * Time.deltaTime);
+                transform.Translate(Vector2.right * speedFly * Time.deltaTime);
+                if (fly.GrounCheck)
+                {
+                    transform.Translate(Vector2.up * fly.speed * Time.deltaTime);
+                }
+            }
+            else
+            {
+                transform.Translate(Vector2.right * 0 * Time.deltaTime);
             }
         }
-        else
-        {
-            transform.Translate(Vector2.right * 0 * Time.deltaTime);
-        }
-
     }
 }
