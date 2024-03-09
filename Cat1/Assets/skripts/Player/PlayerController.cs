@@ -514,6 +514,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         {
             Background[0].SetActive(false);
             Background[1].SetActive(true);
+            Destroy(Enemy[2]);
         }
         if (DataCheck.checkPointIndex == 5)
         {
@@ -569,6 +570,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         {
             Background[0].SetActive(false);
             Background[1].SetActive(true);
+            Destroy(Enemy[2]);
         }
         if (DataCheck.checkPointIndex == 5)
         {

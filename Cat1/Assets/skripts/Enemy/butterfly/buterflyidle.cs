@@ -44,10 +44,6 @@ public class buterflyidle : MonoBehaviour
             {
                 anim.SetBool("fieles", true);
             }
-            else
-            {
-                anim.SetBool("fieles", false);
-            }
         }
         if (Fly_run)
         {

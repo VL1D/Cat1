@@ -8,11 +8,13 @@ public class FlyRun : MonoBehaviour
     public buterflyidle fly;
     public float speedFly;
 
+    public bool Run;
+
     void FixedUpdate()
     {
         if (!fly.BoxFly)
         {
-            if (fly.fiels)
+            if (fly.fiels && Run)
             {
                 transform.Translate(Vector2.right * speedFly * Time.deltaTime);
                 if (fly.GrounCheck)
