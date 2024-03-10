@@ -7,6 +7,7 @@ public class FlyRun : MonoBehaviour
 {
     public buterflyidle fly;
     public float speedFly;
+    public Transform pointTransform;
 
     public bool Run;
 
@@ -16,15 +17,18 @@ public class FlyRun : MonoBehaviour
         {
             if (fly.fiels && Run)
             {
-                transform.Translate(Vector2.right * speedFly * Time.deltaTime);
-                if (fly.GrounCheck)
+                transform.position = Vector2.MoveTowards(transform.position,pointTransform.position,speedFly * Time.deltaTime);
+                if (transform.position == pointTransform.position)
                 {
-                    transform.Translate(Vector2.up * fly.speed * Time.deltaTime);
+                    fly.transform.position = pointTransform.position;
+                    transform.position = pointTransform.position;
+                    fly.fiels = false;
+                    Run = false;
                 }
-            }
-            else
-            {
-                transform.Translate(Vector2.right * 0 * Time.deltaTime);
+                if(transform.position.y < pointTransform.position.y)
+                {
+                    transform.Translate(Vector2.up * 20 * Time.deltaTime);
+                }
             }
         }
     }

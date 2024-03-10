@@ -5,32 +5,55 @@ using UnityEngine;
 
 public class buterflyidle : MonoBehaviour
 {
-    public GameObject[] points;
-    public float speed;
     public Animator anim;
 
     public bool fielsCircle;
     public bool fiels;
     public bool BoxFly;
     
-    private bool Ground;
-    public bool GrounCheck;
-    public LayerMask ground;
-    public Transform posit;
-    public Transform Groundch;
-    public float checkRadius;
     public Transform BoxPoint;
     public bool Fly_run;
 
+    private void Start()
+    {
+       if(MyPath == null)
+       {
+            Debug.Log("Примени путь");
+            return;
+       }
 
+       pointInPath = MyPath.GetNextPoints();
+
+        pointInPath.MoveNext();
+
+        if (pointInPath.Current == null)
+        {
+            Debug.Log("потрібні точки");
+            return;
+        }
+
+        transform.position = pointInPath.Current.position;
+    }
+
+    public enum MovementType
+    {
+        Moveing,
+        Leping
+    }
+
+    public MovementType Type = MovementType.Moveing;
+    public MovemingPoins MyPath;
+    public float speed;
+    public float maxDistanct = .1f;
+
+    private IEnumerator<Transform> pointInPath;
     private void FixedUpdate()
     {
-        CeckContr();
         if (!BoxFly)
         {
             if (fiels)
             {
-                FielesFly();
+                FielesFlyRandom();
             }
             else
             {
@@ -53,45 +76,42 @@ public class buterflyidle : MonoBehaviour
         }
     }
 
-    public void FielesFly()
+    
+    public void FielesFlyRandom()
     {
         anim.SetBool("fieles", false);
-        if (!fielsCircle)
+        if(pointInPath == null || pointInPath.Current == null)
         {
-            transform.position = Vector2.MoveTowards(transform.position, points[0].transform.position, speed * Time.deltaTime);
-            if (transform.position == points[0].transform.position)
-            {
-                fielsCircle = true;
-            }
+            return;
         }
-        else
+
+        if(Type == MovementType.Moveing)
         {
-            transform.position = Vector2.MoveTowards(transform.position, points[1].transform.position, speed * Time.deltaTime);
-            if (transform.position == points[1].transform.position)
-            {
-                fielsCircle = false;
-            }
+            transform.position = Vector3.MoveTowards(transform.position,pointInPath.Current.position,Time.deltaTime * speed);
+        }
+        else if(Type == MovementType.Leping)
+        {
+            transform.position = Vector3.Lerp(transform.position, pointInPath.Current.position, Time.deltaTime * speed);
+        }
+
+        var distanceSqure = (transform.position - pointInPath.Current.position).sqrMagnitude;
+        if(distanceSqure < maxDistanct * maxDistanct)
+        {
+            pointInPath.MoveNext();
         }
 
     }
 
     public void LadtFlay()
     {
-        if (!Ground)
-        {
-            transform.Translate(Vector2.down * speed * Time.deltaTime);
-        }
-        else
-        {
-            anim.SetBool("fieles", true);
-        }
+       anim.SetBool("fieles", true);
+        
     }
 
-   
 
-    private void CeckContr()
+    public void CutFieles()
     {
-        Ground = Physics2D.OverlapCircle(posit.transform.position, checkRadius, ground);
-        GrounCheck = Physics2D.OverlapCircle(Groundch.transform.position, checkRadius, ground);
+        fiels = true;
     }
+
 }

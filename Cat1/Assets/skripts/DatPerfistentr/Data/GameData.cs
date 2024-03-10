@@ -10,6 +10,6 @@ public class GameData
 
     public GameData()
     {
-        playerPosition = new Vector3(-3917, 58, 0);
+        playerPosition = new Vector3(-3929, 58, 0);
     }
 }
