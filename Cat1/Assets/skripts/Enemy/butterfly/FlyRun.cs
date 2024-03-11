@@ -7,9 +7,42 @@ public class FlyRun : MonoBehaviour
 {
     public buterflyidle fly;
     public float speedFly;
-    public Transform pointTransform;
+   // public Transform[] pointTransform;
 
     public bool Run;
+
+    private void Start()
+    {
+        if (MyPath == null)
+        {
+            Debug.Log("Примени путь");
+            return;
+        }
+
+        pointInPath = MyPath.GetNextPoints();
+
+        pointInPath.MoveNext();
+
+        if (pointInPath.Current == null)
+        {
+            Debug.Log("потрібні точки");
+            return;
+        }
+
+        transform.position = pointInPath.Current.position;
+    }
+
+    public enum MovementType
+    {
+        Moveing,
+        Leping
+    }
+
+    public MovementType Type = MovementType.Moveing;
+    public MovemingPoins MyPath;
+    //public float speed;
+    public float maxDistanct = .1f;
+    private IEnumerator<Transform> pointInPath;
 
     void FixedUpdate()
     {
@@ -17,17 +50,24 @@ public class FlyRun : MonoBehaviour
         {
             if (fly.fiels && Run)
             {
-                transform.position = Vector2.MoveTowards(transform.position,pointTransform.position,speedFly * Time.deltaTime);
-                if (transform.position == pointTransform.position)
+                if (pointInPath == null || pointInPath.Current == null)
                 {
-                    fly.transform.position = pointTransform.position;
-                    transform.position = pointTransform.position;
-                    fly.fiels = false;
-                    Run = false;
+                    return;
                 }
-                if(transform.position.y < pointTransform.position.y)
+
+                if (Type == MovementType.Moveing)
                 {
-                    transform.Translate(Vector2.up * 20 * Time.deltaTime);
+                    transform.position = Vector3.MoveTowards(transform.position, pointInPath.Current.position, Time.deltaTime * speedFly);
+                }
+                else if (Type == MovementType.Leping)
+                {
+                    transform.position = Vector3.Lerp(transform.position, pointInPath.Current.position, Time.deltaTime * speedFly);
+                }
+
+                var distanceSqure = (transform.position - pointInPath.Current.position).sqrMagnitude;
+                if (distanceSqure < maxDistanct * maxDistanct)
+                {
+                    pointInPath.MoveNext();
                 }
             }
         }
