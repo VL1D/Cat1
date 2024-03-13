@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class buterflyidle : MonoBehaviour
@@ -18,7 +17,6 @@ public class buterflyidle : MonoBehaviour
     {
        if(MyPath == null)
        {
-            Debug.Log("Примени путь");
             return;
        }
 
@@ -28,7 +26,6 @@ public class buterflyidle : MonoBehaviour
 
         if (pointInPath.Current == null)
         {
-            Debug.Log("потрібні точки");
             return;
         }
 
@@ -112,6 +109,7 @@ public class buterflyidle : MonoBehaviour
     public void CutFieles()
     {
         fiels = true;
+        BoxFly = false;
     }
 
 }

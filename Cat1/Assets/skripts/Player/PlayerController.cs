@@ -168,6 +168,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         {
             if (isGrounded)
             {
+                rb.gravityScale = 5f;
                 anim.SetBool("Jump", false);
                 anim.SetBool("Dawn3", false);
                 isWater = false;
@@ -689,4 +690,9 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
              AudioCat[0].SetActive(true);
          }
     } 
+
+    public void DawnAnim()
+    {
+        rb.gravityScale = 10f;
+    }
 }

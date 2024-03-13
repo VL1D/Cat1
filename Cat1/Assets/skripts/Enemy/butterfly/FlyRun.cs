@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.ShaderData;
 
 public class FlyRun : MonoBehaviour
 {
     public buterflyidle fly;
     public float speedFly;
-   // public Transform[] pointTransform;
 
     public bool Run;
 
@@ -15,7 +13,6 @@ public class FlyRun : MonoBehaviour
     {
         if (MyPath == null)
         {
-            Debug.Log("Примени путь");
             return;
         }
 
@@ -25,7 +22,6 @@ public class FlyRun : MonoBehaviour
 
         if (pointInPath.Current == null)
         {
-            Debug.Log("потрібні точки");
             return;
         }
 
@@ -40,7 +36,6 @@ public class FlyRun : MonoBehaviour
 
     public MovementType Type = MovementType.Moveing;
     public MovemingPoins MyPath;
-    //public float speed;
     public float maxDistanct = .1f;
     private IEnumerator<Transform> pointInPath;
 
