@@ -261,6 +261,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                     anim.SetTrigger("Trig");
                     rb.velocity = Vector2.up * jumpForce;
                     transform.Rotate(0, 0, 20);
+                    Dawn = false;
                 }
             }
             else
@@ -302,11 +303,13 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                 {
                     speed = -normalSpeed;
                     transform.eulerAngles = new Vector3(0, 180, 0);
+                    Dawn = false;
                 }
                 if (isWater)
                 {
                     speed = -normalSpeed;
                     transform.eulerAngles = new Vector3(0, 180, 0);
+                    Dawn = false;
                 }
             }
         }
@@ -352,11 +355,13 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                 {
                     speed = normalSpeed;
                     transform.eulerAngles = new Vector3(0, 0, 0);
+                    Dawn = false;
                 }
                 if (isWater)
                 {
                     speed = normalSpeed;
                     transform.eulerAngles = new Vector3(0, 0, 0);
+                    Dawn = false;
                 }
             }
         }
@@ -702,4 +707,5 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
     }
+
 }
