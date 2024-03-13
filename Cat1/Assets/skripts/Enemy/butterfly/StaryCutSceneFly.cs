@@ -9,6 +9,7 @@ public class StaryCutSceneFly : MonoBehaviour
         if(collision.tag == "Player")
         {
             CutsceneManager.Instance.StartCutscene("CatSceneFly");
+            Destroy(gameObject,2f);
         }
     }
 }

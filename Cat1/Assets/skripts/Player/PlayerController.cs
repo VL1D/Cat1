@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Scripting.APIUpdating;
+using UnityEngine.UI;
 
 public class PlayerController : AudioManager , IDatPersistence, IPointerDownHandler , IPointerUpHandler
 {
@@ -103,7 +104,6 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
             if (speed != 0f && !WolfAt)
             {
                 anim.SetBool("Run", true);
-                Dawn = false;
                 if (!isGrounded)
                 {
                    anim.SetBool("dawn", true);
@@ -120,7 +120,6 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
             else
             {
                 anim.SetBool("Run", false);
-                Dawn = true;
                 if (!isGrounded)
                 {
                     anim.SetBool("dawn", true);
@@ -135,20 +134,15 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                 }
             }
         
-            if (Run && !MovingUp && !Climb && !jump && !rev)
+            if (Run && !MovingUp && !Climb &&!jump && !rev )
             {
                 if(RunRight)
-                {
+               {
                     speed = 40f;
-                    transform.eulerAngles = new Vector3(0, 0, 0);
-                   
-                    
                 }
                 else if (RunLeft)
                 {
                     speed = -40f;
-                    transform.eulerAngles = new Vector3(0, 180, 0);
-                    
                 }
             }
             if(!Run)
@@ -187,7 +181,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                 {
                     anim.SetBool("Jump", true);
                     //??????? ?????
-                    if (transform.eulerAngles.y == 0 && Dawn)
+                    if (transform.eulerAngles.y == 0 && !Dawn)
                     {
                         transform.Rotate(0, 0, -40 * Time.deltaTime);
                         if (isStopRot || isWater == true || isStopRotBox)
@@ -196,7 +190,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                         }
                     }
                     //?????? ?????
-                    else if (transform.eulerAngles.y == 180 && Dawn)
+                    else if (transform.eulerAngles.y == 180 && !Dawn)
                     {
                         transform.Rotate(0, 0, -40 * Time.deltaTime);
                         if (isStopRot || isWater == true || isStopRotBox)
@@ -239,7 +233,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                 {
                     speed = 20f;
                 }
-                if (RunLeft)
+                else if (RunLeft)
                 {
                     speed = -20f;
                 }
@@ -263,6 +257,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
             {
                 if (isGrounded || isBox)
                 {
+                    jump = true;
                     anim.SetTrigger("Trig");
                     rb.velocity = Vector2.up * jumpForce;
                     transform.Rotate(0, 0, 20);
@@ -315,7 +310,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                 }
             }
         }
-        else if(transform.eulerAngles.y == 0)
+        else if(transform.eulerAngles.y == 0 )
         {
             if (isGrounded || isWater || isBox)
             {
@@ -365,7 +360,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                 }
             }
         }
-        else if (transform.eulerAngles.y == 180)
+        else if (transform.eulerAngles.y == 180 )
         {
             if (isGrounded || isWater || isBox)
             {
@@ -694,5 +689,17 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
     public void DawnAnim()
     {
         rb.gravityScale = 10f;
+    }
+
+    public void Touth()
+    {
+        if (RunLeft)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+        else if (RunRight)
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
     }
 }
