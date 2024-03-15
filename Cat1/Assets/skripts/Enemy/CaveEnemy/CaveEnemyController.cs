@@ -12,6 +12,7 @@ public class CaveEnemyController : MonoBehaviour
     public float StartWaitTime;
     private int randomspot;
 
+    public GameObject CatPlayer;
     public Transform Cat;
     public Transform CatKill;
     public Rigidbody2D rbCat;
@@ -19,6 +20,7 @@ public class CaveEnemyController : MonoBehaviour
     public bool activeMove ;
     public bool look = false;
     public bool AtackEnemy = false;
+    public bool kill;
 
     public GameObject strg;
 
@@ -35,12 +37,17 @@ public class CaveEnemyController : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+        if (kill)
+        {
+            KillCat();
+        }
     }
 
     private void Move()
     {
         if (activeMove )
         {
+            kill = false;
             transform.position = Vector2.MoveTowards(transform.position, points[randomspot].position, speed * Time.deltaTime);
             if (Vector2.Distance(transform.position, points[randomspot].position) < 0.2f)
             {
@@ -109,10 +116,16 @@ public class CaveEnemyController : MonoBehaviour
     {
         Cat.transform.position = CatKill.position;
         rbCat.isKinematic = true;
+        kill = true;
     }
     public void AnimAtack()
     {
         Instantiate(strg, RespawnPos.position, Quaternion.identity);
+    }
+
+    public void KillCat()
+    {
+        CatPlayer.transform.position = CatKill.position;
     }
 
 }

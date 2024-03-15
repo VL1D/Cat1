@@ -25120,7 +25120,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8468.586, y: 3.6428652, z: -33}
+  m_LocalPosition: {x: 2193.6858, y: 21.742865, z: -33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -32570,7 +32570,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661053011}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2247.5508, y: -7.0009184, z: -34.57988}
+  m_LocalPosition: {x: -8522.451, y: 11.099081, z: -34.57988}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -49499,7 +49499,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1016498946}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8447.9, y: -6.1, z: 0}
+  m_LocalPosition: {x: 2173, y: 12, z: 0}
   m_LocalScale: {x: -0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -57466,6 +57466,32 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8873025295180326330, guid: 1ed0ec448ef98f548a3d5be33aecaba7, type: 3}
   m_PrefabInstance: {fileID: 8873025296299539237}
   m_PrefabAsset: {fileID: 0}
+--- !u!61 &1198977780
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198977775}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -222.1, y: 81.6}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 11.710693, y: 37.94103}
+  m_EdgeRadius: 0
 --- !u!1 &1200193546
 GameObject:
   m_ObjectHideFlags: 0
@@ -93313,12 +93339,14 @@ MonoBehaviour:
   - {fileID: 1851950787}
   - {fileID: 227585163}
   StartWaitTime: 0
+  CatPlayer: {fileID: 1016498946}
   Cat: {fileID: 1016498954}
   CatKill: {fileID: 1711019354}
   rbCat: {fileID: 1016498949}
   activeMove: 0
   look: 0
   AtackEnemy: 0
+  kill: 0
   strg: {fileID: 1305176955102876481, guid: 7ae41a0e1b69143448221c05b8415f27, type: 3}
   RespawnPos: {fileID: 1722276648}
 --- !u!61 &1895666613
@@ -108029,10 +108057,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 8873025295343235839, guid: 1ed0ec448ef98f548a3d5be33aecaba7, type: 3}
-      propertyPath: playercontroller
-      value: 
-      objectReference: {fileID: 1016498955}
     - target: {fileID: 8873025295367388957, guid: 1ed0ec448ef98f548a3d5be33aecaba7, type: 3}
       propertyPath: m_Mesh
       value: 
