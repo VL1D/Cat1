@@ -251,129 +251,138 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
     }
     public void OnJumpButtonDown()
     {
-        if (!StopCat)
+        if (!Deatch)
         {
-            if (!isGroundedChek)
+            if (!StopCat)
             {
-                if (isGrounded || isBox)
+                if (!isGroundedChek)
                 {
-                    jump = true;
-                    anim.SetTrigger("Trig");
-                    rb.velocity = Vector2.up * jumpForce;
-                    transform.Rotate(0, 0, 20);
-                    Dawn = false;
+                    if (isGrounded || isBox)
+                    {
+                        jump = true;
+                        anim.SetTrigger("Trig");
+                        rb.velocity = Vector2.up * jumpForce;
+                        transform.Rotate(0, 0, 20);
+                        Dawn = false;
+                    }
                 }
-            }
-            else
-            {
-                if (isGrounded || isWater || isBox)
+                else
                 {
-                    anim.SetTrigger("RunUp");
-                    rb.velocity = Vector2.up * speedUp;
-                    isWater = false;
+                    if (isGrounded || isWater || isBox)
+                    {
+                        anim.SetTrigger("RunUp");
+                        rb.velocity = Vector2.up * speedUp;
+                        isWater = false;
+                    }
                 }
             }
         }
     }
     public void OnLeftButtonDown()
     {
-        Run = true;
-        RunLeft = true;
-        if (transform.eulerAngles.y == 180)
+        if (!Deatch)
         {
-            if (speed >= 0f)
+            Run = true;
+            RunLeft = true;
+            if (transform.eulerAngles.y == 180)
             {
-
-                if (!isGrounded)
+                if (speed >= 0f)
                 {
-                    if (isBox)
+
+                    if (!isGrounded)
                     {
-                        speed = -normalSpeed;
-                        transform.eulerAngles = new Vector3(0, 180, 0);
+                        if (isBox)
+                        {
+                            speed = -normalSpeed;
+                            transform.eulerAngles = new Vector3(0, 180, 0);
+                        }
+                        else
+                        {
+                            if (transform.eulerAngles.y == 0)
+                            {
+                                transform.eulerAngles = new Vector3(0, 0, 0);
+                            }
+                        }
                     }
                     else
                     {
-                        if (transform.eulerAngles.y == 0)
-                        {
-                            transform.eulerAngles = new Vector3(0, 0, 0);
-                        }
+                        speed = -normalSpeed;
+                        transform.eulerAngles = new Vector3(0, 180, 0);
+                        Dawn = false;
+                    }
+                    if (isWater)
+                    {
+                        speed = -normalSpeed;
+                        transform.eulerAngles = new Vector3(0, 180, 0);
+                        Dawn = false;
                     }
                 }
-                else
-                {
-                    speed = -normalSpeed;
-                    transform.eulerAngles = new Vector3(0, 180, 0);
-                    Dawn = false;
-                }
-                if (isWater)
-                {
-                    speed = -normalSpeed;
-                    transform.eulerAngles = new Vector3(0, 180, 0);
-                    Dawn = false;
-                }
             }
-        }
-        else if(transform.eulerAngles.y == 0 )
-        {
-            if (isGrounded || isWater || isBox)
+            else if (transform.eulerAngles.y == 0)
             {
-                anim.SetTrigger("mem");
-                rev = true;
-                if (isGroundedChek || StopCat)
+                if (isGrounded || isWater || isBox)
                 {
-                    anim.SetBool("Siting", false);
+                    anim.SetTrigger("mem");
+                    rev = true;
+                    if (isGroundedChek || StopCat)
+                    {
+                        anim.SetBool("Siting", false);
+                    }
                 }
             }
         }
     }
     public void OnRightButtonDown()
     {
-        Run = true;
-        RunRight = true;
-        if (transform.eulerAngles.y == 0)
+        if (!Deatch)
         {
-            if (speed <= 0f)
+            Run = true;
+            RunRight = true;
+            if (transform.eulerAngles.y == 0)
             {
-
-                if (!isGrounded)
+                if (speed <= 0f)
                 {
 
-                    if (isBox)
+                    if (!isGrounded)
                     {
-                        speed = normalSpeed;
-                        transform.eulerAngles = new Vector3(0, 0, 0);
+
+                        if (isBox)
+                        {
+                            speed = normalSpeed;
+                            transform.eulerAngles = new Vector3(0, 0, 0);
+                        }
+                        else
+                        {
+                            if (transform.eulerAngles.y == 180)
+                            {
+                                transform.eulerAngles = new Vector3(0, 180, 0);
+                            }
+                        }
                     }
                     else
                     {
-                        if (transform.eulerAngles.y == 180)
-                        {
-                            transform.eulerAngles = new Vector3(0, 180, 0);
-                        }
+                        speed = normalSpeed;
+                        transform.eulerAngles = new Vector3(0, 0, 0);
+                        Dawn = false;
+                    }
+                    if (isWater)
+                    {
+                        speed = normalSpeed;
+                        transform.eulerAngles = new Vector3(0, 0, 0);
+                        Dawn = false;
                     }
                 }
-                else
-                {
-                    speed = normalSpeed;
-                    transform.eulerAngles = new Vector3(0, 0, 0);
-                    Dawn = false;
-                }
-                if (isWater)
-                {
-                    speed = normalSpeed;
-                    transform.eulerAngles = new Vector3(0, 0, 0);
-                    Dawn = false;
-                }
             }
-        }
-        else if (transform.eulerAngles.y == 180 )
-        {
-            if (isGrounded || isWater || isBox)
+            else if (transform.eulerAngles.y == 180)
             {
-                anim.SetTrigger("mem");
-                rev = true;
-                if (isGroundedChek || StopCat)
+                if (isGrounded || isWater || isBox)
                 {
-                    anim.SetBool("Siting", false);
+                    anim.SetTrigger("mem");
+                    rev = true;
+                    if (isGroundedChek || StopCat)
+                    {
+                        anim.SetBool("Siting", false);
+                    }
                 }
             }
         }
@@ -473,6 +482,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                 peredw.SetActive(false);
                 Deatch = true;
                 hidden = false;
+                Run = false;
             }
         }
         if(other.tag == "Respawn")

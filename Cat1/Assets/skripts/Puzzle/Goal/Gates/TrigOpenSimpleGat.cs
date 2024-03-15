@@ -10,6 +10,7 @@ public class TrigOpenSimpleGat : MonoBehaviour
     private bool GattesOpen;
     public Animator anim;
     private bool AnimStop;
+    public GameObject trigResp;
     private void FixedUpdate()
     {
         PressButt();
@@ -45,6 +46,7 @@ public class TrigOpenSimpleGat : MonoBehaviour
             }
             anim.SetBool("isOpen", true);
             anim.SetBool("isClose", false);
+            trigResp.SetActive(false);
         }
         else
         {
@@ -55,6 +57,7 @@ public class TrigOpenSimpleGat : MonoBehaviour
             }
             anim.SetBool("isClose", true);
             anim.SetBool("isOpen", false);
+            trigResp.SetActive(true);
         }
 
         if (speedGatt == 0)
