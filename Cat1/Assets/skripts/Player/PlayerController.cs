@@ -483,6 +483,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                 Deatch = true;
                 hidden = false;
                 Run = false;
+                gameObject.layer = 20;
             }
         }
         if(other.tag == "Respawn")
