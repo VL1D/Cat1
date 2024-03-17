@@ -9,7 +9,6 @@ public class TrigOpenSimpleGat : MonoBehaviour
     public Transform[] pointsGatt;
     private bool GattesOpen;
     public Animator anim;
-    private bool AnimStop;
     public GameObject trigResp;
     private void FixedUpdate()
     {
@@ -21,7 +20,6 @@ public class TrigOpenSimpleGat : MonoBehaviour
         {
             GattesOpen = true;
             speedGatt = 8f;
-            AnimStop = false;
         }
     }
 
@@ -31,7 +29,6 @@ public class TrigOpenSimpleGat : MonoBehaviour
         {
             speedGatt = 13f;
             GattesOpen = false;
-            AnimStop = true;
         }
     }
 
@@ -65,7 +62,5 @@ public class TrigOpenSimpleGat : MonoBehaviour
             anim.SetBool("isClose", false);
             anim.SetBool("isOpen", false);
         }
-
-
     }
 }
