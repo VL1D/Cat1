@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtGattEasy : MonoBehaviour
+public class ButtGat : MonoBehaviour
 {
     private bool Pressing;
     private float speed;
     public Transform pointsUp;
-    public TrigLever lever;
+    public LeverBlocGat lever;
     private void FixedUpdate()
     {
         PressButt();

@@ -8,7 +8,7 @@ public class TrigLever : MonoBehaviour
     public Animator anim;
     public Animator animGating;
     public Animator Gat;
-    public bool Blocking = false;
+    public bool Blocking ;
     public GameObject Gattes;
     public Transform[] pointsGatt;
     public float speedGatt;

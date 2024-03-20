@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtGattLever : MonoBehaviour
+public class MovGatt : MonoBehaviour
 {
     public float speedGatt;
     public GameObject Gattes;
     public Transform[] pointsGatt;
-    public bool GattesOpen;
+    private bool GattesOpen;
     public Animator anim;
     public GameObject trigResp;
-    public TrigLever lever;
-    public ButtGattEasy Butt;
+    public LeverBlocGat lever;
+    public ButtGat Butt;
     private void FixedUpdate()
     {
         PressButt();
@@ -27,7 +27,7 @@ public class ButtGattLever : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Player" )
+        if (collision.tag == "Player")
         {
             speedGatt = 25f;
             GattesOpen = false;
