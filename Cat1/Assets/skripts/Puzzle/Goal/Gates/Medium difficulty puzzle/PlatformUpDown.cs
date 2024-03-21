@@ -10,6 +10,7 @@ public class PlatformUpDown : MonoBehaviour
     public GameObject Platform;
     public Transform[] pointsMovings;
     public bool PlatformMove;
+    public Animator PlatAnim;
 
     private void FixedUpdate()
     {
@@ -42,6 +43,7 @@ public class PlatformUpDown : MonoBehaviour
         if (!MoveUDPlatform)
         {
             PlatformMove = true;
+            PlatAnim.SetBool("up", true);
             Platform.transform.position = Vector2.MoveTowards(Platform.transform.position, pointsMovings[0].transform.position, speed * Time.deltaTime);
             if (Platform.transform.position == pointsMovings[0].transform.position)
             {
@@ -51,6 +53,7 @@ public class PlatformUpDown : MonoBehaviour
         else
         {
             PlatformMove = true;
+            PlatAnim.SetBool("down", true);
             Platform.transform.position = Vector2.MoveTowards(Platform.transform.position, pointsMovings[1].transform.position, speed * Time.deltaTime);
             if (Platform.transform.position == pointsMovings[1].transform.position)
             {
@@ -61,6 +64,8 @@ public class PlatformUpDown : MonoBehaviour
         if (speed == 0)
         {
             PlatformMove = false;
+            PlatAnim.SetBool("up", false);
+            PlatAnim.SetBool("down", false);
         }
     }
 }

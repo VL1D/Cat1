@@ -37,7 +37,7 @@ public class SimpleGate : MonoBehaviour
         }
         else
         {
-            if(transform.position.y < pointsUp.position.y)
+            if (transform.position.y < pointsUp.position.y)
             {
                 transform.Translate(Vector2.up * speed * Time.deltaTime);
             }
