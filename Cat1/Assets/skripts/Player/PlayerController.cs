@@ -98,66 +98,72 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
 
     private void Move()
     {
-        if (!Deatch)
+        if (!blockMoveX)
         {
-            rb.velocity = new Vector2(speed, rb.velocity.y);
-            if (speed != 0f && !WolfAt)
+            if (!Deatch)
             {
-                anim.SetBool("Run", true);
-                if (!isGrounded)
+                rb.velocity = new Vector2(speed, rb.velocity.y);
+                if (speed != 0f && !WolfAt)
                 {
-                   anim.SetBool("dawn", true);
+                    anim.SetBool("Run", true);
+                    if (!isGrounded)
+                    {
+                        anim.SetBool("dawn", true);
+                    }
+                    else
+                    {
+                        anim.SetBool("dawn", false);
+                    }
+                    if (isBox)
+                    {
+                        anim.SetBool("dawn", false);
+                    }
                 }
                 else
                 {
-                    anim.SetBool("dawn", false);
+                    anim.SetBool("Run", false);
+                    if (!isGrounded)
+                    {
+                        anim.SetBool("dawn", true);
+                    }
+                    else
+                    {
+                        anim.SetBool("dawn", false);
+                    }
+                    if (isBox)
+                    {
+                        anim.SetBool("dawn", false);
+                    }
                 }
-                if (isBox )
+
+                if (Run && !MovingUp && !Climb && !jump && !rev)
                 {
-                   anim.SetBool("dawn", false);
+                    if (RunRight)
+                    {
+                        speed = 40f;
+                       // transform.eulerAngles = new Vector3(0, 0, 0);
+                    }
+                    else if (RunLeft)
+                    {
+                        speed = -40f;
+                       // transform.eulerAngles = new Vector3(0, 180, 0);
+                    }
+                }
+                if (!Run)
+                {
+                    speed = 0;
                 }
             }
-            else
+            if (Deatch)
             {
-                anim.SetBool("Run", false);
-                if (!isGrounded)
-                {
-                    anim.SetBool("dawn", true);
-                }
-                else
-                {
-                     anim.SetBool("dawn", false);
-                }
-                if (isBox )
-                {
-                     anim.SetBool("dawn", false);
-                }
+                speed = 0f;
+                normalSpeed = 0f;
             }
-        
-            if (Run && !MovingUp && !Climb &&!jump && !rev )
-            {
-                if(RunRight)
-               {
-                    speed = 40f;
-                }
-                else if (RunLeft)
-                {
-                    speed = -40f;
-                }
-            }
-            if(!Run)
-            {
-                speed = 0;
-            }
-        }
-        if (Deatch)
-        {
-            speed = 0f;
-            normalSpeed = 0f;
         }
     }
     private void Jumping()
     {
+
         if (!Deatch)
         {
             if (isGrounded)
@@ -170,8 +176,8 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
             }
             else
             {
-                
-                if (isBox )
+
+                if (isBox)
                 {
                     anim.SetBool("Jump", false);
                     anim.SetBool("Dawn3", false);
@@ -213,7 +219,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                     }
                 }
             }
-            if(!isGrounded && !isBox)
+            if (!isGrounded && !isBox)
             {
                 jump = true;
             }
@@ -280,7 +286,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
     }
     public void OnLeftButtonDown()
     {
-        if (!Deatch)
+        if (!Deatch )
         {
             Run = true;
             RunLeft = true;
@@ -511,16 +517,46 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
     {
         if (Climb)
         {
-            speed = 0f;
-            if(transform.eulerAngles.y == 0)
+            if (!Run)
             {
-                _newPosition = new Vector3(transform.position.x + DopSpeed , transform.position.y, transform.position.z);
-                transform.position = _newPosition;
+                speed = 0f;
+                if (transform.eulerAngles.y == 0)
+                {
+                    _newPosition = new Vector3(transform.position.x + DopSpeed, transform.position.y, transform.position.z);
+                    transform.position = _newPosition;
+                }
+                else if (transform.eulerAngles.y == 180)
+                {
+                    _newPosition = new Vector3(transform.position.x + -DopSpeed, transform.position.y, transform.position.z);
+                    transform.position = _newPosition;
+                }
             }
-            else if (transform.eulerAngles.y == 180)
+            else
             {
-                _newPosition = new Vector3(transform.position.x + -DopSpeed, transform.position.y , transform.position.z);
-                transform.position = _newPosition;
+                if(transform.eulerAngles.y == 0 && RunLeft)
+                {
+                    _newPosition = new Vector3(transform.position.x + DopSpeed, transform.position.y, transform.position.z);
+                    transform.position = _newPosition;
+                    anim.SetTrigger("mem");
+                    rev = true;
+                }
+                else if(transform.eulerAngles.y == 180 && RunRight)
+                {
+                    _newPosition = new Vector3(transform.position.x + -DopSpeed, transform.position.y, transform.position.z);
+                    transform.position = _newPosition;
+                    anim.SetTrigger("mem");
+                    rev = true;
+                }
+                else if (transform.eulerAngles.y == 0)
+                {
+                    _newPosition = new Vector3(transform.position.x + DopSpeed, transform.position.y, transform.position.z);
+                    transform.position = _newPosition;
+                }
+                else if (transform.eulerAngles.y == 180)
+                {
+                    _newPosition = new Vector3(transform.position.x + -DopSpeed, transform.position.y, transform.position.z);
+                    transform.position = _newPosition;
+                }
             }
 
         }
