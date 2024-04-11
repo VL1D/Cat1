@@ -179,6 +179,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
 
                 if (isBox)
                 {
+                    rb.gravityScale = 5f;
                     anim.SetBool("Jump", false);
                     anim.SetBool("Dawn3", false);
                     jump = false;
