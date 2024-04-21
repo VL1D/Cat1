@@ -7,13 +7,11 @@ public class ControllerCatEnemy : MonoBehaviour
     public float speed;
     public float DistansRL;
     public Transform CatPoints;
-    //private Rigidbody2D rb;
     public bool Atack;
+    public bool PrepAt;
+    public Animator anim;
+    public PlayerController player;
 
-    private void Start()
-    {
-        //rb = GetComponent<Rigidbody2D>();
-    }
 
     private void FixedUpdate()
     {
@@ -25,22 +23,39 @@ public class ControllerCatEnemy : MonoBehaviour
         {
             StopAtack();
         }
+        if (PrepAt)
+        {
+            anim.SetBool("startAt", true);
+        }
+        else
+        {
+            anim.SetBool("startAt", false);
+
+        }
+        if (player.Deatch)
+        {
+            gameObject.layer = 18;
+            Atack = false;
+            PrepAt = false;
+        }
     }
 
     private void AtackCat()
     {
+        anim.SetBool("atack", true);
         speed = 17f;
         transform.position = Vector2.Lerp(transform.position, CatPoints.position, Time.deltaTime * speed);
     }
 
     private void StopAtack()
     {
+        anim.SetBool("atack", false);
         speed = 0f;
     }
 
     private void OnTriggerEnter2D (Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if(collision.tag == "Player" )
         {
             Atack = false;
             if(transform.eulerAngles.y == 0)
@@ -54,6 +69,12 @@ public class ControllerCatEnemy : MonoBehaviour
                 transform.position = new Vector2(transform.position.x - DistansRL, transform.position.y);
             }
         }
+    }
+
+    public void AnimAtack()
+    {
+        Atack = true;
+        PrepAt = false;
     }
 
 }

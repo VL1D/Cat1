@@ -27,7 +27,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
     public bool blockMoveX;
     public bool Climb ;
     public bool isWater = false;
-    private bool Deatch = false;
+    public bool Deatch = false;
     public bool hidden = false;
     public bool danger = false;
     public bool BlokRotY = false;
