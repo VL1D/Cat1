@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ControllerCatEnemy : MonoBehaviour
 {
+    public static ControllerCatEnemy instance;
+
     public float speed;
     public float DistansRL;
     public Transform CatPoints;
@@ -11,7 +13,15 @@ public class ControllerCatEnemy : MonoBehaviour
     public bool PrepAt;
     public Animator anim;
     public PlayerController player;
+    public GameObject trigKill;
+    public Rigidbody2D rb;
+    public GameObject ButerFly;
+    public Transform Cat;
 
+    public void Awake()
+    {
+        instance = this;
+    }
 
     private void FixedUpdate()
     {
@@ -69,12 +79,25 @@ public class ControllerCatEnemy : MonoBehaviour
                 transform.position = new Vector2(transform.position.x - DistansRL, transform.position.y);
             }
         }
+        if(collision.tag == "RespEnemy")
+        {
+            trigKill.SetActive(false);
+            anim.SetTrigger("Deatch");
+            gameObject.layer = 18;
+            rb.isKinematic = true;
+        }
     }
 
     public void AnimAtack()
     {
         Atack = true;
         PrepAt = false;
+    }
+
+    public void Deatch()
+    {
+        Destroy(gameObject);
+        Instantiate(ButerFly, Cat.position, Quaternion.identity);
     }
 
 }
