@@ -604,7 +604,17 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         {
             Puzzle[0].SetActive(true);
         }
-        
+
+        if (DataCheck.checkPointIndex >= 27)
+        {
+            Destroy(Puzzle[0]);
+        }
+
+        if (DataCheck.checkPointIndex >= 24)
+        {
+            Enemy[3].SetActive(true);
+        }
+
     }
 
     public void SaveData( GameData data)
@@ -660,6 +670,16 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         if (DataCheck.checkPointIndex >= 18)
         {
             Puzzle[0].SetActive(true);
+        }
+
+        if (DataCheck.checkPointIndex >= 27)
+        {
+            Destroy(Puzzle[0]);
+        }
+
+        if (DataCheck.checkPointIndex >= 24)
+        {
+            Enemy[3].SetActive(true);
         }
     }
 
