@@ -600,24 +600,15 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                 Destroy(Falling[1]);
             }
         }
-        if(DataCheck.checkPointIndex >= 18)
+        if(DataCheck.checkPointIndex >= 18 )
         {
             Puzzle[0].SetActive(true);
-        }
-
-        if (DataCheck.checkPointIndex >= 27)
-        {
-            Destroy(Puzzle[0]);
+            
         }
 
         if (DataCheck.checkPointIndex >= 24)
         {
             Enemy[3].SetActive(true);
-        }
-
-        if (DataCheck.checkPointIndex >= 28)
-        {
-            Destroy(Enemy[3]);
         }
 
     }
@@ -677,19 +668,10 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
             Puzzle[0].SetActive(true);
         }
 
-        if (DataCheck.checkPointIndex >= 27)
-        {
-            Destroy(Puzzle[0]);
-        }
 
         if (DataCheck.checkPointIndex >= 24)
         {
             Enemy[3].SetActive(true);
-        }
-
-        if (DataCheck.checkPointIndex >= 28)
-        {
-            Destroy(Enemy[3]);
         }
     }
 
