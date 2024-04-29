@@ -615,6 +615,11 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
             Enemy[3].SetActive(true);
         }
 
+        if (DataCheck.checkPointIndex >= 28)
+        {
+            Destroy(Enemy[3]);
+        }
+
     }
 
     public void SaveData( GameData data)
@@ -680,6 +685,11 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         if (DataCheck.checkPointIndex >= 24)
         {
             Enemy[3].SetActive(true);
+        }
+
+        if (DataCheck.checkPointIndex >= 28)
+        {
+            Destroy(Enemy[3]);
         }
     }
 

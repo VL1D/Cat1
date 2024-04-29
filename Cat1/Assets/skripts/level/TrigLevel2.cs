@@ -14,6 +14,7 @@ public class TrigLevel2 : MonoBehaviour
             Destroy(level[3]);
             Destroy(level[4]);
             Destroy(level[5]);
+            Destroy(level[6]);
         }
     }
 }
