@@ -9,6 +9,7 @@ public class FlyRun : MonoBehaviour
 
     public bool Run;
 
+
     private void Start()
     {
         if (MyPath == null)

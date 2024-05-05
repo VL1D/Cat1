@@ -13,6 +13,10 @@ public class buterflyidle : MonoBehaviour
     public Transform BoxPoint;
     public bool Fly_run;
 
+    //public ParticleSystem patical;
+    public GameObject patical;
+    public bool part;
+
     private void Start()
     {
        if(MyPath == null)
@@ -71,6 +75,14 @@ public class buterflyidle : MonoBehaviour
             transform.Translate(Vector2.up * 15f * Time.deltaTime);
             anim.SetBool("fieles", false);
         }
+        if (part)
+        {
+            patical.SetActive(true);
+        }
+        else
+        {
+            patical.SetActive(false);
+        }
     }
 
     
@@ -102,7 +114,6 @@ public class buterflyidle : MonoBehaviour
     public void LadtFlay()
     {
        anim.SetBool("fieles", true);
-        
     }
 
 

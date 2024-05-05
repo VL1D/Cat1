@@ -12,9 +12,16 @@ public class BossController : MonoBehaviour
     public bool turn_LR;
     public bool stanR;
     public bool stanL;
+    public bool SpawnR;
+    public bool SpawnL;
 
     public Animator anim;
     public Animat[] glow;
+
+    public GameObject[] Trig;
+
+    public Transform[] pointResp;
+    public GameObject RESP;
 
     void Start()
     {
@@ -25,11 +32,11 @@ public class BossController : MonoBehaviour
     {
         if(!turn_LR && !turn_RL && !stanR && !stanL)
         {
-            if (MR && !LR)
+            if (MR && !LR && !SpawnL && !SpawnR)
             {
                 MoveR();
             }
-            else if (!MR && LR)
+            else if (!MR && LR && !SpawnL && !SpawnR)
             {
                 MoveL();
             }
@@ -56,6 +63,7 @@ public class BossController : MonoBehaviour
         transform.Translate(Vector2.left * speed * Time.deltaTime);
     }
 
+
     public void TurnRL()
     {
         transform.eulerAngles = new Vector3(0, 0, 0);
@@ -80,6 +88,7 @@ public class BossController : MonoBehaviour
         turn_LR = false;
         turn_RL = false;
         LR = true;
+        Trig[1].SetActive(true);
     }
 
     public void NoStanR()
@@ -90,6 +99,7 @@ public class BossController : MonoBehaviour
         turn_LR = false;
         turn_RL = false;
         MR = true;
+        Trig[0].SetActive(true);
     }
 
     public void GlowAkt()
@@ -100,5 +110,25 @@ public class BossController : MonoBehaviour
         glow[1].speed = 0f;
         glow[2].ACT = true;
         glow[2].speed = 0f;
+    }
+
+    public void StartAnimSL()
+    {
+        anim.Play("SpawnL");
+    }
+
+    public void StartAnimSR()
+    {
+        anim.Play("SpawnR");
+    }
+
+    public void RespR()
+    {
+        Instantiate(RESP, pointResp[0].position, Quaternion.identity);
+    }
+
+    public void RespL()
+    {
+        Instantiate(RESP, pointResp[1].position, Quaternion.identity);
     }
 }

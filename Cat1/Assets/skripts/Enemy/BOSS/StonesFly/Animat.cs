@@ -15,6 +15,8 @@ public class Animat : MonoBehaviour
 
     public bool ACT;
 
+    public GameObject Stone;
+
     void Start()
     {
         waitTime = StartWaitTime;
@@ -59,5 +61,9 @@ public class Animat : MonoBehaviour
         speed = 25f;
     }
 
+    public void RespawnStay()
+    {
+        Instantiate(Stone, transform.position, Quaternion.identity);
+    }
 
 }

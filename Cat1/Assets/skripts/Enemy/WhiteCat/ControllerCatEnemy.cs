@@ -8,15 +8,29 @@ public class ControllerCatEnemy : MonoBehaviour
 
     public float speed;
     public float DistansRL;
-    public Transform CatPoints;
+    private Transform CatPoints;
     public bool Atack;
     public bool PrepAt;
     public Animator anim;
-    public PlayerController player;
+    private PlayerController player;
     public GameObject trigKill;
     public Rigidbody2D rb;
     public GameObject ButerFly;
     public Transform Cat;
+
+    private void Start()
+    {
+        CatPoints = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        if(transform.position.x > CatPoints.position.x)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+        else if (transform.position.x < CatPoints.position.x)
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+    }
 
     public void Awake()
     {

@@ -8,11 +8,16 @@ public class TrigPtach : MonoBehaviour
     public Animator animPtach;
 
     public GameObject Ptach;
+    public GameObject part;
     private IEnumerator PtachDestr()
     {
         yield return new WaitForSeconds(3f);
         Destroy(gameObject);
 
+    }
+    private void Start()
+    {
+        part.SetActive(false);
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -24,6 +29,7 @@ public class TrigPtach : MonoBehaviour
             Ptach.transform.position += Ptach.transform.up * 0.1f;
             Ptach.transform.position += Ptach.transform.right * 0.1f ;
             animPtach.SetBool("isFky", true);
+            part.SetActive(true);
              
         }
     }
