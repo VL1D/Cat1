@@ -23,7 +23,7 @@ public class TrigNoJump : MonoBehaviour
 
     private IEnumerator JumpWolf()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         SK.speed = 35f;
         SK.Run = true;
         anim.SetBool("Run", true);

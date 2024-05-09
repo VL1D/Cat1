@@ -563,6 +563,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         if (DataCheck.checkPointIndex == 5)
         {
             Wolf.SetActive(true);
+            Enemy[5].SetActive(true);
             Wolf.transform.position = new Vector3(2555, 52, transform.position.z);
         }
         if (DataCheck.checkPointIndex >= 7 && DataCheck.checkPointIndex <= 12)
@@ -590,6 +591,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         if (DataCheck.checkPointIndex >= 13)
         {
             Destroy(Enemy[0]);
+            Destroy(Enemy[5]);
             Destroy(Wolf);
             if (DataCheck.checkPointIndex <= 19)
             {
@@ -631,6 +633,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         {
             Wolf.SetActive(true);
             Wolf.transform.position = new Vector3(2555, 52, transform.position.z);
+            Enemy[5].SetActive(true);
         }
         if (DataCheck.checkPointIndex >= 7 && DataCheck.checkPointIndex <= 12)
         {
@@ -657,6 +660,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         if (DataCheck.checkPointIndex >= 13)
         {
             Destroy(Enemy[0]);
+            Destroy(Enemy[5]);
             Destroy(Wolf);
             if (DataCheck.checkPointIndex <= 19)
             {

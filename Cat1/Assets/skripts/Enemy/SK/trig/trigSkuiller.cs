@@ -23,8 +23,8 @@ public class trigSkuiller : MonoBehaviour
 
     private IEnumerator JumpWolf()
     {
-        yield return new WaitForSeconds(0.2f);
-        SK.speed = 55f;
+        yield return new WaitForSeconds(0.1f);
+        SK.speed = 45f;
         SK.Jump = true;
         anim.SetBool("jump", true);
 

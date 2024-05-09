@@ -8,11 +8,14 @@ public class Skuiller : MonoBehaviour
 
     public bool Run;
     public bool Jump;
+    public bool Deatch;
+    private Rigidbody2D rb;
 
     public Animator anim;
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         if (MyPath == null)
         {
             return;
@@ -43,32 +46,77 @@ public class Skuiller : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Run || Jump)
+        if (!Deatch)
         {
-            anim.SetBool("Run", true);
-            if (pointInPath == null || pointInPath.Current == null)
+            if (Run)
             {
-                return;
+                anim.SetBool("Run", true);
+                if (pointInPath == null || pointInPath.Current == null)
+                {
+                    return;
+                }
+
+                if (Type == MovementType.Moveing)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, pointInPath.Current.position, Time.deltaTime * speed);
+                }
+                else if (Type == MovementType.Leping)
+                {
+                    transform.position = Vector3.Lerp(transform.position, pointInPath.Current.position, Time.deltaTime * speed);
+                }
+
+                var distanceSqure = (transform.position - pointInPath.Current.position).sqrMagnitude;
+                if (distanceSqure < maxDistanct * maxDistanct)
+                {
+                    pointInPath.MoveNext();
+                }
+            }
+            else
+            {
+                anim.SetBool("Run", false);
             }
 
-            if (Type == MovementType.Moveing)
+            if (Jump)
             {
-                transform.position = Vector3.MoveTowards(transform.position, pointInPath.Current.position, Time.deltaTime * speed);
-            }
-            else if (Type == MovementType.Leping)
-            {
-                transform.position = Vector3.Lerp(transform.position, pointInPath.Current.position, Time.deltaTime * speed);
-            }
 
-            var distanceSqure = (transform.position - pointInPath.Current.position).sqrMagnitude;
-            if (distanceSqure < maxDistanct * maxDistanct)
-            {
-                pointInPath.MoveNext();
+                if (pointInPath == null || pointInPath.Current == null)
+                {
+                    return;
+                }
+
+                if (Type == MovementType.Moveing)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, pointInPath.Current.position, Time.deltaTime * speed);
+                }
+                else if (Type == MovementType.Leping)
+                {
+                    transform.position = Vector3.Lerp(transform.position, pointInPath.Current.position, Time.deltaTime * speed);
+                }
+
+                var distanceSqure = (transform.position - pointInPath.Current.position).sqrMagnitude;
+                if (distanceSqure < maxDistanct * maxDistanct)
+                {
+                    pointInPath.MoveNext();
+                }
             }
         }
-        else
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Respawn")
         {
-            anim.SetBool("Run", false);
+            speed = 0f;
+            anim.SetTrigger("Deatch");
+            Deatch = true;
+            transform.eulerAngles = new Vector3(0, 180, 0);
+            rb.isKinematic = false;
+            Destroy(gameObject, 2f);
         }
+    }
+
+    public void RunCut()
+    {
+        Run = true;
     }
 }
