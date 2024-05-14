@@ -50,7 +50,7 @@ public class trigWolf : MonoBehaviour
     private IEnumerator SpeedWolf()
     {
         yield return new WaitForSeconds(2.5f);
-        wolfcontroller.speed = 80;
+        wolfcontroller.speed = 60;
         Destroy(gameObject);
         controller.WolfAt = true;
 

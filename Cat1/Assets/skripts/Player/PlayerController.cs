@@ -54,6 +54,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
     public GameObject deathScreen;
     public GameObject peredw;
     public GameObject ButtonPaus;
+    public GameObject BoxKill;
 
     [Header("SaveEnemy")]
     public GameObject Wolf;
@@ -78,6 +79,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         speed = 0f;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        BoxKill.SetActive(false);
         
     }
     
@@ -94,6 +96,10 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         if(Deatch && isWater)
         {
             rb.mass = 50f;
+        }
+        if (!Deatch)
+        {
+            BoxKill.transform.position = transform.position;
         }
     }
 
@@ -516,6 +522,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         if(other.tag == "Respawn")
         {
             anim.SetTrigger("Deatch");
+            BoxKill.SetActive(true);
         }
         else if(other.tag == "RespawnMonster")
         {

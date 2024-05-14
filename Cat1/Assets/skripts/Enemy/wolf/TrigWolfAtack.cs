@@ -16,6 +16,9 @@ public class TrigWolfAtack : MonoBehaviour
             WolfController.anim.SetBool("atack",true);
             TrigWolf.SetActive(true);
             controller.speed = 0f;
+            WolfController.Atack = true;
+            Destroy(TrigWolf, 0.1f);
+            WolfController.StopHunding();
         }
     }
    

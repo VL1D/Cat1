@@ -11,14 +11,14 @@ public class trigSpeedWolf : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            wolfcontroller.speed = 40f;
+            wolfcontroller.speed = 30f;
         }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
-            wolfcontroller.speed = 80f;
+            wolfcontroller.speed = 60f;
         }
     }
 }
