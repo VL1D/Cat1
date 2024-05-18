@@ -72,6 +72,9 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
     [Header("Audio")]
     public GameObject[] AudioCat;
 
+    [Header("NameLevel")]
+    public GameObject[] SaveName;
+
 
 
     private void Start()
@@ -568,11 +571,19 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
             Background[1].SetActive(true);
             Destroy(Enemy[2]);
         }
+        if (DataCheck.checkPointIndex >= 2)
+        {
+            Destroy(SaveName[0]);
+        }
         if (DataCheck.checkPointIndex == 5)
         {
             Wolf.SetActive(true);
             Enemy[5].SetActive(true);
             Wolf.transform.position = new Vector3(2555, 52, transform.position.z);
+        }
+        if (DataCheck.checkPointIndex >= 7)
+        {
+            Destroy(SaveName[1]);
         }
         if (DataCheck.checkPointIndex >= 7 && DataCheck.checkPointIndex <= 12)
         {
@@ -610,15 +621,23 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                 Destroy(Falling[1]);
             }
         }
-        if(DataCheck.checkPointIndex >= 18 )
+        if (DataCheck.checkPointIndex >= 14)
+        {
+            Destroy(SaveName[2]);
+        }
+        if (DataCheck.checkPointIndex >= 18 )
         {
             Puzzle[0].SetActive(true);
             
         }
-
+        if (DataCheck.checkPointIndex >= 20)
+        {
+            Destroy(SaveName[3]);
+        }
         if (DataCheck.checkPointIndex >= 24)
         {
             Enemy[3].SetActive(true);
+            Destroy(SaveName[4]);
         }
 
         if (DataCheck.checkPointIndex == 28)
@@ -637,11 +656,19 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
             Background[1].SetActive(true);
             Destroy(Enemy[2]);
         }
+        if (DataCheck.checkPointIndex >= 2)
+        {
+            Destroy(SaveName[0]);
+        }
         if (DataCheck.checkPointIndex == 5)
         {
             Wolf.SetActive(true);
             Wolf.transform.position = new Vector3(2555, 52, transform.position.z);
             Enemy[5].SetActive(true);
+        }
+        if (DataCheck.checkPointIndex >= 7)
+        {
+            Destroy(SaveName[1]);
         }
         if (DataCheck.checkPointIndex >= 7 && DataCheck.checkPointIndex <= 12)
         {
@@ -680,15 +707,23 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
             }
 
         }
+        if (DataCheck.checkPointIndex >= 14)
+        {
+            Destroy(SaveName[2]);
+        }
         if (DataCheck.checkPointIndex >= 18)
         {
             Puzzle[0].SetActive(true);
         }
 
-
+        if (DataCheck.checkPointIndex >= 20)
+        {
+            Destroy(SaveName[3]);
+        }
         if (DataCheck.checkPointIndex >= 24)
         {
             Enemy[3].SetActive(true);
+            Destroy(SaveName[4]);
         }
 
         if (DataCheck.checkPointIndex == 28)
