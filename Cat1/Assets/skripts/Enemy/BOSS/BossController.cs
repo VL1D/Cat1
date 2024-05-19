@@ -15,6 +15,8 @@ public class BossController : MonoBehaviour
     public bool SpawnR;
     public bool SpawnL;
 
+    
+
     public Animator anim;
     public Animat[] glow;
 
@@ -30,7 +32,7 @@ public class BossController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(!turn_LR && !turn_RL && !stanR && !stanL)
+        if (!turn_LR && !turn_RL && !stanR && !stanL)
         {
             if (MR && !LR && !SpawnL && !SpawnR)
             {
@@ -41,7 +43,7 @@ public class BossController : MonoBehaviour
                 MoveL();
             }
         }
-        if (stanL) 
+        if (stanL)
         {
             anim.SetTrigger("stanR");
         }
@@ -131,4 +133,6 @@ public class BossController : MonoBehaviour
     {
         Instantiate(RESP, pointResp[1].position, Quaternion.identity);
     }
+
+    
 }

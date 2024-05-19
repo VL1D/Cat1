@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ston : MonoBehaviour
 {
     public Animator anim;
+    public GameObject ef;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -12,6 +13,7 @@ public class Ston : MonoBehaviour
         {
             anim.SetTrigger("HIT");
             Destroy(gameObject, 0.5f);
+            ef.SetActive(true);
         }
     }
 }

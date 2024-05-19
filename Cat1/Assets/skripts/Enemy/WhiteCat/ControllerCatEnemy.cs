@@ -17,7 +17,8 @@ public class ControllerCatEnemy : MonoBehaviour
     public Rigidbody2D rb;
     public GameObject ButerFly;
     public Transform Cat;
-
+    public GameObject EfectC;
+    public GameObject Efectk;
     private void Start()
     {
         CatPoints = GameObject.FindGameObjectWithTag("Player").transform;
@@ -50,10 +51,12 @@ public class ControllerCatEnemy : MonoBehaviour
         if (PrepAt)
         {
             anim.SetBool("startAt", true);
+            EfectC.SetActive(true);
         }
         else
         {
             anim.SetBool("startAt", false);
+            EfectC.SetActive(false);
 
         }
         if (player.Deatch)
@@ -97,8 +100,9 @@ public class ControllerCatEnemy : MonoBehaviour
         {
             trigKill.SetActive(false);
             anim.SetTrigger("Deatch");
-            gameObject.layer = 18;
-            rb.isKinematic = true;
+            gameObject.layer = 31;
+            //rb.isKinematic = true;
+            Destroy(EfectC);
         }
     }
 
@@ -112,6 +116,7 @@ public class ControllerCatEnemy : MonoBehaviour
     {
         Destroy(gameObject);
         Instantiate(ButerFly, Cat.position, Quaternion.identity);
+        Instantiate(Efectk, Cat.position, Quaternion.identity);
     }
 
 }
