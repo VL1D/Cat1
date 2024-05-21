@@ -11,7 +11,10 @@ public class TrigSpawnR : MonoBehaviour
     {
         if (collision.tag == "Bos")
         {
-            Boss.StartAnimSR();
+            if (!Boss.End)
+            {
+                Boss.StartAnimSR();
+            }
         }
     }
 

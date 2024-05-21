@@ -15,7 +15,7 @@ public class BossController : MonoBehaviour
     public bool SpawnR;
     public bool SpawnL;
 
-    
+    public bool End;
 
     public Animator anim;
     public Animat[] glow;
@@ -24,6 +24,9 @@ public class BossController : MonoBehaviour
 
     public Transform[] pointResp;
     public GameObject RESP;
+    public GameObject ef;
+
+    public BosPilar PillarContr;
 
     void Start()
     {
@@ -32,15 +35,18 @@ public class BossController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!turn_LR && !turn_RL && !stanR && !stanL)
+        if (!End)
         {
-            if (MR && !LR && !SpawnL && !SpawnR)
+            if (!turn_LR && !turn_RL && !stanR && !stanL)
             {
-                MoveR();
-            }
-            else if (!MR && LR && !SpawnL && !SpawnR)
-            {
-                MoveL();
+                if (MR && !LR && !SpawnL && !SpawnR)
+                {
+                    MoveR();
+                }
+                else if (!MR && LR && !SpawnL && !SpawnR)
+                {
+                    MoveL();
+                }
             }
         }
         if (stanL)
@@ -84,34 +90,47 @@ public class BossController : MonoBehaviour
 
     public void NoStanL()
     {
-        speed = 15f;
-        stanL = false;
-        stanR = false;
-        turn_LR = false;
-        turn_RL = false;
-        LR = true;
-        Trig[1].SetActive(true);
+        if (!End)
+        {
+            speed = 15f;
+            stanL = false;
+            stanR = false;
+            turn_LR = false;
+            turn_RL = false;
+            LR = true;
+            Trig[1].SetActive(true);
+        }
     }
 
     public void NoStanR()
     {
-        speed = 15f;
-        stanR = false;
-        stanL = false;
-        turn_LR = false;
-        turn_RL = false;
-        MR = true;
-        Trig[0].SetActive(true);
+        if (!End)
+        {
+            speed = 15f;
+            stanR = false;
+            stanL = false;
+            turn_LR = false;
+            turn_RL = false;
+            MR = true;
+            Trig[0].SetActive(true);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void GlowAkt()
     {
-        glow[0].ACT = true;
-        glow[0].speed = 0f;
-        glow[1].ACT = true;
-        glow[1].speed = 0f;
-        glow[2].ACT = true;
-        glow[2].speed = 0f;
+        if (!End)
+        {
+            glow[0].ACT = true;
+            glow[0].speed = 0f;
+            glow[1].ACT = true;
+            glow[1].speed = 0f;
+            glow[2].ACT = true;
+            glow[2].speed = 0f;
+        }
     }
 
     public void StartAnimSL()
@@ -133,6 +152,16 @@ public class BossController : MonoBehaviour
     {
         Instantiate(RESP, pointResp[1].position, Quaternion.identity);
     }
+
+    public void AnimEnd()
+    {
+        if (End)
+        {
+            ef.SetActive(true);
+            PillarContr.EndBoos = true;
+        }
+    }
+
 
     
 }

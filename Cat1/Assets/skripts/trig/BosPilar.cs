@@ -7,6 +7,23 @@ public class BosPilar : MonoBehaviour
     public Rigidbody2D[] rbStone;
     public GameObject Ef;
     public GameObject Boos;
+    public Transform points;
+    public bool EndBoos;
+    public GameObject Pillar;
+    public float speed;
+
+    private void Update()
+    {
+        if (EndBoos)
+        {
+            if (Pillar.transform.position.y < points.position.y)
+            {
+                Pillar.transform.Translate(Vector2.up * speed * Time.deltaTime);
+                rbStone[1].isKinematic = true;
+            }
+        }
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
