@@ -786,6 +786,10 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
     {
         anim.SetBool("wolfAtack", false);
     }
+    public void AtackWolf()
+    {
+        anim.SetBool("wolfAtack", true);
+    }
 
     public void OnPointerUp(PointerEventData eventData)
     {
