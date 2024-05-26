@@ -847,4 +847,11 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         }
     }
 
+    public void DeatchEnd()
+    {
+        anim.SetTrigger("Deatch");
+    }
+
+    
+
 }

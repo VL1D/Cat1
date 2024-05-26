@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3126204895608800525}
   - component: {fileID: 4832921123952514136}
   - component: {fileID: 154937376}
+  - component: {fileID: 6128407201305490873}
   m_Layer: 0
   m_Name: audioManager
   m_TagString: Untagged
@@ -45,7 +46,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0d0a301f1f1a0fe4c83e2d3dd98d034e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.7
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -143,3 +144,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundAudio:
   - {fileID: 8300000, guid: 0d0a301f1f1a0fe4c83e2d3dd98d034e, type: 3}
+  anim: {fileID: 6128407201305490873}
+--- !u!95 &6128407201305490873
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3126204895608800514}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2ea027049d34e4a75beff98d8589c2a9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -17,6 +17,7 @@ public class trigBosRev : MonoBehaviour
             Bos.turn_RL = true;
             Bos.MR = false;
             i++;
+            Bos.audio[0].SetActive(false);
 
         }
     }

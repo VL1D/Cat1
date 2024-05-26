@@ -5,6 +5,8 @@ using UnityEngine;
 public class Sound : AudioManager
 {
     public static Sound instance = null;
+
+    public Animator anim;
     private void Start()
     {
         if (instance == null)
@@ -19,8 +21,20 @@ public class Sound : AudioManager
         DontDestroyOnLoad(gameObject);
     }
 
+
     public void DestroyAudio()
     {
         Destroy(gameObject);
     }
+
+    public void NoAc()
+    {
+        anim.SetBool("Noactive", true);
+    }
+
+    public void Ac()
+    {
+        anim.SetBool("Noactive", false);
+    }
+
 }

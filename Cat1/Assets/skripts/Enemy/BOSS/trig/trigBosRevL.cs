@@ -17,10 +17,11 @@ public class trigBosRevL : MonoBehaviour
             Bos.turn_LR = true;
             Bos.LR = false;
             i++;
-            if(i == 1)
+            if(i == 10)
             {
                 Bos.End = true;
             }
+            Bos.audio[0].SetActive(false);
         }
     }
 }

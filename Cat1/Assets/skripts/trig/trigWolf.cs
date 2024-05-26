@@ -23,6 +23,7 @@ public class trigWolf : MonoBehaviour
             CutsceneManager.Instance.StartCutscene("CatSceneWolf");
             StartCoroutine(SpeedWolf());
             Musick.SetBool("Active", true);
+            Sound.instance.NoAc();
         }
     }
     private void OnTriggerStay2D(Collider2D collision)

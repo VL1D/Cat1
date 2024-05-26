@@ -13,6 +13,7 @@ public class TheWolf : MonoBehaviour
         {
             controller.StopHunding();
             Musik.SetBool("Active", false);
+            Sound.instance.Ac();
         }
     }
     private void OnTriggerStay2D(Collider2D other)
@@ -21,6 +22,7 @@ public class TheWolf : MonoBehaviour
         {
             controller.StopHunding();
             Musik.SetBool("Active", false);
+            Sound.instance.Ac();
         }
     }
 }

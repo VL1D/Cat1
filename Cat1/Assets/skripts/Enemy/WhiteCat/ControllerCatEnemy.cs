@@ -19,6 +19,8 @@ public class ControllerCatEnemy : MonoBehaviour
     public Transform Cat;
     public GameObject EfectC;
     public GameObject Efectk;
+    public GameObject audio;
+    public GameObject aUDIOdEATCH;
     private void Start()
     {
         CatPoints = GameObject.FindGameObjectWithTag("Player").transform;
@@ -72,6 +74,7 @@ public class ControllerCatEnemy : MonoBehaviour
         anim.SetBool("atack", true);
         speed = 17f;
         transform.position = Vector2.Lerp(transform.position, CatPoints.position, Time.deltaTime * speed);
+        audio.SetActive(true);
     }
 
     private void StopAtack()
@@ -117,6 +120,11 @@ public class ControllerCatEnemy : MonoBehaviour
         Destroy(gameObject);
         Instantiate(ButerFly, Cat.position, Quaternion.identity);
         Instantiate(Efectk, Cat.position, Quaternion.identity);
+        Instantiate(aUDIOdEATCH, Cat.position, Quaternion.identity);
     }
 
+    public void AudioAt()
+    {
+        audio.SetActive(false);
+    }
 }

@@ -25,6 +25,7 @@ public class BossController : MonoBehaviour
     public Transform[] pointResp;
     public GameObject RESP;
     public GameObject ef;
+    public GameObject[] audio; 
 
     public BosPilar PillarContr;
 
@@ -162,6 +163,10 @@ public class BossController : MonoBehaviour
         }
     }
 
+    public void AnimM()
+    {
+        audio[0].SetActive(true);
+    }
 
     
 }
