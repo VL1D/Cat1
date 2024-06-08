@@ -9,6 +9,8 @@ public class TrigPtach : MonoBehaviour
 
     public GameObject Ptach;
     public GameObject part;
+
+    public GameObject audio;
     private IEnumerator PtachDestr()
     {
         yield return new WaitForSeconds(3f);
@@ -24,6 +26,7 @@ public class TrigPtach : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            audio.SetActive(true);
             ptach.speed = 0f;
             ptach.flightSpeed = 0.5f;
             Ptach.transform.position += Ptach.transform.up * 0.1f;

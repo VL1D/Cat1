@@ -116,33 +116,39 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                 if (speed != 0f && !WolfAt)
                 {
                     anim.SetBool("Run", true);
-                    if (!isGrounded)
+                    if (!Climb)
                     {
-                        anim.SetBool("dawn", true);
-                    }
-                    else
-                    {
-                        anim.SetBool("dawn", false);
-                    }
-                    if (isBox)
-                    {
-                        anim.SetBool("dawn", false);
+                        if (!isGrounded)
+                        {
+                            anim.SetBool("dawn", true);
+                        }
+                        else
+                        {
+                            anim.SetBool("dawn", false);
+                        }
+                        if (isBox)
+                        {
+                            anim.SetBool("dawn", false);
+                        }
                     }
                 }
                 else
                 {
                     anim.SetBool("Run", false);
-                    if (!isGrounded)
+                    if (!Climb)
                     {
-                        anim.SetBool("dawn", true);
-                    }
-                    else
-                    {
-                        anim.SetBool("dawn", false);
-                    }
-                    if (isBox)
-                    {
-                        anim.SetBool("dawn", false);
+                        if (!isGrounded)
+                        {
+                            anim.SetBool("dawn", true);
+                        }
+                        else
+                        {
+                            anim.SetBool("dawn", false);
+                        }
+                        if (isBox)
+                        {
+                            anim.SetBool("dawn", false);
+                        }
                     }
                 }
 
@@ -535,6 +541,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         {
             isWater = true;
             speed = 0;
+            AudioCat[2].SetActive(true);
         }
     }
 
@@ -762,6 +769,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         }
         else
         {
+            AudioCat[2].SetActive(false);
             normalSpeed = 40;
             anim.SetBool("go", false);
            
@@ -852,6 +860,16 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         anim.SetTrigger("Deatch");
     }
 
-    
+    public void AudioFall()
+    {
+        if (!AudioCat[1].activeSelf)
+        {
+            AudioCat[1].SetActive(true);
+        }
+        else
+        {
+            AudioCat[1].SetActive(false);
+        }
+    }
 
 }

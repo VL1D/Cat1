@@ -17,7 +17,7 @@ public class trigBosRevL : MonoBehaviour
             Bos.turn_LR = true;
             Bos.LR = false;
             i++;
-            if(i == 10)
+            if(i == 5)
             {
                 Bos.End = true;
             }

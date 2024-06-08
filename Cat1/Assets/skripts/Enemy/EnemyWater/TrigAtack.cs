@@ -8,10 +8,12 @@ public class TrigAtack : MonoBehaviour
     public GameObject Enemy;
     public GameObject TrigDeatch;
     public Animator animEnemy;
+    public GameObject Audio;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
+            Audio.SetActive(true);
             enemyWater.speed = 0;
             animEnemy.SetTrigger("Atack");
             Enemy.SetActive(true);

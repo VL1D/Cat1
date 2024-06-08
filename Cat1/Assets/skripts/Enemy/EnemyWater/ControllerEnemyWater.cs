@@ -12,6 +12,7 @@ public class ControllerEnemyWater : MonoBehaviour
     private Rigidbody2D rb;
 
     public Transform CatPos;
+    public GameObject AudioAtack;
 
     private void Start()
     {
@@ -63,5 +64,10 @@ public class ControllerEnemyWater : MonoBehaviour
     {
         rb.velocity = Vector2.zero;
         anim.SetBool("Run", false);
+    }
+
+    public void AudAct()
+    {
+        //AudioAtack.SetActive(true);
     }
 }
