@@ -29,6 +29,8 @@ public class BossController : MonoBehaviour
 
     public BosPilar PillarContr;
 
+    public trigBosRevL trigBos;
+
     void Start()
     {
         MR = true;
@@ -93,13 +95,27 @@ public class BossController : MonoBehaviour
     {
         if (!End)
         {
-            speed = 15f;
-            stanL = false;
-            stanR = false;
-            turn_LR = false;
-            turn_RL = false;
-            LR = true;
-            Trig[1].SetActive(true);
+            if(trigBos.i < 3)
+            {
+                speed = 15f;
+                stanL = false;
+                stanR = false;
+                turn_LR = false;
+                turn_RL = false;
+                LR = true;
+                Trig[1].SetActive(true);
+            }
+            else
+            {
+                speed = 15f;
+                stanL = false;
+                stanR = false;
+                turn_LR = false;
+                turn_RL = false;
+                LR = true;
+                Trig[1].SetActive(true);
+                Trig[3].SetActive(true);
+            }
         }
     }
 
@@ -107,13 +123,27 @@ public class BossController : MonoBehaviour
     {
         if (!End)
         {
-            speed = 15f;
-            stanR = false;
-            stanL = false;
-            turn_LR = false;
-            turn_RL = false;
-            MR = true;
-            Trig[0].SetActive(true);
+            if (trigBos.i < 3)
+            {
+                speed = 15f;
+                stanR = false;
+                stanL = false;
+                turn_LR = false;
+                turn_RL = false;
+                MR = true;
+                Trig[0].SetActive(true);
+            }
+            else
+            {
+                speed = 15f;
+                stanR = false;
+                stanL = false;
+                turn_LR = false;
+                turn_RL = false;
+                MR = true;
+                Trig[0].SetActive(true);
+                Trig[2].SetActive(true);
+            }
         }
         else
         {

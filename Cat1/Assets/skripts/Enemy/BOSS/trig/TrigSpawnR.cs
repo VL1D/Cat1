@@ -7,6 +7,13 @@ public class TrigSpawnR : MonoBehaviour
     public BossController Boss;
     public Animator animBoss;
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Bos")
+        {
+            StartCoroutine(NoAct());
+        }
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Bos")
@@ -25,5 +32,11 @@ public class TrigSpawnR : MonoBehaviour
             animBoss.SetTrigger("SpawnR");
             gameObject.SetActive(false);
         }
+    }
+
+    private IEnumerator NoAct()
+    {
+        yield return new WaitForSeconds(1.4f);
+        gameObject.SetActive(false);
     }
 }
