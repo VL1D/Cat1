@@ -34,12 +34,14 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
     public bool Run;
     public bool MovingUp;
     public bool jump;
+    public bool RunUP;
     private bool RunRight;
     private bool RunLeft;
     public bool rev;
     public bool WolfAt;
     public bool Dawn;
     private bool StopCat;
+    public bool jumpbutt;
 
 
     public Transform feetPos, stopRot, GraundChek, DopGroud;
@@ -157,12 +159,12 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                     if (RunRight)
                     {
                         speed = 40f;
-                       // transform.eulerAngles = new Vector3(0, 0, 0);
+                       // transform.eulerAngles = new Vector2(0, 0);
                     }
                     else if (RunLeft)
                     {
                         speed = -40f;
-                       // transform.eulerAngles = new Vector3(0, 180, 0);
+                        //transform.eulerAngles = new Vector2(0, 180);
                     }
                 }
                 if (!Run)
@@ -189,19 +191,56 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                 anim.SetBool("Dawn3", false);
                 isWater = false;
                 jump = false;
+                rev = false;
+                if (jumpbutt)
+                {
+                    transform.Rotate(0, 0, 20);
+                    if (RunRight)
+                    {
+                        transform.eulerAngles = new Vector2(0, 0);
+                    }
+                    else if(RunLeft)
+                    {
+                        transform.eulerAngles = new Vector2(0, 180);
+                    }
+                }
             }
             else
             {
-
+                
                 if (isBox)
                 {
                     rb.gravityScale = 5f;
                     anim.SetBool("Jump", false);
                     anim.SetBool("Dawn3", false);
                     jump = false;
+                    if (jumpbutt)
+                    {
+                        if (RunRight)
+                        {
+                            transform.eulerAngles = new Vector2(0, 0);
+                        }
+                        else if (RunLeft)
+                        {
+                            transform.eulerAngles = new Vector2(0, 180);
+                        }
+                    }
                 }
                 else
                 {
+                    rev = false;
+                    if (!RunUP)
+                    {
+                        if (RunRight)
+                        {
+                            JumpRunR();
+                        }
+
+                        if (RunLeft)
+                        {
+                            JumpRunL();
+                        }
+                    }
                     anim.SetBool("Jump", true);
                     //??????? ?????
                     if (transform.eulerAngles.y == 0 && !Dawn)
@@ -244,6 +283,26 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         }
     }
 
+    private void JumpRunL()
+    {
+        RunRight = false;
+        transform.Rotate(0, 0, -5 * Time.deltaTime);
+        if (isStopRot || isWater == true || isStopRotBox)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+    }
+
+    private void JumpRunR()
+    {
+        RunLeft = false;
+        transform.Rotate(0, 0, -5 * Time.deltaTime);
+        if (isStopRot || isWater == true || isStopRotBox)
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+    }
+
     private void MoveBox()
     {
         if (isBoxChech)
@@ -273,16 +332,20 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
             anim.SetBool("tash", false);
         }
     }
+
     public void OnJumpButtonDown()
     {
+        
         if (!Deatch)
         {
             if (!StopCat)
             {
+                
                 if (!isGroundedChek)
                 {
                     if (isGrounded || isBox)
                     {
+                        jumpbutt = true;
                         jump = true;
                         anim.SetTrigger("Trig");
                         rb.velocity = Vector2.up * jumpForce;
@@ -302,6 +365,8 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
             }
         }
     }
+
+
     public void OnLeftButtonDown()
     {
         if (!Deatch || !blockMoveX)
@@ -321,13 +386,6 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                             {
                                 speed = -normalSpeed;
                                 transform.eulerAngles = new Vector3(0, 180, 0);
-                            }
-                        }
-                        else
-                        {
-                            if (transform.eulerAngles.y == 0)
-                            {
-                                transform.eulerAngles = new Vector3(0, 0, 0);
                             }
                         }
                     }
@@ -362,6 +420,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                         anim.SetBool("Siting", false);
                     }
                 }
+
             }
         }
     }
@@ -387,13 +446,6 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                                 transform.eulerAngles = new Vector3(0, 0, 0);
                             }
                         }
-                        else
-                        {
-                            if (transform.eulerAngles.y == 180)
-                            {
-                                transform.eulerAngles = new Vector3(0, 180, 0);
-                            }
-                        }
                     }
                     else
                     {
@@ -415,7 +467,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                     }
                 }
             }
-            else if (transform.eulerAngles.y == 180 && !rev)
+            else if (transform.eulerAngles.y == 180 && !rev )
             {
                 if (isGrounded || isWater || isBox)
                 {
@@ -778,16 +830,18 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
 
     public void MemRigcht()
     {
-        rev = false;
-        if (transform.eulerAngles.y == 180)
+        if (!jump)
         {
-            transform.eulerAngles = new Vector3(0, 0, 0);
+            rev = false;
+            if (transform.eulerAngles.y == 180)
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+            else if (transform.eulerAngles.y == 0)
+            {
+                transform.eulerAngles = new Vector3(0, 180, 0);
+            }
         }
-        else if(transform.eulerAngles.y == 0)
-        {
-            transform.eulerAngles = new Vector3(0, 180, 0);
-        }
-            
     }
 
     public void noAtackWolf()
@@ -820,8 +874,39 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         rb.gravityScale = 10f;
     }
 
-    public void Touth()
+
+    public void DeatchEnd()
     {
+        anim.SetTrigger("Deatch");
+    }
+
+    public void AudioFall()
+    {
+        AudioCat[1].SetActive(true);
+    }
+    public void AudioFallNo()
+    {
+        AudioCat[1].SetActive(false);
+    }
+
+    public void PosJump()
+    {
+        rev = false;
+        if (RunLeft)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+            transform.Rotate(0, 0, 20);
+        }
+        else if (RunRight)
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+            transform.Rotate(0, 0, 20);
+        }
+    }
+
+    public void PosTouch()
+    {
+        rev = false;
         if (RunLeft)
         {
             transform.eulerAngles = new Vector3(0, 180, 0);
@@ -832,44 +917,15 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         }
     }
 
-    public void MemAnim()
+    public void PosRun()
     {
-        anim.SetBool("Run", false);
-        if (transform.eulerAngles.y == 0 && RunLeft)
+        if (RunLeft)
         {
-            anim.SetTrigger("mem");
-            rev = true;
+            transform.eulerAngles = new Vector3(0, 180, 0);
         }
-        else if (transform.eulerAngles.y == 180 && RunRight)
+        else if (RunRight)
         {
-            anim.SetTrigger("mem");
-            rev = true;
-        }
-        else if (transform.eulerAngles.y == 180 && RunLeft)
-        {
-            return;
-        }
-        else if (transform.eulerAngles.y == 0 && RunRight)
-        {
-            return;
+            transform.eulerAngles = new Vector3(0, 0, 0);
         }
     }
-
-    public void DeatchEnd()
-    {
-        anim.SetTrigger("Deatch");
-    }
-
-    public void AudioFall()
-    {
-        if (!AudioCat[1].activeSelf)
-        {
-            AudioCat[1].SetActive(true);
-        }
-        else
-        {
-            AudioCat[1].SetActive(false);
-        }
-    }
-
 }

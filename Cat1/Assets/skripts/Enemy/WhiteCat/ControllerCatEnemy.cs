@@ -11,6 +11,7 @@ public class ControllerCatEnemy : MonoBehaviour
     private Transform CatPoints;
     public bool Atack;
     public bool PrepAt;
+    public bool StopAtackin;
     public Animator anim;
     private PlayerController player;
     public GameObject trigKill;
@@ -88,7 +89,9 @@ public class ControllerCatEnemy : MonoBehaviour
         if(collision.tag == "Player" )
         {
             Atack = false;
-            if(transform.eulerAngles.y == 0)
+            StopAtackin = true;
+            StartCoroutine(AtackStart());
+            if (transform.eulerAngles.y == 0)
             {
                 transform.eulerAngles = new Vector3(0, 180, 0);
                 transform.position = new Vector2(transform.position.x + DistansRL, transform.position.y);
@@ -126,5 +129,12 @@ public class ControllerCatEnemy : MonoBehaviour
     public void AudioAt()
     {
         audio.SetActive(false);
+    }
+
+    private IEnumerator AtackStart()
+    {
+        yield return new WaitForSeconds(3f);
+        StopAtackin = false;
+
     }
 }

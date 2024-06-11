@@ -10,13 +10,16 @@ public class TrigCatWhite : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            if (!EnemyCat.Atack)
+            if (!EnemyCat.StopAtackin)
             {
-                EnemyCat.PrepAt = true;
-            }
-            else
-            {
-                EnemyCat.PrepAt = false;
+                if (!EnemyCat.Atack)
+                {
+                    EnemyCat.PrepAt = true;
+                }
+                else
+                {
+                    EnemyCat.PrepAt = false;
+                }
             }
         }
     }
