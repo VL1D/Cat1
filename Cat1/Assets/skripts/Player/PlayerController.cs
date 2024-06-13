@@ -42,6 +42,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
     public bool Dawn;
     private bool StopCat;
     public bool jumpbutt;
+    public bool touch;
 
 
     public Transform feetPos, stopRot, GraundChek, DopGroud;
@@ -105,6 +106,11 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         if (!Deatch)
         {
             BoxKill.transform.position = transform.position;
+        }
+
+        if (touch)
+        {
+            rev = false;
         }
     }
 
@@ -192,7 +198,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                 isWater = false;
                 jump = false;
                 rev = false;
-                if (jumpbutt)
+                if (jumpbutt && !RunUP)
                 {
                     transform.Rotate(0, 0, 20);
                     if (RunRight)
@@ -229,14 +235,14 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                 else
                 {
                     rev = false;
-                    if (!RunUP)
+                    if (!RunUP && !RunUP)
                     {
                         if (RunRight)
                         {
                             JumpRunR();
                         }
 
-                        if (RunLeft)
+                        else if (RunLeft)
                         {
                             JumpRunL();
                         }
@@ -366,6 +372,11 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         }
     }
 
+    public void OnJumpButtonUp()
+    {
+        jumpbutt = false;
+    }
+
 
     public void OnLeftButtonDown()
     {
@@ -409,7 +420,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                     }
                 }
             }
-            else if (transform.eulerAngles.y == 0 && !rev)
+            else if (transform.eulerAngles.y == 0 && !rev || !touch)
             {
                 if (isGrounded || isWater || isBox)
                 {
@@ -467,7 +478,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                     }
                 }
             }
-            else if (transform.eulerAngles.y == 180 && !rev )
+            else if (transform.eulerAngles.y == 180 && !rev || !touch )
             {
                 if (isGrounded || isWater || isBox)
                 {
@@ -895,12 +906,18 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         if (RunLeft)
         {
             transform.eulerAngles = new Vector3(0, 180, 0);
-            transform.Rotate(0, 0, 20);
+            if (jumpbutt || jump)
+            {
+                transform.Rotate(0, 0, 20);
+            }
         }
         else if (RunRight)
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
-            transform.Rotate(0, 0, 20);
+            if (jumpbutt || jump)
+            {
+                transform.Rotate(0, 0, 20);
+            }
         }
     }
 
@@ -924,6 +941,19 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
         else if (RunRight)
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+    }
+
+    public void PosTouc()
+    {
+        rev = false;
+        if (transform.eulerAngles.y == 180)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+        else if (transform.eulerAngles.y == 0)
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
