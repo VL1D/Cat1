@@ -112,17 +112,26 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         {
             rev = false;
         }
+        if (!rev)
+        {
+            anim.SetBool("rev", false);
+        }
+        else
+        {
+            anim.SetBool("rev", true);
+        }
     }
 
     private void Move()
     {
-        if (!blockMoveX)
+        if (!blockMoveX )
         {
             if (!Deatch)
             {
                 rb.velocity = new Vector2(speed, rb.velocity.y);
                 if (speed != 0f && !WolfAt)
                 {
+                    anim.SetBool("tash", false);
                     anim.SetBool("Run", true);
                     if (!Climb)
                     {
@@ -160,17 +169,25 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                     }
                 }
 
-                if (Run && !MovingUp && !Climb && !jump && !rev && isGrounded)
+                if (Run && !MovingUp && !Climb && !jump && !rev && isGrounded || Run && !MovingUp && !Climb && !jump && !rev && isBox )
                 {
                     if (RunRight)
                     {
                         speed = 40f;
                        // transform.eulerAngles = new Vector2(0, 0);
+                       if(transform.eulerAngles.y == 180)
+                       {
+                            anim.SetBool("rev", true);
+                       }
                     }
                     else if (RunLeft)
                     {
                         speed = -40f;
                         //transform.eulerAngles = new Vector2(0, 180);
+                        if (transform.eulerAngles.y == 0)
+                        {
+                            anim.SetBool("rev", true);
+                       }
                     }
                 }
                 if (!Run)
@@ -198,7 +215,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                 isWater = false;
                 jump = false;
                 rev = false;
-                if (jumpbutt && !RunUP)
+                if (jumpbutt && !RunUP && !rev)
                 {
                     transform.Rotate(0, 0, 20);
                     if (RunRight)
@@ -235,7 +252,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                 else
                 {
                     rev = false;
-                    if (!RunUP && !RunUP)
+                    if (!RunUP && !RunUP && !rev)
                     {
                         if (RunRight)
                         {
@@ -311,11 +328,10 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
 
     private void MoveBox()
     {
-        if (isBoxChech)
+        if (isBoxChech )
         {
             if (Run)
             {
-                speed = 20;
                 anim.SetBool("Run", false);
                 anim.SetBool("tash", true);
                 if (RunRight)
@@ -380,11 +396,11 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
 
     public void OnLeftButtonDown()
     {
-        if (!Deatch || !blockMoveX)
+        if (!Deatch || !blockMoveX )
         {
             Run = true;
             RunLeft = true;
-            if (transform.eulerAngles.y == 180)
+            if (transform.eulerAngles.y == 180 )
             {
                 if (speed >= 0f)
                 {
@@ -420,16 +436,24 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                     }
                 }
             }
-            else if (transform.eulerAngles.y == 0 && !rev || !touch)
+            else if (transform.eulerAngles.y == 0)
             {
-                if (isGrounded || isWater || isBox)
+                if (isGrounded || isWater || isBox )
                 {
-                    anim.SetTrigger("mem");
+                    anim.SetBool("tash", false);
+                    anim.SetBool("rev", true);
                     rev = true;
-                    if (isGroundedChek || StopCat)
+                    if (isGroundedChek || StopCat || isBoxChech)
                     {
+                        anim.SetBool("tash", false);
                         anim.SetBool("Siting", false);
                     }
+                }
+                else if (isBoxChech)
+                {
+                    anim.SetBool("tash", false);
+                    //anim.SetTrigger("mem");
+                    anim.SetBool("rev", true);
                 }
 
             }
@@ -441,7 +465,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         {
             Run = true;
             RunRight = true;
-            if (transform.eulerAngles.y == 0)
+            if (transform.eulerAngles.y == 0 )
             {
                 if (speed <= 0f)
                 {
@@ -466,6 +490,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                             transform.eulerAngles = new Vector3(0, 0, 0);
                             Dawn = false;
                         }
+
                     }
                     if (isWater)
                     {
@@ -478,16 +503,23 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                     }
                 }
             }
-            else if (transform.eulerAngles.y == 180 && !rev || !touch )
+            else if (transform.eulerAngles.y == 180  )
             {
                 if (isGrounded || isWater || isBox)
                 {
-                    anim.SetTrigger("mem");
+                    anim.SetBool("tash", false);
+                    anim.SetBool("rev", true);
                     rev = true;
-                    if (isGroundedChek || StopCat)
+                    if (isGroundedChek || StopCat || isBoxChech)
                     {
+                        anim.SetBool("tash", false);
                         anim.SetBool("Siting", false);
                     }
+                }
+                else if (isBoxChech)
+                {
+                    anim.SetBool("tash", false);
+                    anim.SetBool("rev", true);
                 }
             }
         }
@@ -498,6 +530,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
        Run = false;
         RunRight = false;
         RunLeft = false;
+        //anim.SetBool("rev", false);
     }
 
     private void StopMove()
