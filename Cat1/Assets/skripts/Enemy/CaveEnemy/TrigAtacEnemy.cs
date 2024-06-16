@@ -21,6 +21,7 @@ public class TrigAtacEnemy : MonoBehaviour
             Enemycontroller.AtackEnemy = true;
             Enemycontroller.speed = 0;
             PlayerController.speed = 0f;
+            PlayerController.anim.SetBool("Run", false);
             PlayerController.normalSpeed = 0f;
             Enemycontroller.speed = 0f;
             Enemycontroller.activeMove = false;

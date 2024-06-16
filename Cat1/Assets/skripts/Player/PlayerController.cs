@@ -173,6 +173,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                 {
                     if (RunRight)
                     {
+                        RunLeft = false;
                         speed = 40f;
                        // transform.eulerAngles = new Vector2(0, 0);
                        if(transform.eulerAngles.y == 180)
@@ -182,6 +183,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                     }
                     else if (RunLeft)
                     {
+                        RunRight = false;
                         speed = -40f;
                         //transform.eulerAngles = new Vector2(0, 180);
                         if (transform.eulerAngles.y == 0)
@@ -396,7 +398,14 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
 
     public void OnLeftButtonDown()
     {
-        if (!Deatch || !blockMoveX )
+        if (RunRight)
+        {
+            return;
+            speed = -normalSpeed;
+            transform.eulerAngles = new Vector3(0, 180, 0);
+            Dawn = false;
+        }
+        if (!Deatch && !RunRight || !blockMoveX && !RunRight)
         {
             Run = true;
             RunLeft = true;
@@ -461,7 +470,14 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
     }
     public void OnRightButtonDown()
     {
-        if (!Deatch || !blockMoveX)
+        if (RunLeft)
+        {
+            return;
+            speed = normalSpeed;
+            transform.eulerAngles = new Vector3(0, 0, 0);
+            Dawn = false;
+        }
+        if (!Deatch && !RunLeft || !blockMoveX && !RunLeft)
         {
             Run = true;
             RunRight = true;
@@ -526,8 +542,8 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
     }
     public void OnButtonUp()
     {
-       speed = 0f;
-       Run = false;
+        speed = 0f;
+        Run = false;
         RunRight = false;
         RunLeft = false;
         //anim.SetBool("rev", false);
@@ -643,8 +659,11 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
 
     public void StartAnimLedge()
     {
-        rb.velocity = Vector2.zero;
-        anim.Play("up1");
+        if (!Deatch)
+        {
+            rb.velocity = Vector2.zero;
+            anim.Play("up1");
+        }
     }
 
     public void posNext() 
