@@ -133,8 +133,7 @@ public class ControllerCatEnemy : MonoBehaviour
 
     private IEnumerator AtackStart()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
         StopAtackin = false;
-
     }
 }

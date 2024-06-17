@@ -1010,4 +1010,9 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
     }
+
+    public void AnEnd()
+    {
+        anim.Play("rev");
+    }
 }
