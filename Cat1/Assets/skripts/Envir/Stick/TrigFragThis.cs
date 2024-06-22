@@ -9,6 +9,8 @@ public class TrigFragThis : MonoBehaviour
     public Transform pointsTr;
     public Transform points;
 
+    public GameObject[] audio;
+
     private void FixedUpdate()
     {
         MoveC();
@@ -22,6 +24,8 @@ public class TrigFragThis : MonoBehaviour
             {
                 caveEnemyController.speed = 60f;
                points.transform.position = pointsTr.position;
+                int rand = Random.Range(0, audio.Length);
+                Instantiate(audio[rand], points.position, Quaternion.identity);
 
             }
         }

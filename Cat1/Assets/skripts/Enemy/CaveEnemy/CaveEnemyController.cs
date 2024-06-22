@@ -26,6 +26,9 @@ public class CaveEnemyController : MonoBehaviour
 
     public Transform RespawnPos;
 
+    public GameObject Aud;
+    public GameObject AudR;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -79,17 +82,20 @@ public class CaveEnemyController : MonoBehaviour
         {
             anim.SetBool("Walking", true);
             look = false;
+            AudR.SetActive(true);
         }
         else if(speed > 30f)
         {
             anim.SetBool("Run", true);
             anim.SetBool("Walking", false);
             look = false;
+            AudR.SetActive(true);
         }
         else if(speed == 0)
         {
             anim.SetBool("Run", false);
             look = true;
+            AudR.SetActive(false);
         }
         if (AtackEnemy)
         {
@@ -121,6 +127,7 @@ public class CaveEnemyController : MonoBehaviour
     public void AnimAtack()
     {
         Instantiate(strg, RespawnPos.position, Quaternion.identity);
+        Instantiate(Aud, RespawnPos.position, Quaternion.identity);
     }
 
     public void KillCat()
