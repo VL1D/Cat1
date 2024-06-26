@@ -8,6 +8,7 @@ public class Trap : MonoBehaviour
     public Animator anim;
     BoxCollider2D box;
     public GameObject coll;
+    public GameObject audio;
 
     private void Start()
     {
@@ -22,12 +23,14 @@ public class Trap : MonoBehaviour
                 trigResp.SetActive(true);
                 anim.SetTrigger("Close");
                 coll.SetActive(true);
+                audio.SetActive(true);
             }
         }
         if ( collision.tag == "skuiller")
         {
             trigResp.SetActive(true);
             anim.SetTrigger("Close");
+            audio.SetActive(true);
         }
     }
 

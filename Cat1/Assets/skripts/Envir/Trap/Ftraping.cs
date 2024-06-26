@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ftraping :  Trap
 {
     public Rigidbody2D rbStone;
+    public GameObject audio;
 
     void Start()
     {
@@ -17,7 +18,8 @@ public class Ftraping :  Trap
         if (collision.tag == "Player")
         {
             rbStone.isKinematic = false;
-
+            audio.SetActive(true);
+            Destroy(audio, 1.3f);
         }
     }
 }
