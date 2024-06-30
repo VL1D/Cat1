@@ -120,6 +120,18 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         {
             anim.SetBool("rev", true);
         }
+        if(Run && isBox && !isWater || Run && isGrounded && !isWater)
+        {
+            AudioCat[3].SetActive(true);
+        }
+        else if(Run && !isBox && !isWater || Run && !isGrounded && !isWater)
+        {
+            AudioCat[3].SetActive(false);
+        }
+        if (StopCat)
+        {
+            AudioCat[3].SetActive(false);
+        }
     }
 
     private void Move()
@@ -133,7 +145,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                 {
                     anim.SetBool("tash", false);
                     anim.SetBool("Run", true);
-                    if (!Climb)
+                    if (!Climb && !isWater)
                     {
                         if (!isGrounded)
                         {
@@ -152,7 +164,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                 else
                 {
                     anim.SetBool("Run", false);
-                    if (!Climb)
+                    if (!Climb && !isWater)
                     {
                         if (!isGrounded)
                         {
@@ -546,6 +558,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         Run = false;
         RunRight = false;
         RunLeft = false;
+        AudioCat[3].SetActive(false);
         //anim.SetBool("rev", false);
     }
 

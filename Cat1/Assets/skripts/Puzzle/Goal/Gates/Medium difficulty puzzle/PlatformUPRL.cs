@@ -12,6 +12,15 @@ public class PlatformUPRL : MonoBehaviour
     public bool PlatformMove;
     public Animator PlatAnim;
     public PlatformLr PlatformLever;
+    public GameObject aud;
+    public GameObject[] audio;
+    private bool StAud;
+
+    private void Start()
+    {
+        speed = 0;
+        StAud = true;
+    }
 
     private void FixedUpdate()
     {
@@ -22,6 +31,8 @@ public class PlatformUPRL : MonoBehaviour
     {
         if (collision.tag == "Player" && !PlatformMove)
         {
+            StAud = false;
+            aud.SetActive(true);
             speed = 10f;
             if (!MoveUDPlatform)
             {
@@ -39,12 +50,21 @@ public class PlatformUPRL : MonoBehaviour
 
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            aud.SetActive(false);
+        }
+    }
+
     public void PlatformMoving()
     {
         if (!PlatformLever.move)
         {
             if (MoveUDPlatform)
             {
+                audio[0].SetActive(true);
                 PlatformMove = true;
                 PlatAnim.SetBool("up", true);
                 Platform.transform.position = Vector2.MoveTowards(Platform.transform.position, pointsMovings[0].transform.position, speed * Time.deltaTime);
@@ -55,6 +75,7 @@ public class PlatformUPRL : MonoBehaviour
             }
             else
             {
+                audio[0].SetActive(true);
                 PlatformMove = true;
                 PlatAnim.SetBool("down", true);
                 Platform.transform.position = Vector2.MoveTowards(Platform.transform.position, pointsMovings[1].transform.position, speed * Time.deltaTime);
@@ -66,9 +87,19 @@ public class PlatformUPRL : MonoBehaviour
 
             if (speed == 0)
             {
+                audio[0].SetActive(false);
                 PlatformMove = false;
                 PlatAnim.SetBool("up", false);
                 PlatAnim.SetBool("down", false);
+            }
+
+            if (speed != 0f)
+            {
+                audio[1].SetActive(false);
+            }
+            else if (speed == 0f && !StAud)
+            {
+                audio[1].SetActive(true);
             }
         }
     }

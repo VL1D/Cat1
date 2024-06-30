@@ -12,6 +12,15 @@ public class ButtGattLever : MonoBehaviour
     public GameObject trigResp;
     public TrigLever lever;
     public ButtGattEasy Butt;
+    private bool StAud;
+    public GameObject[] audio;
+
+    private void Start()
+    {
+        speedGatt = 0;
+        StAud = true;
+    }
+
     private void FixedUpdate()
     {
         PressButt();
@@ -22,6 +31,7 @@ public class ButtGattLever : MonoBehaviour
         {
             GattesOpen = true;
             speedGatt = 25f;
+            StAud = false;
         }
     }
 
@@ -31,6 +41,7 @@ public class ButtGattLever : MonoBehaviour
         {
             speedGatt = 25f;
             GattesOpen = false;
+            StAud = false;
         }
     }
 
@@ -40,6 +51,7 @@ public class ButtGattLever : MonoBehaviour
         {
             if (GattesOpen)
             {
+                audio[0].SetActive(true);
                 Gattes.transform.position = Vector2.MoveTowards(Gattes.transform.position, pointsGatt[0].transform.position, speedGatt * Time.deltaTime);
                 if (Gattes.transform.position == pointsGatt[0].transform.position)
                 {
@@ -51,6 +63,7 @@ public class ButtGattLever : MonoBehaviour
             }
             else
             {
+                audio[0].SetActive(true);
                 Gattes.transform.position = Vector2.MoveTowards(Gattes.transform.position, pointsGatt[1].transform.position, speedGatt * Time.deltaTime);
                 if (Gattes.transform.position == pointsGatt[1].transform.position)
                 {
@@ -66,6 +79,7 @@ public class ButtGattLever : MonoBehaviour
         {
             if (GattesOpen)
             {
+                audio[0].SetActive(true);
                 Gattes.transform.position = Vector2.MoveTowards(Gattes.transform.position, pointsGatt[0].transform.position, speedGatt * Time.deltaTime);
                 if (Gattes.transform.position == pointsGatt[0].transform.position)
                 {
@@ -82,8 +96,18 @@ public class ButtGattLever : MonoBehaviour
         }
         if (speedGatt == 0)
         {
+            audio[0].SetActive(false);
             anim.SetBool("isClose", false);
             anim.SetBool("isOpen", false);
+        }
+
+        if (speedGatt != 0f)
+        {
+            audio[1].SetActive(false);
+        }
+        else if (speedGatt == 0f && !StAud)
+        {
+            audio[1].SetActive(true);
         }
     }
 }

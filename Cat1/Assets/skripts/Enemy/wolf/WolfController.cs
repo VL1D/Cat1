@@ -25,6 +25,8 @@ public class WolfController : MonoBehaviour
     public bool JumpDop;
     public bool CatClose;
 
+    public GameObject audio;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -88,5 +90,10 @@ public class WolfController : MonoBehaviour
                 rb.velocity = Vector2.up * JumpForse;
             }
         }
+    }
+
+    public void AnAud()
+    {
+        audio.SetActive(true);
     }
 }

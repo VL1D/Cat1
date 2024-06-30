@@ -12,6 +12,15 @@ public class PlatformLr : MonoBehaviour
     public bool PlatformMove;
     public Animator PlatAnim;
     public bool move;
+    public GameObject aud;
+    public GameObject[] audio;
+    private bool StAud;
+
+    private void Start()
+    {
+        speed = 0;
+        StAud = true;
+    }
 
     private void FixedUpdate()
     {
@@ -22,6 +31,8 @@ public class PlatformLr : MonoBehaviour
     {
         if (collision.tag == "Player" && !PlatformMove)
         {
+            StAud = false;
+            aud.SetActive(true);
             speed = 10f;
             if (!MoveUDPlatform)
             {
@@ -39,10 +50,19 @@ public class PlatformLr : MonoBehaviour
 
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            aud.SetActive(false);
+        }
+    }
+
     public void PlatformMoving()
     {
         if (!MoveUDPlatform)
         {
+            audio[0].SetActive(true);
             move = true;
             PlatformMove = true;
             PlatAnim.SetBool("up", true);
@@ -54,6 +74,7 @@ public class PlatformLr : MonoBehaviour
         }
         else
         {
+            audio[0].SetActive(true);
             move = true;
             PlatformMove = true;
             PlatAnim.SetBool("down", true);
@@ -66,10 +87,20 @@ public class PlatformLr : MonoBehaviour
 
         if (speed == 0)
         {
+            audio[0].SetActive(false);
             move = false;
             PlatformMove = false;
             PlatAnim.SetBool("up", false);
             PlatAnim.SetBool("down", false);
+        }
+
+        if (speed != 0f)
+        {
+            audio[1].SetActive(false);
+        }
+        else if (speed == 0f && !StAud)
+        {
+            audio[1].SetActive(true);
         }
     }
 }

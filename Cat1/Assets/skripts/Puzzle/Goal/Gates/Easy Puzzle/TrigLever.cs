@@ -12,6 +12,15 @@ public class TrigLever : MonoBehaviour
     public Transform[] pointsGatt;
     public float speedGatt;
     public GameObject trigResp;
+    public GameObject aud;
+    public GameObject[] audio;
+    private bool StAud;
+
+    private void Start()
+    {
+        speedGatt = 0;
+        StAud = true;
+    }
 
     private void FixedUpdate()
     {
@@ -22,6 +31,7 @@ public class TrigLever : MonoBehaviour
     {
         if (!Blocking)
         {
+            audio[0].SetActive(true);
             Gattes.transform.position = Vector2.MoveTowards(Gattes.transform.position, pointsGatt[0].transform.position, speedGatt * Time.deltaTime);
             if (Gattes.transform.position == pointsGatt[0].transform.position)
             {
@@ -35,6 +45,7 @@ public class TrigLever : MonoBehaviour
         }
         else
         {
+            audio[0].SetActive(true);
             Gattes.transform.position = Vector2.MoveTowards(Gattes.transform.position, pointsGatt[1].transform.position, speedGatt * Time.deltaTime);
             if (Gattes.transform.position == pointsGatt[1].transform.position)
             {
@@ -49,8 +60,18 @@ public class TrigLever : MonoBehaviour
 
         if (speedGatt == 0)
         {
+            audio[0].SetActive(false);
             animGating.SetBool("isClose", false);
             animGating.SetBool("isOpen", false);
+        }
+
+        if (speedGatt != 0f)
+        {
+            audio[1].SetActive(false);
+        }
+        else if (speedGatt == 0f && !StAud)
+        {
+            audio[1].SetActive(true);
         }
     }
 
@@ -58,6 +79,8 @@ public class TrigLever : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            StAud = false;
+            aud.SetActive(true);
             speedGatt = 13f;
             if (!Blocking)
             {
@@ -70,6 +93,14 @@ public class TrigLever : MonoBehaviour
                 Blocking = false;
                 anim.SetBool("Lever", false);
             }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            aud.SetActive(false);
         }
     }
 }

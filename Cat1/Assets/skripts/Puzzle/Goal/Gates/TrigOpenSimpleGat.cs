@@ -10,6 +10,13 @@ public class TrigOpenSimpleGat : MonoBehaviour
     private bool GattesOpen;
     public Animator anim;
     public GameObject trigResp;
+    public GameObject[] audio;
+    private bool StAud;
+    private void Start()
+    {
+        speedGatt = 0;
+        StAud = true;
+    }
     private void FixedUpdate()
     {
         PressButt();
@@ -20,6 +27,7 @@ public class TrigOpenSimpleGat : MonoBehaviour
         {
             GattesOpen = true;
             speedGatt = 8f;
+            StAud = false;
         }
     }
 
@@ -29,6 +37,7 @@ public class TrigOpenSimpleGat : MonoBehaviour
         {
             speedGatt = 13f;
             GattesOpen = false;
+            StAud = false;
         }
     }
 
@@ -36,6 +45,7 @@ public class TrigOpenSimpleGat : MonoBehaviour
     {
         if (GattesOpen)
         {
+            audio[0].SetActive(true);
             Gattes.transform.position = Vector2.MoveTowards(Gattes.transform.position, pointsGatt[0].transform.position, speedGatt * Time.deltaTime);
             if (Gattes.transform.position == pointsGatt[0].transform.position)
             {
@@ -47,6 +57,7 @@ public class TrigOpenSimpleGat : MonoBehaviour
         }
         else
         {
+            audio[0].SetActive(true);
             Gattes.transform.position = Vector2.MoveTowards(Gattes.transform.position, pointsGatt[1].transform.position, speedGatt * Time.deltaTime);
             if (Gattes.transform.position == pointsGatt[1].transform.position)
             {
@@ -59,8 +70,18 @@ public class TrigOpenSimpleGat : MonoBehaviour
 
         if (speedGatt == 0)
         {
+            audio[0].SetActive(false);
             anim.SetBool("isClose", false);
             anim.SetBool("isOpen", false);
+        }
+
+        if(speedGatt != 0f)
+        {
+            audio[1].SetActive(false);
+        }
+        else if(speedGatt == 0f && !StAud)
+        {
+            audio[1].SetActive(true);
         }
     }
 }

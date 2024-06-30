@@ -9,6 +9,7 @@ public class trigWolf : MonoBehaviour
     public GameObject wolf;
     public Animator animWolf;
     public Animator Musick;
+    public GameObject audio;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,6 +25,7 @@ public class trigWolf : MonoBehaviour
             StartCoroutine(SpeedWolf());
             Musick.SetBool("Active", true);
             Sound.instance.NoAc();
+            audio.SetActive(true);
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
