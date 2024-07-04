@@ -18,8 +18,9 @@ public class TrigSpeedCatTree : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            Destroy(gameObject,1.7f);
-            Destroy(coll, 1.7f);
+            Destroy(gameObject, 3f);
+            Destroy(coll, 3f);
         }
     }
+
 }

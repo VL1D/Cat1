@@ -348,6 +348,8 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
             {
                 anim.SetBool("Run", false);
                 anim.SetBool("tash", true);
+                AudioCat[4].SetActive(true);
+                AudioCat[3].SetActive(false);
                 if (RunRight)
                 {
                     speed = 20f;
@@ -359,12 +361,14 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
             }
             else
             {
+                AudioCat[4].SetActive(false);
                 anim.SetBool("tash", false);
                 anim.SetBool("Siting", true);
             }
         }
         else
         {
+            AudioCat[4].SetActive(false);
             anim.SetBool("tash", false);
         }
     }
