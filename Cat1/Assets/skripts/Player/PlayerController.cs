@@ -48,7 +48,8 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
     public Transform feetPos, stopRot, GraundChek, DopGroud;
     public Transform DopPosition;
 
-    private Vector3 _newPosition; 
+    private Vector3 _newPosition;
+    public float playrPos;
 
     public LayerMask whatIsGround;
     public LayerMask whatIsBox;
@@ -91,6 +92,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
     
     private void FixedUpdate()
     {
+        playrPos = transform.position.x;
         Move();
         Jumping();
         CheckColision();
@@ -671,6 +673,14 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
             isWater = true;
             speed = 0;
             AudioCat[2].SetActive(true);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.tag == "AudBox")
+        {
+            AudioCat[4].SetActive(false);
         }
     }
 

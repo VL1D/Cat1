@@ -11,6 +11,9 @@ public class BosPilar : MonoBehaviour
     public bool EndBoos;
     public GameObject Pillar;
     public float speed;
+    public GameObject[] audio;
+    public float soAud;
+    public float soAude;
 
     private void Update()
     {
@@ -20,6 +23,8 @@ public class BosPilar : MonoBehaviour
             {
                 Pillar.transform.Translate(Vector2.up * speed * Time.deltaTime);
                 rbStone[1].isKinematic = true;
+                audio[1].SetActive(true);
+                StartCoroutine(Actex());
             }
         }
     }
@@ -33,6 +38,7 @@ public class BosPilar : MonoBehaviour
             rbStone[1].isKinematic = false;
             Ef.SetActive(true);
             StartCoroutine(ActBoos());
+            StartCoroutine(ActAu());
         }
     }
 
@@ -40,6 +46,18 @@ public class BosPilar : MonoBehaviour
     {
         yield return new WaitForSeconds(8f);
         Boos.SetActive(true);
+
+    }
+    private IEnumerator ActAu()
+    {
+        yield return new WaitForSeconds(soAud);
+        audio[0].SetActive(true);
+
+    }
+    private IEnumerator Actex()
+    {
+        yield return new WaitForSeconds(soAude);
+        audio[1].SetActive(false);
 
     }
 }
