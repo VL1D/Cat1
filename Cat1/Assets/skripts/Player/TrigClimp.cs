@@ -19,7 +19,7 @@ public class TrigClimp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 7 || collision.gameObject.layer == 9 || collision.gameObject.layer == 13)
+        if(collision.gameObject.layer == 7 || collision.gameObject.layer == 9 || collision.gameObject.layer == 13 || collision.gameObject.layer == 17)
         {
             box.enabled = false;
         }
@@ -27,7 +27,7 @@ public class TrigClimp : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 7 || collision.gameObject.layer == 9 || collision.gameObject.layer == 13)
+        if (collision.gameObject.layer == 7 || collision.gameObject.layer == 9 || collision.gameObject.layer == 13 || collision.gameObject.layer == 17)
         {
             box.enabled = true;
         }

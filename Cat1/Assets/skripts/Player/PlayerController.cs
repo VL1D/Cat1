@@ -682,6 +682,17 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
         {
             AudioCat[4].SetActive(false);
         }
+        if (other.gameObject.tag == "Butt" || other.gameObject.tag == "platform")
+        {
+            this.transform.parent = other.transform;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Butt" || other.gameObject.tag == "platform")
+        {
+            this.transform.parent = null;
+        }
     }
 
     public void StartAnimLedge()

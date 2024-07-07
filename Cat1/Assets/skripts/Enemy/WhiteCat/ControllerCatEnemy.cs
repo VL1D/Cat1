@@ -12,6 +12,7 @@ public class ControllerCatEnemy : MonoBehaviour
     public bool Atack;
     public bool PrepAt;
     public bool StopAtackin;
+    public bool DeatchEN;
     public Animator anim;
     private PlayerController player;
     public GameObject trigKill;
@@ -22,6 +23,7 @@ public class ControllerCatEnemy : MonoBehaviour
     public GameObject Efectk;
     public GameObject audio;
     public GameObject aUDIOdEATCH;
+
     private void Start()
     {
         CatPoints = GameObject.FindGameObjectWithTag("Player").transform;
@@ -109,6 +111,7 @@ public class ControllerCatEnemy : MonoBehaviour
             gameObject.layer = 31;
             //rb.isKinematic = true;
             Destroy(EfectC);
+            DeatchEN = true;
         }
     }
 

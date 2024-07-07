@@ -14,6 +14,8 @@ public class PlatformUpDown : MonoBehaviour
     public GameObject aud;
     public GameObject[] audio;
     private bool StAud;
+    public PlatformUpDown isLever;
+    private bool not;
 
     private void Start()
     {
@@ -24,15 +26,21 @@ public class PlatformUpDown : MonoBehaviour
     private void FixedUpdate()
     {
         PlatformMoving();
+        if (not)
+        {
+            isLever.speed = 0;
+            isLever.PlatformMove = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && !PlatformMove)
+        if (collision.tag == "Player" && !PlatformMove && !isLever.not)
         {
             aud.SetActive(true);
             speed = 10f;
             StAud = false;
+            not = true;
             if (!MoveUDPlatform)
             {
                 anim.SetBool("Lever", true);
@@ -70,6 +78,7 @@ public class PlatformUpDown : MonoBehaviour
             if (Platform.transform.position == pointsMovings[0].transform.position)
             {
                 speed = 0;
+                not = false;
             }
         }
         else
@@ -81,6 +90,7 @@ public class PlatformUpDown : MonoBehaviour
             if (Platform.transform.position == pointsMovings[1].transform.position)
             {
                 speed = 0;
+                not = false;
             }
         }
 
