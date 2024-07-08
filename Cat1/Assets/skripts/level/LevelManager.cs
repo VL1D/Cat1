@@ -5,20 +5,19 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-   public static LevelManager instance;
+   public static LevelManager instance ;
 
     public Transform[] respawnPointLevel;
     public GameObject[] LevelPrefab;
 
     public void Start()
     {
-        instance = this; 
+        instance = this;
     }
-   
 
     public void RespawnLevel2()
     {
-        Instantiate(LevelPrefab[1], respawnPointLevel[1].position , Quaternion.identity);
+        Instantiate(LevelPrefab[1], respawnPointLevel[1].position, Quaternion.identity);
     }
 
     public void RespawnLevel1()
@@ -29,6 +28,7 @@ public class LevelManager : MonoBehaviour
     public void RespawnLevel3()
     {
         Instantiate(LevelPrefab[2], respawnPointLevel[2].position, Quaternion.identity);
+
     }
     public void RespawnLevel4()
     {
