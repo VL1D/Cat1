@@ -80384,12 +80384,14 @@ MonoBehaviour:
   - {fileID: 7970187145188199319}
   - {fileID: 7970187146531742855}
   PlatformMove: 1
-  PlatAnim: {fileID: 7970187146507404941}
   aud: {fileID: 8554631812548965173}
   audio:
   - {fileID: 2516102764245283700}
   - {fileID: 288284077792894896}
   isLever: {fileID: 8669950067937437594}
+  wh: {fileID: 0}
+  up: 0
+  down: 0
 --- !u!1 &1811183792261480989
 GameObject:
   m_ObjectHideFlags: 0
@@ -133810,7 +133812,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7970187146507404940}
   - component: {fileID: 7970187146507404941}
-  - component: {fileID: 7970187146507404942}
   m_Layer: 7
   m_Name: Platforming
   m_TagString: Ground
@@ -133858,21 +133859,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7970187146507404942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7970187146507404938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b11fa0c3bfdcd394fb83a547f790a996, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whel: {fileID: 7970187145970307590}
-  up: 0
-  down: 0
 --- !u!1 &7970187146531742854
 GameObject:
   m_ObjectHideFlags: 0
@@ -134895,12 +134881,14 @@ MonoBehaviour:
   - {fileID: 7970187145188199319}
   - {fileID: 7970187146531742855}
   PlatformMove: 1
-  PlatAnim: {fileID: 7970187146507404941}
   aud: {fileID: 9132008209358132215}
   audio:
   - {fileID: 2623360509026831081}
   - {fileID: 193953503389678584}
   isLever: {fileID: 170975650034419189}
+  wh: {fileID: 0}
+  up: 0
+  down: 0
 --- !u!1 &8669950068104640164
 GameObject:
   m_ObjectHideFlags: 0

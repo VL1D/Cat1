@@ -10,11 +10,13 @@ public class PlatformUPRL : MonoBehaviour
     public GameObject Platform;
     public Transform[] pointsMovings;
     public bool PlatformMove;
-    public Animator PlatAnim;
     public PlatformLr PlatformLever;
     public GameObject aud;
     public GameObject[] audio;
     private bool StAud;
+    public GameObject wh;
+    public bool up;
+    public bool down;
 
     private void Start()
     {
@@ -25,6 +27,19 @@ public class PlatformUPRL : MonoBehaviour
     private void FixedUpdate()
     {
         PlatformMoving();
+
+        if (up)
+        {
+            wh.transform.Rotate(0, 0, 100 * Time.deltaTime);
+        }
+        else if (down)
+        {
+            wh.transform.Rotate(0, 0, -100 * Time.deltaTime);
+        }
+        else
+        {
+            wh.transform.Rotate(0, 0, 0);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -62,22 +77,24 @@ public class PlatformUPRL : MonoBehaviour
     {
         if (!PlatformLever.move)
         {
-            if (MoveUDPlatform)
+            if (MoveUDPlatform && speed != 0f)
             {
                 audio[0].SetActive(true);
                 PlatformMove = true;
-                PlatAnim.SetBool("up", true);
+                down = true;
+                up = false;
                 Platform.transform.position = Vector2.MoveTowards(Platform.transform.position, pointsMovings[0].transform.position, speed * Time.deltaTime);
                 if (Platform.transform.position == pointsMovings[0].transform.position)
                 {
                     speed = 0;
                 }
             }
-            else
+            else if(!MoveUDPlatform && speed != 0f)
             {
                 audio[0].SetActive(true);
                 PlatformMove = true;
-                PlatAnim.SetBool("down", true);
+                up = true;
+                down = false;
                 Platform.transform.position = Vector2.MoveTowards(Platform.transform.position, pointsMovings[1].transform.position, speed * Time.deltaTime);
                 if (Platform.transform.position == pointsMovings[1].transform.position)
                 {
@@ -89,8 +106,8 @@ public class PlatformUPRL : MonoBehaviour
             {
                 audio[0].SetActive(false);
                 PlatformMove = false;
-                PlatAnim.SetBool("up", false);
-                PlatAnim.SetBool("down", false);
+                down = false;
+                up = false;
             }
 
             if (speed != 0f)

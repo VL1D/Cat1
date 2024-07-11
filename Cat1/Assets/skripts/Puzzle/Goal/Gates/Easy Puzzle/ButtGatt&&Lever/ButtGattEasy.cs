@@ -14,10 +14,15 @@ public class ButtGattEasy : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Player" || collision.tag == "Box")
+        if (collision.tag == "Player" )
         {
             Pressing = true;
             speed = 25f;
+        }
+        if (collision.tag == "Box")
+        {
+            Pressing = true;
+            speed = 0f;
         }
     }
 
