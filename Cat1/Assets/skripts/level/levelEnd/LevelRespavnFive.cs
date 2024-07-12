@@ -9,8 +9,12 @@ public class LevelRespavnFive : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            LevelManager.instance.RespawnLevel5();
             trigPlayer.enabled = true;
+        }
+        if (collision.tag == "Player" && LEVBOOL.ent == false)
+        {
+            LevelManager.instance.RespawnLevel5();
+            LEVBOOL.ent = true;
         }
     }
     private void OnTriggerExit2D(Collider2D colision)

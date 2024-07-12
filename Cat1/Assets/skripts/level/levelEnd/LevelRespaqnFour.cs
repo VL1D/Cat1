@@ -9,8 +9,12 @@ public class LevelRespaqnFour : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            LevelManager.instance.RespawnLevel4();
             trigPlayer.enabled = false;
+        }
+        if (collision.tag == "Player" && LEVBOOL.ent == false)
+        {
+            LevelManager.instance.RespawnLevel4();
+            LEVBOOL.ent = true;
         }
     }
     private void OnTriggerExit2D(Collider2D colision)

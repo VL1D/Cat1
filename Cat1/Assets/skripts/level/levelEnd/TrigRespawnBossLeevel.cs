@@ -9,8 +9,12 @@ public class TrigRespawnBossLeevel : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            trigPlayer.enabled = false;
+        }
+        if (collision.tag == "Player" && LEVBOOL.ent == false)
+        {
             LevelManager.instance.RespawnLevel6();
-            trigPlayer.enabled = true;
+            LEVBOOL.ent = true;
         }
     }
     private void OnTriggerExit2D(Collider2D colision)

@@ -9,8 +9,12 @@ public class LevelEndTwo : MonoBehaviour
     {
         if (colision.tag == "Player")
         {
-            LevelManager.instance.RespawnLevel1();
             trigPlayer.enabled = false;
+        }
+        if (colision.tag == "Player" && LEVBOOL.ent == false)
+        {
+            LevelManager.instance.RespawnLevel1();
+            LEVBOOL.ent = true;
         }
     }
 

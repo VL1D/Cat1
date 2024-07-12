@@ -43,6 +43,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
     private bool StopCat;
     public bool jumpbutt;
     public bool touch;
+    public bool jumpTr;
 
 
     public Transform feetPos, stopRot, GraundChek, DopGroud;
@@ -221,40 +222,21 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
     private void Jumping()
     {
 
-        if (!Deatch)
+        if (!jumpTr)
         {
-            if (isGrounded)
+            if (!Deatch)
             {
-                rb.gravityScale = 5f;
-                anim.SetBool("Jump", false);
-                anim.SetBool("Dawn3", false);
-                isWater = false;
-                jump = false;
-                rev = false;
-                if (jumpbutt && !RunUP && !rev)
-                {
-                    transform.Rotate(0, 0, 20);
-                    if (RunRight)
-                    {
-                        transform.eulerAngles = new Vector2(0, 0);
-                    }
-                    else if(RunLeft)
-                    {
-                        transform.eulerAngles = new Vector2(0, 180);
-                    }
-                }
-            }
-            else
-            {
-                
-                if (isBox)
+                if (isGrounded)
                 {
                     rb.gravityScale = 5f;
                     anim.SetBool("Jump", false);
                     anim.SetBool("Dawn3", false);
+                    isWater = false;
                     jump = false;
-                    if (jumpbutt)
+                    rev = false;
+                    if (jumpbutt && !RunUP && !rev)
                     {
+                        transform.Rotate(0, 0, 20);
                         if (RunRight)
                         {
                             transform.eulerAngles = new Vector2(0, 0);
@@ -267,57 +249,79 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                 }
                 else
                 {
-                    rev = false;
-                    if (!RunUP && !RunUP && !rev)
-                    {
-                        if (RunRight)
-                        {
-                            JumpRunR();
-                        }
 
-                        else if (RunLeft)
+                    if (isBox)
+                    {
+                        rb.gravityScale = 5f;
+                        anim.SetBool("Jump", false);
+                        anim.SetBool("Dawn3", false);
+                        jump = false;
+                        if (jumpbutt)
                         {
-                            JumpRunL();
+                            if (RunRight)
+                            {
+                                transform.eulerAngles = new Vector2(0, 0);
+                            }
+                            else if (RunLeft)
+                            {
+                                transform.eulerAngles = new Vector2(0, 180);
+                            }
                         }
                     }
-                    anim.SetBool("Jump", true);
-                    //??????? ?????
-                    if (transform.eulerAngles.y == 0 && !Dawn)
+                    else
                     {
-                        transform.Rotate(0, 0, -40 * Time.deltaTime);
-                        if (isStopRot || isWater == true || isStopRotBox)
+                        rev = false;
+                        if (!RunUP && !RunUP && !rev)
                         {
-                            transform.eulerAngles = new Vector3(0, 0, 0);
-                        }
-                    }
-                    //?????? ?????
-                    else if (transform.eulerAngles.y == 180 && !Dawn)
-                    {
-                        transform.Rotate(0, 0, -40 * Time.deltaTime);
-                        if (isStopRot || isWater == true || isStopRotBox)
-                        {
-                            transform.eulerAngles = new Vector3(0, 180, 0);
-                        }
-                    }
-                    //?????? ?? ?????
-                    if (speed == 0)
-                    {
-                        if (!isWater)
-                        {
-                            transform.position += transform.right * 0.4f;
+                            if (RunRight)
+                            {
+                                JumpRunR();
+                            }
 
+                            else if (RunLeft)
+                            {
+                                JumpRunL();
+                            }
                         }
-                    }
-                    //???????? ? ?????????
-                    if (isGroundedChek && isDopGround)
-                    {
-                        anim.SetBool("Dawn3", true);
+                        anim.SetBool("Jump", true);
+                        //??????? ?????
+                        if (transform.eulerAngles.y == 0 && !Dawn)
+                        {
+                            transform.Rotate(0, 0, -40 * Time.deltaTime);
+                            if (isStopRot || isWater == true || isStopRotBox)
+                            {
+                                transform.eulerAngles = new Vector3(0, 0, 0);
+                            }
+                        }
+                        //?????? ?????
+                        else if (transform.eulerAngles.y == 180 && !Dawn)
+                        {
+                            transform.Rotate(0, 0, -40 * Time.deltaTime);
+                            if (isStopRot || isWater == true || isStopRotBox)
+                            {
+                                transform.eulerAngles = new Vector3(0, 180, 0);
+                            }
+                        }
+                        //?????? ?? ?????
+                        if (speed == 0)
+                        {
+                            if (!isWater)
+                            {
+                                transform.position += transform.right * 0.4f;
+
+                            }
+                        }
+                        //???????? ? ?????????
+                        if (isGroundedChek && isDopGround)
+                        {
+                            anim.SetBool("Dawn3", true);
+                        }
                     }
                 }
-            }
-            if (!isGrounded && !isBox)
-            {
-                jump = true;
+                if (!isGrounded && !isBox)
+                {
+                    jump = true;
+                }
             }
         }
     }
@@ -377,31 +381,33 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
 
     public void OnJumpButtonDown()
     {
-        
-        if (!Deatch)
+        if (!jumpTr)
         {
-            if (!StopCat)
+            if (!Deatch)
             {
-                
-                if (!isGroundedChek)
+                if (!StopCat)
                 {
-                    if (isGrounded || isBox)
+
+                    if (!isGroundedChek)
                     {
-                        jumpbutt = true;
-                        jump = true;
-                        anim.SetTrigger("Trig");
-                        rb.velocity = Vector2.up * jumpForce;
-                        transform.Rotate(0, 0, 20);
-                        Dawn = false;
+                        if (isGrounded || isBox)
+                        {
+                            jumpbutt = true;
+                            jump = true;
+                            anim.SetTrigger("Trig");
+                            rb.velocity = Vector2.up * jumpForce;
+                            transform.Rotate(0, 0, 20);
+                            Dawn = false;
+                        }
                     }
-                }
-                else
-                {
-                    if (isGrounded || isWater || isBox)
+                    else
                     {
-                        anim.SetTrigger("RunUp");
-                        rb.velocity = Vector2.up * speedUp;
-                        isWater = false;
+                        if (isGrounded || isWater || isBox)
+                        {
+                            anim.SetTrigger("RunUp");
+                            rb.velocity = Vector2.up * speedUp;
+                            isWater = false;
+                        }
                     }
                 }
             }

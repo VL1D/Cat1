@@ -7,5 +7,6 @@ public class TrigDeleteLevel : MonoBehaviour
    public void DelLevel()
     {
         Destroy(gameObject);
+        LEVBOOL.ent = false;
     }
 }
