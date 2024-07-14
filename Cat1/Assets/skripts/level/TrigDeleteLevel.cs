@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class TrigDeleteLevel : MonoBehaviour
 {
+    private void Start()
+    {
+        LEVBOOL.ent = false;
+    }
    public void DelLevel()
     {
         Destroy(gameObject);
-        LEVBOOL.ent = false;
     }
 }
