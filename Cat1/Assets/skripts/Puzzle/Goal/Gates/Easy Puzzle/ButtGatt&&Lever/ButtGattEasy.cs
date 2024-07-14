@@ -12,6 +12,13 @@ public class ButtGattEasy : MonoBehaviour
     {
         PressButt();
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            collision.gameObject.transform.SetParent(gameObject.transform);
+        }
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Player" )
@@ -32,6 +39,7 @@ public class ButtGattEasy : MonoBehaviour
         {
             Pressing = false;
             speed = 25f;
+            collision.gameObject.transform.SetParent(null);
         }
     }
 

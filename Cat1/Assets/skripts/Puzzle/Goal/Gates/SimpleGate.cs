@@ -11,12 +11,20 @@ public class SimpleGate : MonoBehaviour
     {
         PressButt();
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            collision.gameObject.transform.SetParent(gameObject.transform);
+        }
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.tag == "Player")
         {
             Pressing = true;
             speed = 10f;
+            collision.gameObject.transform.SetParent(gameObject.transform);
         }
     }
 
@@ -26,6 +34,7 @@ public class SimpleGate : MonoBehaviour
         {
             Pressing = false;
             speed = 15f;
+            collision.gameObject.transform.SetParent(null);
         }
     }
 

@@ -33380,7 +33380,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1208989509515717384}
   - component: {fileID: 1208989509515717385}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: platform_1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133812,7 +133812,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7970187146507404940}
   - component: {fileID: 7970187146507404941}
-  m_Layer: 7
+  - component: {fileID: 7286128277152211850}
+  - component: {fileID: 7691802172839089498}
+  m_Layer: 0
   m_Name: Platforming
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -133859,6 +133861,44 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7286128277152211850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7970187146507404938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65a72a87d642e4c9aa41f292bec52346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &7691802172839089498
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7970187146507404938}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 17.855469, y: 9.89328}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 78.125, y: 23.547462}
+  m_EdgeRadius: 0
 --- !u!1 &7970187146531742854
 GameObject:
   m_ObjectHideFlags: 0
@@ -133900,7 +133940,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7970187146748896337}
   - component: {fileID: 7970187146748896338}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: platform_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
