@@ -7,6 +7,7 @@ public class SimpleGate : MonoBehaviour
     private bool Pressing;
     private float speed;
     public Transform pointsUp;
+    public Transform pointsDown;
     private void FixedUpdate()
     {
         PressButt();
@@ -42,7 +43,10 @@ public class SimpleGate : MonoBehaviour
     {
         if (Pressing)
         {
-            transform.Translate(Vector2.down * speed * Time.deltaTime);
+            if (transform.position.y > pointsDown.position.y)
+            {
+                transform.Translate(Vector2.down * speed * Time.deltaTime);
+            }
         }
         else
         {
