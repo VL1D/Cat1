@@ -6,18 +6,11 @@ public class TrigCatWhite : MonoBehaviour
 {
     public ControllerCatEnemy EnemyCat;
     public GameObject coll;
-    private BoxCollider2D trigPlayer;
 
-    private void Start()
-    {
-        trigPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<BoxCollider2D>();
-
-    }
     private void OnTriggerStay2D (Collider2D collision)
     {
         if(collision.tag == "Player")
         {
-            trigPlayer.enabled = false;
             coll.SetActive(true);
             if (!EnemyCat.StopAtackin)
             {
@@ -34,14 +27,6 @@ public class TrigCatWhite : MonoBehaviour
             {
                 coll.SetActive(false);
             }
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-            trigPlayer.enabled = true;
         }
     }
 }
