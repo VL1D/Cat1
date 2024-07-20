@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ftraping :  Trap
+public class Ftraping : MonoBehaviour
 {
     public Rigidbody2D rbStone;
     public GameObject audio;
