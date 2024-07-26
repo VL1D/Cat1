@@ -61,6 +61,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
     public GameObject ButtonPaus;
     public GameObject BoxKill;
 
+    public static int aa = 0;
     [Header("SaveEnemy")]
     public GameObject Wolf;
     public GameObject[] Enemy;
@@ -93,6 +94,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
     
     private void FixedUpdate()
     {
+        
         playrPos = transform.position.x;
         Move();
         Jumping();
@@ -721,7 +723,8 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
     public void LoadData(GameData data)
     {
         this.transform.position = data.playerPosition;
-        if(DataCheck.checkPointIndex >= 1)
+        
+        if (DataCheck.checkPointIndex >= 1)
         {
             Background[0].SetActive(false);
             Background[1].SetActive(true);
@@ -806,11 +809,13 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
     public void SaveData( GameData data)
     {
         data.playerPosition = this.transform.position;
+        
         if (DataCheck.checkPointIndex >= 1)
         {
             Background[0].SetActive(false);
             Background[1].SetActive(true);
             Destroy(Enemy[2]);
+            
         }
         if (DataCheck.checkPointIndex >= 2)
         {
