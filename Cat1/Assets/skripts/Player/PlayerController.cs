@@ -668,7 +668,7 @@ public class PlayerController : AudioManager , IDatPersistence, IPointerDownHand
                LEVBOOL.ent = false;
             }
         }
-        if(other.tag == "Respawn")
+        if(other.tag == "Respawn" )
         {
             anim.SetTrigger("Deatch");
             BoxKill.SetActive(true);
